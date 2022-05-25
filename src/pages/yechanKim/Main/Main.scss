@@ -1,0 +1,127 @@
+body {
+  background-color: #fafafa;
+  width: 100vw;
+  height: 100vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  padding: 10px 0;
+}
+.logo-title {
+  display: flex;
+  align-items: center;
+}
+.logo-title img {
+  margin-right: 10px;
+}
+.logo-title h1 {
+  font-family: "Lobster", cursive;
+  padding-left: 10px;
+  border-left: 1px solid black;
+  margin: 0;
+}
+.search {
+  display: flex;
+  align-items: center;
+}
+.container {
+  width: 1200px;
+  display: flex;
+  margin: 0 auto;
+}
+.container main {
+  width: 900px;
+  margin-right: 10px;
+  background-color: #ffffff;
+  border: 1px solid lightgray;
+}
+.container aside {
+  width: 300px;
+}
+.post {
+  display: flex;
+  flex-direction: column;
+}
+.edit-group {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.editor {
+  display: flex;
+  align-items: center;
+}
+.profile-img {
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.contents-info {
+  padding: 5px;
+  border-bottom: 1px solid lightgray;
+}
+.icon-group {
+  display: flex;
+  margin: 5px;
+}
+.icon-group span {
+  margin-right: 10px;
+}
+.icon-group span:last-child {
+  margin: 0 0 0 auto;
+}
+.like {
+  display: flex;
+  align-items: center;
+}
+.main-message {
+  display: flex;
+  align-items: center;
+}
+.main-message a {
+  text-decoration: none;
+  margin-right: 10px;
+  color: black;
+}
+.info {
+  color: gray;
+}
+.leave-comment {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.leave-comment input {
+  width: 95%;
+  border: 0;
+}
+.my-account {
+  display: flex;
+  padding: 10px;
+}
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+.aside-box {
+  background-color: #ffffff;
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.list {
+  display: flex;
+  align-items: center;
+}
+.blue {
+  color: blue;
+}
