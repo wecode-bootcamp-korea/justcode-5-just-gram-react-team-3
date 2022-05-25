@@ -10,6 +10,7 @@
   justify-content: center;
   background-color: white;
   width: 500px;
+  height: 700px;
   border: 1px solid gray;
   padding: 30px;
   top: 5vh;
@@ -28,6 +29,7 @@ h1 {
 .login-form {
   display: flex;
   flex-direction: column;
+  background-color: white;
   margin: 30px 0 0 0;
 }
 
