@@ -34,7 +34,7 @@
   position: absolute;
   top: 18px;
   right: 60px;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
 }
 
 #search {
@@ -87,7 +87,7 @@
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 10px solid lightgray;
-    content: "";
+    content: '';
     position: absolute;
     left: 169px;
     top: -10px;
@@ -251,8 +251,6 @@ main {
   padding-bottom: 5px;
 }
 
-
-
 .fa-heart {
   cursor: pointer;
 }
@@ -312,12 +310,12 @@ main {
   top: 0;
   left: 66vw;
   margin: 150px auto;
-  background-color: rgb(249,249,249);
+  background-color: rgb(249, 249, 249);
   width: 400px;
 }
 
 .ad {
-  display: flex;  
+  display: flex;
   justify-content: left;
   align-items: center;
   margin: 10px 30px;
@@ -325,11 +323,12 @@ main {
 }
 
 .ad-contents {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
 }
 
-.ad-contents .nickname, .ad-contents > .ad-desc {
-  background-color: #F9F9F9;
+.ad-contents .nickname,
+.ad-contents > .ad-desc {
+  background-color: #f9f9f9;
 }
 
 .ad #profile-img {
