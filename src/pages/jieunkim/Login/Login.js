@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
-
+//import { Link } from "react-router-dom"
+import { useState } from "react";
+import "./Login.scss";
 
 function Login() {
   const navigate = useNavigate();
@@ -10,32 +11,34 @@ function Login() {
   };
 
   return (
-    <div class="main-container">
-      <header class="logo">
-        <p>justgram</p>
-      </header>
-      <div class="login-container">
-        <div class="input-container">
-          <input
-            type="text"
-            id="user-id"
-            placeholder="전화번호, 사용자 이름 또는 이메일"
-          />
-          <input type="password" id="password" placeholder="비밀번호" />
+    <body className="Login">
+      <div className="main-container-login">
+        <header className="logo">
+          <p>justgram</p>
+        </header>
+        <div className="login-container">
+          <div className="input-container">
+            <input
+              type="text"
+              id="user-id"
+              placeholder="전화번호, 사용자 이름 또는 이메일"
+            />
+            <input type="password" id="password" placeholder="비밀번호" />
+          </div>
+          <div className="login-btn-container">
+              <button 
+                id="login-btn"
+                onClick={goToMain}>
+                  로그인
+              </button>
+          </div>
         </div>
-        <div class="login-btn-container">
-          <a href="./main.html">
-            <button id="login-btn" disabled>
-              로그인
-            </button>
-          </a>
+        <div className="empty"></div>
+        <div className="login-request">
+          <p className="password-request">비밀번호를 잊으셨나요?</p>
         </div>
       </div>
-      <div class="empty"></div>
-      <div class="login-request">
-        <p class="password-request">비밀번호를 잊으셨나요?</p>
-      </div>
-    </div>
+      </body>
   );
 }
 

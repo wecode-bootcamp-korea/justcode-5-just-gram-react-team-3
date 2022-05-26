@@ -1,43 +1,43 @@
 import React from "react";
-import "./Main.css";
+import "./Main.scss";
 
 function Main() {
 	return (
     <div className="Main">
-      <body>
-        <div class="main-container">
+      <body className="main-body">
+        <div className="main-container">
           <nav>
-            <div class="nav-content">
-              <div class="nav-left">
+            <div className="nav-content">
+              <div className="nav-left">
                 <img
-                  class="icon-insta"
+                  className="icon-insta"
                   alt="insta-icon"
                   src="/images/instagram.png"
                 />
                 <span>justgram</span>
               </div>
-              <div class="nav-center">
+              <div className="nav-center">
                 <input type="text" id="search" placeholder="검색" />
-                <img class="icon-search" alt="search" src="/images/search.png" />
+                <img className="icon-search" alt="search" src="/images/search.png" />
               </div>
-              <div class="nav-right">
+              <div className="nav-right">
                 <div>
                   <img
-                    class="icon-explore"
+                    className="icon-explore"
                     alt="explore-icon"
                     src="/images/explore.png"
                   />
                 </div>
                 <div>
                   <img
-                    class="icon-heart"
+                    className="icon-heart"
                     alt="heart-icon"
                     src="/images/heart.png"
                   />
                 </div>
                 <div>
                   <img
-                    class="icon-profile"
+                    className="icon-profile"
                     alt="profile-icon"
                     src="/images/profile.png"
                   />
@@ -46,58 +46,58 @@ function Main() {
             </div>
           </nav>
           <main>
-            <div class="feeds">
+            <div className="feeds">
               <article>
-                <div class="article-header">
-                  <div class="author-profile">
-                    <div class="author-profile-icon">
+                <div className="article-header">
+                  <div className="author-profile">
+                    <div className="author-profile-icon">
                       <img
-                        class="icon-profile"
+                        className="icon-profile"
                         alt="author"
                         src="/images/author.png"
                       />
                     </div>
-                    <div class="author-info">
+                    <div className="author-info">
                       <p id="author-id">user_id</p>
                       <p id="author-location">location</p>
                     </div>
                   </div>
-                  <div class="author-more">
+                  <div className="author-more">
                     <img
-                      class="icon-more"
+                      className="icon-more"
                       alt="more"
                       src="/images/more.png"
                     ></img>
                   </div>
                 </div>
-                <div class="frame">
-                  <img class="photo" alt="" src="/images/photo.png" />
+                <div className="frame">
+                  <img className="photo" alt="" src="/images/photo.png" />
                 </div>
-                <div class="feed-icons">
-                  <div class="feed-icons-left">
+                <div className="feed-icons">
+                  <div className="feed-icons-left">
                     <img
-                      class="icon-like"
+                      className="icon-like"
                       alt="like"
                       src="/images/heart-red.png"
                     />
-                    <img class="icon-chat" alt="chat" src="/images/chat.png" />
+                    <img className="icon-chat" alt="chat" src="/images/chat.png" />
                     <img
-                      class="icon-upload"
+                      className="icon-upload"
                       alt="upload"
                       src="/images/upload.png"
                     />
                   </div>
-                  <div class="feed-icons-right">
+                  <div className="feed-icons-right">
                     <img
-                      class="icon-bookmark"
+                      className="icon-bookmark"
                       alt="bookmark"
                       src="/images/bookmark-white.png"
                     />
                   </div>
                 </div>
-                <div class="likeby">
+                <div className="likeby">
                   <img
-                    class="icon-likeby"
+                    className="icon-likeby"
                     alt="who"
                     src="/images/profile-likeby.png"
                   />
@@ -105,27 +105,27 @@ function Main() {
                   <span>&nbsp</span>
                   <span id="text-likeby">like it</span>
                 </div>
-                <div class="comment">
-                  <div class="comment-first">
+                <div className="comment">
+                  <div className="comment-first">
                     <span id="comment-first-id">anonymous</span>
                     <span id="comment-first-text">first comment</span>
-                    <span class="show-more">더 보기</span>
+                    <span className="show-more">더 보기</span>
                   </div>
-                  <div class="comment-second">
+                  <div className="comment-second">
                     <span id="comment-second-id">anonymous</span>
                     <span id="comment-second-text">second comment</span>
                   </div>
-                  <div class="last-updated">
+                  <div className="last-updated">
                     <span id="time-stamp">time stamp</span>
                   </div>
                 </div>
-                <div class="new-comment">
+                <div className="new-comment">
                   <input
                     type="text"
                     id="new-comment-input"
                     placeholder="댓글 달기..."
                   />
-                  <div class="post">
+                  <div className="post">
                     <button id="post-btn" disabled>
                       게시
                     </button>
@@ -133,10 +133,10 @@ function Main() {
                 </div>
               </article>
             </div>
-            <div class="main-right">
-              <div class="login-user-header">
-                <div class="login-user-profile">
-                  <div class="login-user-profile">
+            <div className="main-right">
+              <div className="login-user-header">
+                <div className="login-user-profile">
+                  <div className="login-user-profile">
                     <img
                       id="login-profile-icon"
                       alt="me"
@@ -144,192 +144,192 @@ function Main() {
                     />
                   </div>
                 </div>
-                <div class="login-user-info">
+                <div className="login-user-info">
                   <p id="login-user-id">user_id</p>
                   <p id="login-user-location">location</p>
                 </div>
               </div>
-              <div class="story main-right-container">
-                <div class="story-header header-title">
+              <div className="story main-right-container">
+                <div className="story-header header-title">
                   <p>스토리</p>
                   <p>모두 보기</p>
                 </div>
-                <div class="story-content">
-                  <div class="story-user">
-                    <div class="story-user-profile">
+                <div className="story-content">
+                  <div className="story-user">
+                    <div className="story-user-profile">
                       <img
-                        class="user-icon"
+                        className="user-icon"
                         id="user1-icon"
                         alt="rf1"
                         src="/images/man.png"
                       />
                     </div>
-                    <div class="story-user-info">
-                      <p class="user-id" id="story-user1-id">
+                    <div className="story-user-info">
+                      <p className="user-id" id="story-user1-id">
                         user_id
                       </p>
-                      <p class="user-update" id="story-user1-update">
+                      <p className="user-update" id="story-user1-update">
                         update
                       </p>
                     </div>
                   </div>
-                  <div class="story-user">
-                    <div class="story-user-profile">
+                  <div className="story-user">
+                    <div className="story-user-profile">
                       <img
-                        class="user-icon"
+                        className="user-icon"
                         id="story-user2-icon"
                         alt="rf2"
                         src="/images/user.png"
                       />
                     </div>
-                    <div class="story-user-info">
-                      <p class="user-id" id="story-user2-id">
+                    <div className="story-user-info">
+                      <p className="user-id" id="story-user2-id">
                         user_id
                       </p>
-                      <p class="user-update" id="story-user2-update">
+                      <p className="user-update" id="story-user2-update">
                         update
                       </p>
                     </div>
                   </div>
-                  <div class="story-user">
-                    <div class="story-user-profile">
+                  <div className="story-user">
+                    <div className="story-user-profile">
                       <img
-                        class="user-icon"
+                        className="user-icon"
                         id="story-user3-icon"
                         alt="rf3"
                         src="/images/user.png"
                       />
                     </div>
-                    <div class="story-user-info">
-                      <p class="user-id" id="story-user3-id">
+                    <div className="story-user-info">
+                      <p className="user-id" id="story-user3-id">
                         user_id
                       </p>
-                      <p class="user-update" id="story-user3-update">
+                      <p className="user-update" id="story-user3-update">
                         update
                       </p>
                     </div>
                   </div>
-                  <div class="story-user">
-                    <div class="story-user-profile">
+                  <div className="story-user">
+                    <div className="story-user-profile">
                       <img
-                        class="user-icon"
+                        className="user-icon"
                         id="story-user4-icon"
                         alt="rf4"
                         src="/images/user.png"
                       />
                     </div>
-                    <div class="story-user-info">
-                      <p class="user-id" id="story-user4-id">
+                    <div className="story-user-info">
+                      <p className="user-id" id="story-user4-id">
                         user_id
                       </p>
-                      <p class="user-update" id="story-user4-update">
+                      <p className="user-update" id="story-user4-update">
                         update
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="recommend main-right-container">
-                <div class="recommend-header header-title">
+              <div className="recommend main-right-container">
+                <div className="recommend-header header-title">
                   <p>회원님을 위한 추천</p>
                   <p>모두 보기</p>
                 </div>
-                <div class="recommend-content">
-                  <div class="recommend-user">
-                    <div class="recommend-user-left">
-                      <div class="rf-profile">
+                <div className="recommend-content">
+                  <div className="recommend-user">
+                    <div className="recommend-user-left">
+                      <div className="rf-profile">
                         <img
-                          class="user-icon"
+                          className="user-icon"
                           id="rf1-icon"
                           alt="rf1"
                           src="/images/user.png"
                         />
                       </div>
-                      <div class="rf-user-info">
-                        <p class="user-id" id="rf1-id">
+                      <div className="rf-user-info">
+                        <p className="user-id" id="rf1-id">
                           user_id
                         </p>
-                        <p class="user-update" id="rf1-update">
+                        <p className="user-update" id="rf1-update">
                           location
                         </p>
                       </div>
                     </div>
-                    <div class="recommend-user-right">
-                      <p class="follow">팔로우</p>
+                    <div className="recommend-user-right">
+                      <p className="follow">팔로우</p>
                     </div>
                   </div>
-                  <div class="recommend-user">
-                    <div class="recommend-user-left">
-                      <div class="rf-profile">
+                  <div className="recommend-user">
+                    <div className="recommend-user-left">
+                      <div className="rf-profile">
                         <img
-                          class="user-icon"
+                          className="user-icon"
                           id="rf1-icon"
                           alt="rf1"
                           src="/images/user.png"
                         />
                       </div>
-                      <div class="rf-user-info">
-                        <p class="user-id" id="rf1-id">
+                      <div className="rf-user-info">
+                        <p className="user-id" id="rf1-id">
                           user_id
                         </p>
-                        <p class="user-update" id="rf1-update">
+                        <p className="user-update" id="rf1-update">
                           location
                         </p>
                       </div>
                     </div>
-                    <div class="recommend-user-right">
-                      <p class="follow">팔로우</p>
+                    <div className="recommend-user-right">
+                      <p className="follow">팔로우</p>
                     </div>
                   </div>
-                  <div class="recommend-user">
-                    <div class="recommend-user-left">
-                      <div class="rf-profile">
+                  <div className="recommend-user">
+                    <div className="recommend-user-left">
+                      <div className="rf-profile">
                         <img
-                          class="user-icon"
+                          className="user-icon"
                           id="rf1-icon"
                           alt="rf1"
                           src="/images/user.png"
                         />
                       </div>
-                      <div class="rf-user-info">
-                        <p class="user-id" id="rf1-id">
+                      <div className="rf-user-info">
+                        <p className="user-id" id="rf1-id">
                           user_id
                         </p>
-                        <p class="user-update" id="rf1-update">
+                        <p className="user-update" id="rf1-update">
                           location
                         </p>
                       </div>
                     </div>
-                    <div class="recommend-user-right">
-                      <p class="follow">팔로우</p>
+                    <div className="recommend-user-right">
+                      <p className="follow">팔로우</p>
                     </div>
                   </div>
-                  <div class="recommend-user">
-                    <div class="recommend-user-left">
-                      <div class="rf-profile">
+                  <div className="recommend-user">
+                    <div className="recommend-user-left">
+                      <div className="rf-profile">
                         <img
-                          class="user-icon"
+                          className="user-icon"
                           id="rf1-icon"
                           alt="rf1"
                           src="/images/user.png"
                         />
                       </div>
-                      <div class="rf-user-info">
-                        <p class="user-id" id="rf1-id">
+                      <div className="rf-user-info">
+                        <p className="user-id" id="rf1-id">
                           user_id
                         </p>
-                        <p class="user-update" id="rf1-update">
+                        <p className="user-update" id="rf1-update">
                           location
                         </p>
                       </div>
                     </div>
-                    <div class="recommend-user-right">
-                      <p class="follow">팔로우</p>
+                    <div className="recommend-user-right">
+                      <p className="follow">팔로우</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="company-info">
+              <div className="company-info">
                 <p>
                   Justgram 정보 ・ 지원 ・ 홍보 센터 ・ API ・ 채용 ・ 정보 ・
                   개인정보처리방침 ・ 약관 ・ 디렉터리 ・ 프로필 ・ 해시태그 ・

@@ -2,19 +2,19 @@
 	box-sizing: border-box;
 }
 
-body {
+body.Login {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 5%;
 }
 
-.main-container, .login-container, .input-container, .login-btn-container {
+.main-container-login, .login-container, .input-container, .login-btn-container {
 	display: flex;
 	flex-direction: column;
 }
 
-.main-container {
+.main-container-login {
 	width : 350px;
 	margin: 0 0 10px;
 	padding: 40px 35px 20px 35px;
@@ -25,13 +25,13 @@ body {
 .logo {
 	display: flex;
 	justify-content: center;	
-}
-
-.logo p {
+	
+	p {
 	text-align: center;
 	margin: 0;
 	font-size: 45px;
 	font-family: 'Lobster', cursive;
+}
 }
 
 .login-container {
@@ -43,7 +43,8 @@ body {
 	margin: 0 0 10px 0;
 }
 
-.input-container input {
+.input-container {
+	input {
 	margin: 3px 0;
 	padding: 11px 8px;
 	background: #fafafa; 
@@ -52,26 +53,17 @@ body {
 	color: #a5a5a5;
 	font-size: 12px;
 }
+}
 
-.login-btn-container a {
+.login-btn-container {
+	 a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-decoration: none;
 }
-
-#login-btn:disabled {
-	width: 100%;
-	padding: 7px 0;
-	background-color: #b2dffc;
-	border: 0;
-	border-radius: 3px;
-	color: white;
-	font-size: 14px;
-	font-weight: bold;
-	display: block;
-	
 }
+
 
 #login-btn {
 	width: 100%;
@@ -82,6 +74,10 @@ body {
 	color: white;
 	font-size: 14px;
 	font-weight: bold;
+
+	&:disabled {
+		background-color: #b2dffc;
+	}
 }
 
 .login-request {

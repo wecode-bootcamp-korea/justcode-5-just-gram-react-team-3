@@ -1,15 +1,14 @@
-* {
-	box-sizing: border-box;
-}
-
 span {
 	font-size: 10px;
 }
 
-body {
+.Main {
+	height: 100%;
+}
+
+body.main-body {
 	margin: 0;
 	background-color: rgba(249, 247, 247, 0.872);
-	
 }
 
 .main-container {
@@ -21,6 +20,7 @@ body {
 nav {
 	background-color: white;
 }
+
 .nav-content {
 	display: flex;
 	justify-content: space-between;
@@ -49,10 +49,12 @@ nav {
 	padding: 0 8px 0 0;
 }
 
-.nav-left span {
+.nav-left {
+	span {
 	font-family: 'Lobster', cursive;
 	font-size: 18px;
 	text-align: center;
+}
 }
 
 .icon-search {
@@ -78,15 +80,15 @@ nav {
 	background-color: rgba(249, 247, 247, 0.872);
 	border: 1px solid rgb(230, 230, 230);
 	opacity: 0.5;
-}
 
-#search:focus {
+	&:focus {
 	display: flex;
 	align-items: center;
 	text-align: left;
 	opacity: 1;
 	outline-width: 0; 
 	background-color: transparent;
+	}
 }
 
 input:focus::placeholder {
@@ -105,8 +107,10 @@ img {
 	margin: 0 8px;
 }
 
-.feed-icons img {
+.feed-icons {
+	img {
 	margin: 0 3px;
+}
 }
 
 
@@ -261,21 +265,17 @@ span#comment-first-id, span#comment-second-id {
 	width: 80%;	
 }
 
-#post-btn:disabled {
-	color: #0095f6;
-	right: 0;
-	background-color: white;
-	font-size: 10px;
-	border: 0;
-	opacity: 0.5;
-}
 
-#post-btn:disabled {
+#post-btn {
 	color: #0095f6;
 	right: 0;
 	background-color: white;
 	font-size: 10px;
 	border: 0;
+	
+	&:disabled {
+		opacity: 0.5;
+	}
 }
 
 .main-right {
@@ -341,12 +341,16 @@ span#comment-first-id, span#comment-second-id {
 	padding: 0 14px;	
 }
 
-.header-title p:nth-child(1) {
+.header-title {
+	p:nth-child(1) {
 	color: grey; 
 }
+}
 
-.header-title p:nth-child(2) {
+.header-title {
+	p:nth-child(2) {
 	font-weight: bold;
+}
 }
 
 .story-user-profile, .rf-profile {
@@ -405,10 +409,6 @@ span#comment-first-id, span#comment-second-id {
 	margin: 0;
 	text-align: center;
 }
-
-
-
-
 
 .company-info {
 	display: flex;
