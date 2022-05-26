@@ -22,26 +22,19 @@ function Main() {
     } else {
       setIsValid(false);
     }
+    if (isValid && window.event.keyCode === 13) {
+      postComment();
+    }
   }
 
   const handleCommentInput = (e) => {
     setCommentValue(e.target.value)
   }
 
-  const writeBtn = document.getElementById('write-btn');
-
   const postComment = () => {
     setCommentList([...commentList, { username: '123', comment: commentValue}]);
     setCommentValue('');
-    writeBtn.disabled = true;
-    writeBtn.style.cursor = 'auto';
-    writeBtn.style.color = 'lightblue';
-  }
-
-  const enterkey = () => {
-    if (isValid && window.event.keyCode === 13) {
-      postComment();
-    }
+    setIsValid(false);
   }
 
   return (
@@ -105,21 +98,18 @@ function Main() {
               <div><span className="nickname">im_rudy</span>님 외 10명이 좋아합니다</div>
             </div>
             <div className="feeds-comments">
-              {
-                commentList.map((comment, idx) => {
+              {commentList.map((comment, idx) => {
                   return (
                     <Comment 
                       key={idx} 
                       username={comment.username} 
                       comment={comment.comment}/>
                   )
-                })
-              }
+              })}
               <div className="time feed-time">42분 전</div>
               <div className="write-comment">
                 <input 
                   onKeyUp={updateBtn} 
-                  onKeyDown={enterkey} 
                   onChange={handleCommentInput} 
                   id="comment" 
                   type="text" 
