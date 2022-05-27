@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Main.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -12,7 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
-import Comment from '../../../components/Comment/Comment';
+import Feed from '../../../components/Feed/Feed';
 
 library.add(
   faHeart,
@@ -26,37 +26,19 @@ library.add(
 );
 
 function Main() {
-  const [commentValue, setCommentValue] = useState('');
-  const [commentList, setCommentList] = useState([
-    { username: 'im_jw', comment: 'hi' },
-  ]);
-  const [isValid, setIsValid] = useState(false);
-  const updateBtn = () => {
-    if (commentValue !== '') {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
-    if (isValid && window.event.keyCode === 13) {
-      postComment();
-    }
-  };
-
-  const handleCommentInput = (e) => {
-    setCommentValue(e.target.value);
-  };
-
-  const postComment = () => {
-    setCommentList([
-      ...commentList,
-      { username: '123', comment: commentValue },
-    ]);
-    setCommentValue('');
-    setIsValid(false);
-  };
+  const [feedList, setFeedList] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:3000/data/commentData.json', {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setFeedList(data);
+      });
+  }, []);
 
   return (
-    <div>
+    <div className="main">
       <nav className="navigation">
         <div className="nav-left">
           <div id="insta-icon">
@@ -118,91 +100,20 @@ function Main() {
         </div>
       </nav>
       <main>
-        <article className="feeds">
-          <div className="feeds-top">
-            <div className="feeds-top-left">
-              <div>
-                <img
-                  src="images/jinwoo/rudy.jpeg"
-                  id="profile-img"
-                  alt="프로필 이미지"
-                />
-              </div>
-              <span className="nickname">im__rudy</span>
-            </div>
-            <div className="feeds-top-right">
-              <i className="fa-solid fa-ellipsis" />
-            </div>
-          </div>
-          <img
-            src="images/jinwoo/rudy.jpeg"
-            alt="피드 이미지"
-            id="feed-img"
-            width="500px"
-            height="500px"
-          />
-          <div className="feeds-icons">
-            <div className="feeds-icons-left">
-              <div id="feed-heart">
-                <FontAwesomeIcon icon="fa-solid fa-heart" color="gray" />
-              </div>
-              <div>
-                <FontAwesomeIcon icon="fa-solid fa-comment" />
-              </div>
-              <div>
-                <FontAwesomeIcon icon="fa-solid fa-share-from-square" />
-              </div>
-            </div>
-            <div>
-              <i className="fa-regular fa-bookmark" />
-            </div>
-          </div>
-          <div className="feeds-likes">
-            <div>
-              <img
-                src="images/jinwoo/rudy.jpeg"
-                id="profile-img"
-                alt="프로필 이미지"
-              />
-            </div>
-            <div>
-              <span className="nickname">im_rudy</span>님 외 10명이 좋아합니다
-            </div>
-          </div>
-          <div className="feeds-comments">
-            {commentList.map((comment, idx) => {
-              return (
-                <Comment
-                  key={idx}
-                  username={comment.username}
-                  comment={comment.comment}
-                />
-              );
-            })}
-            <div className="time feed-time">42분 전</div>
-            <div className="write-comment">
-              <input
-                onKeyUp={updateBtn}
-                onChange={handleCommentInput}
-                id="comment"
-                type="text"
-                placeholder="댓글 달기..."
-                value={commentValue}
-              />
-              <button
-                id="write-btn"
-                disabled={isValid ? false : true}
-                style={{
-                  color: isValid ? 'blue' : 'lightblue',
-                  cursor: isValid ? 'pointer' : 'auto',
-                }}
-                onClick={postComment}
-              >
-                게시
-              </button>
-            </div>
-          </div>
-        </article>
+        {feedList.map((feed) => {
+          return (
+            <Feed
+              key={feed.feedId}
+              userName={feed.author}
+              content={feed.content}
+              date={feed.date}
+              comment={feed.comments}
+              imageUrl={feed.imageUrl}
+              likePeople={feed.likePeople}
+              profileImage={feed.profileImageUrl}
+            />
+          );
+        })}
         <div className="main-right">
           <div className="ad">
             <div className="ad-contents">
