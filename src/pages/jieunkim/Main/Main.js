@@ -1,7 +1,63 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "./Main.scss";
 
+
 function Main() {
+  const [commentFirst, setCommentFirst] = useState("");
+  const [commentSecond, setCommentSecond] = useState("");
+  const [commentInput, setCommentInput] = useState("");
+  const commentFirstId = "anonymous"
+  const commentSecondId = "anonymous"
+  const [dt, setDt] = useState("time-stamp");
+
+  // useEffect(() => {
+  //   let secTimer = setInterval( () => {
+  //     setDt(postedSince);
+  //   }, 10)
+  // }, []);
+  
+  // const postedSince = () => {
+  //   // const current = new Date();
+  //   // date.get
+
+  //   let res = 5;
+  //   return res;
+  // }
+  const isActiveCommentInput = () => {
+    return commentInput.length > 0; 
+  };
+
+  const handleKeyOnInput = (e) => {
+    if (e.key === 'Enter') {
+      handleInputComment();
+    }   
+  };
+
+    const isActivePostBtn = () => {
+    return isActiveCommentInput();
+  };
+
+  const handlePostBtn = () => {
+    if (isActivePostBtn) {
+      handleInputComment();
+    }
+  };
+
+  const handleInputComment = () => {
+    if(commentFirst === "") {
+      setCommentFirst(commentInput);
+    } else if(commentSecond === "") {
+      setCommentSecond(commentInput);
+    } else {
+      setCommentFirst(commentSecond);
+      setCommentSecond(commentInput);
+    }
+    setCommentInput("");
+    
+  };
+
+
 	return (
     <div className="Main">
       <body className="main-body">
@@ -12,34 +68,34 @@ function Main() {
                 <img
                   className="icon-insta"
                   alt="insta-icon"
-                  src="/images/instagram.png"
+                  src="/images/jieunkim/instagram.png"
                 />
                 <span>justgram</span>
               </div>
               <div className="nav-center">
                 <input type="text" id="search" placeholder="검색" />
-                <img className="icon-search" alt="search" src="/images/search.png" />
+                <img className="icon-search" alt="search" src="/images/jieunkim/search.png" />
               </div>
               <div className="nav-right">
                 <div>
                   <img
                     className="icon-explore"
                     alt="explore-icon"
-                    src="/images/explore.png"
+                    src="/images/jieunkim/explore.png"
                   />
                 </div>
                 <div>
                   <img
                     className="icon-heart"
                     alt="heart-icon"
-                    src="/images/heart.png"
+                    src="/images/jieunkim/heart.png"
                   />
                 </div>
                 <div>
                   <img
                     className="icon-profile"
                     alt="profile-icon"
-                    src="/images/profile.png"
+                    src="/images/jieunkim/profile.png"
                   />
                 </div>
               </div>
@@ -54,7 +110,7 @@ function Main() {
                       <img
                         className="icon-profile"
                         alt="author"
-                        src="/images/author.png"
+                        src="/images/jieunkim/author.png"
                       />
                     </div>
                     <div className="author-info">
@@ -66,32 +122,32 @@ function Main() {
                     <img
                       className="icon-more"
                       alt="more"
-                      src="/images/more.png"
+                      src="/images/jieunkim/more.png"
                     ></img>
                   </div>
                 </div>
                 <div className="frame">
-                  <img className="photo" alt="" src="/images/photo.png" />
+                  <img className="photo" alt="" src="/images/jieunkim/photo.png" />
                 </div>
                 <div className="feed-icons">
                   <div className="feed-icons-left">
                     <img
                       className="icon-like"
                       alt="like"
-                      src="/images/heart-red.png"
+                      src="/images/jieunkim/heart-red.png"
                     />
-                    <img className="icon-chat" alt="chat" src="/images/chat.png" />
+                    <img className="icon-chat" alt="chat" src="/images/jieunkim/chat.png" />
                     <img
                       className="icon-upload"
                       alt="upload"
-                      src="/images/upload.png"
+                      src="/images/jieunkim/upload.png"
                     />
                   </div>
                   <div className="feed-icons-right">
                     <img
                       className="icon-bookmark"
                       alt="bookmark"
-                      src="/images/bookmark-white.png"
+                      src="/images/jieunkim/bookmark-white.png"
                     />
                   </div>
                 </div>
@@ -99,24 +155,28 @@ function Main() {
                   <img
                     className="icon-likeby"
                     alt="who"
-                    src="/images/profile-likeby.png"
+                    src="/images/jieunkim/profile-likeby.png"
                   />
                   <span id="user-id-likeby">anonymous</span>
-                  <span>&nbsp</span>
+                  <span>&nbsp;</span>
                   <span id="text-likeby">like it</span>
                 </div>
                 <div className="comment">
                   <div className="comment-first">
-                    <span id="comment-first-id">anonymous</span>
-                    <span id="comment-first-text">first comment</span>
+                    <span id="comment-first-id">{commentFirstId}</span>
+                    <span>&nbsp;</span>
+                    <span id="comment-first-text">{commentFirst}</span>
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
                     <span className="show-more">더 보기</span>
                   </div>
                   <div className="comment-second">
-                    <span id="comment-second-id">anonymous</span>
-                    <span id="comment-second-text">second comment</span>
+                    <span id="comment-second-id">{commentSecondId}</span>
+                    <span>&nbsp;</span>
+                    <span id="comment-second-text">{commentSecond}</span>
                   </div>
                   <div className="last-updated">
-                    <span id="time-stamp">time stamp</span>
+                    <span id="time-stamp">{dt}</span>
                   </div>
                 </div>
                 <div className="new-comment">
@@ -124,9 +184,18 @@ function Main() {
                     type="text"
                     id="new-comment-input"
                     placeholder="댓글 달기..."
+                    value={commentInput}
+                    onChange={(event) => {
+                      setCommentInput(event.target.value);
+                    }}
+                    onKeyUp={handleKeyOnInput}
                   />
                   <div className="post">
-                    <button id="post-btn" disabled>
+                    <button 
+                      id="post-btn" 
+                      disabled={!(isActivePostBtn())}
+                      onClick={handlePostBtn}
+                    >
                       게시
                     </button>
                   </div>
@@ -140,7 +209,7 @@ function Main() {
                     <img
                       id="login-profile-icon"
                       alt="me"
-                      src="/images/login-user.png"
+                      src="/images/jieunkim/login-user.png"
                     />
                   </div>
                 </div>
@@ -161,7 +230,7 @@ function Main() {
                         className="user-icon"
                         id="user1-icon"
                         alt="rf1"
-                        src="/images/man.png"
+                        src="/images/jieunkim/man.png"
                       />
                     </div>
                     <div className="story-user-info">
@@ -179,7 +248,7 @@ function Main() {
                         className="user-icon"
                         id="story-user2-icon"
                         alt="rf2"
-                        src="/images/user.png"
+                        src="/images/jieunkim/user.png"
                       />
                     </div>
                     <div className="story-user-info">
@@ -197,7 +266,7 @@ function Main() {
                         className="user-icon"
                         id="story-user3-icon"
                         alt="rf3"
-                        src="/images/user.png"
+                        src="/images/jieunkim/user.png"
                       />
                     </div>
                     <div className="story-user-info">
@@ -215,7 +284,7 @@ function Main() {
                         className="user-icon"
                         id="story-user4-icon"
                         alt="rf4"
-                        src="/images/user.png"
+                        src="/images/jieunkim/user.png"
                       />
                     </div>
                     <div className="story-user-info">
@@ -242,7 +311,7 @@ function Main() {
                           className="user-icon"
                           id="rf1-icon"
                           alt="rf1"
-                          src="/images/user.png"
+                          src="/images/jieunkim/user.png"
                         />
                       </div>
                       <div className="rf-user-info">
@@ -265,7 +334,7 @@ function Main() {
                           className="user-icon"
                           id="rf1-icon"
                           alt="rf1"
-                          src="/images/user.png"
+                          src="/images/jieunkim/user.png"
                         />
                       </div>
                       <div className="rf-user-info">
@@ -288,30 +357,7 @@ function Main() {
                           className="user-icon"
                           id="rf1-icon"
                           alt="rf1"
-                          src="/images/user.png"
-                        />
-                      </div>
-                      <div className="rf-user-info">
-                        <p className="user-id" id="rf1-id">
-                          user_id
-                        </p>
-                        <p className="user-update" id="rf1-update">
-                          location
-                        </p>
-                      </div>
-                    </div>
-                    <div className="recommend-user-right">
-                      <p className="follow">팔로우</p>
-                    </div>
-                  </div>
-                  <div className="recommend-user">
-                    <div className="recommend-user-left">
-                      <div className="rf-profile">
-                        <img
-                          className="user-icon"
-                          id="rf1-icon"
-                          alt="rf1"
-                          src="/images/user.png"
+                          src="/images/jieunkim/user.png"
                         />
                       </div>
                       <div className="rf-user-info">

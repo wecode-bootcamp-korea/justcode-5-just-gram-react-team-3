@@ -19,6 +19,8 @@ body.main-body {
 
 nav {
 	background-color: white;
+	border-bottom: 1px solid rgb(234, 230, 230);
+
 }
 
 .nav-content {
@@ -126,17 +128,19 @@ img {
 }
 */
 img.photo {
-	width: 300px;
-	height: 300px;
+	width: 400px;
+	height: 400px;
 	margin: 0;
 	max-width: 100%;
-	
+	min-width: 400px;
+	flex-shrink: 0;
 }
 
 main  {
 	display: flex;
 	justify-content: center;
-	border-top: 1px solid rgb(234, 230, 230);
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .feeds {
@@ -152,9 +156,10 @@ article {
 	display: flex;
 	flex-direction: column;
 	align-items: space-between;
-	flex: 0 1 300px;
+	
 	border: 1px solid rgb(230, 230, 230);
-	margin: 30px 0 0 0;
+	margin-top: 30px;
+	margin-left: auto;
 	background-color: white;
 }
 
@@ -281,6 +286,7 @@ span#comment-first-id, span#comment-second-id {
 .main-right {
 	display: flex;
 	flex-direction: column;
+	
 	margin: 30px 20px 0 0;
 	max-width: 200px;
 }
@@ -331,6 +337,7 @@ span#comment-first-id, span#comment-second-id {
 	background-color: white;
 	border: 1px solid rgb(230, 230, 230);
 	margin: 5px 10px;
+	padding: 0 0 8px 0;
 }
 
 
@@ -371,6 +378,7 @@ span#comment-first-id, span#comment-second-id {
 	flex-direction: column;
 	background-color: white;
 	margin: 0 10px 0 0;
+	overflow: auto;
 }
 
 .story-user, .recommend-user-left {
@@ -413,6 +421,7 @@ span#comment-first-id, span#comment-second-id {
 .company-info {
 	display: flex;
 	flex-direction: column;
+	padding: 0 0 0 13px;
 }
 
 .company-info p {

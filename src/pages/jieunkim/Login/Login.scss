@@ -2,11 +2,15 @@
 	box-sizing: border-box;
 }
 
+html, body, #root {
+  height: 100%;
+	margin: 0;
+}
+
 body.Login {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 5%;
 }
 
 .main-container-login, .login-container, .input-container, .login-btn-container {
