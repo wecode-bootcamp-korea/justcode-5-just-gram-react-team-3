@@ -9,17 +9,15 @@ function Login() {
   const navigate = useNavigate();
 
   const goToMain = () => {
-    navigate("/main");
+    navigate("/suHyeonMain");
   };
   const handleIdInput = (e) => {
     setUserId(e.target.value);
-    // validationBtn(e.target.value, userPw);
     validationBtn();
   };
 
   const handlePwInput = (e) => {
     setUserPw(e.target.value);
-    // validationBtn(userId, e.target.value);
     validationBtn();
   };
 
@@ -30,7 +28,6 @@ function Login() {
       return false;
     }
   };
-  // console.log(userId, userPw);
   return (
     <section className="login_container">
       <div className="login_logo-box">

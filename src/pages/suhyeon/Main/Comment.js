@@ -1,15 +1,15 @@
 function Comment(props) {
   console.log(props);
-  const comments = props.commentList.map((v, idx) => (
-    <div key={idx.toString()} className="comment_style">
+  const comments = props.commentList.map((v) => (
+    <div key={v.id} className="comment_style">
       <div className="like_btn_box1">
-        <a href="/">{v.writer}</a>
-        <span className="comment_content">{v.comment}</span>
+        <a href="/">{v.author}</a>
+        <span className="comment_content">{v.content}</span>
       </div>
       <div className="like_btn_box2">
         <button className="remove_comment">삭제</button>
         <button className="comment_like_btn">
-          <i className="fa-regular fa-heart like fa-xl heart_like"></i>
+          <img src="/images/suhyeon/heart.png" width="15px" />
         </button>
       </div>
     </div>

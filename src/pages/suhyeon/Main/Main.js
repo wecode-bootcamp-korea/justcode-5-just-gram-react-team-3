@@ -1,9 +1,22 @@
 import "./Main.scss";
-import Comment from "./Comment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Feed from "./Feed";
 function Main() {
   let [commentArr, setCommentArr] = useState([]);
   let [comment, setComment] = useState("");
+  const [feedList, setFeedList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.PUBLIC_URL}/data/suhyeon/commentData.json`
+      );
+      const feeds = await response.json();
+      setFeedList(feeds);
+    };
+    fetchData();
+  }, []);
+
   const enterCheck = (e) => {
     if (e.key === "Enter") {
       writeComment("lshyun955", e.target.value);
@@ -53,78 +66,13 @@ function Main() {
       </nav>
       <div className="contents">
         <section className="feed_group">
-          <article className="feed_container">
-            <section className="feed_header">
-              <section className="feed_writer">
-                <img
-                  className="feed_writer_photo"
-                  alt=""
-                  src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                />
-                <a href="/">lshyun955</a>
-              </section>
-              <button className="feed_btn"></button>
-            </section>
-            <img
-              alt="aa"
-              className="feed_photo"
-              src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-            />
-            <section className="feed_content">
-              <section className="feed_button_group">
-                <section className="like_comment_share">
-                  <button className="feed_btn">
-                    <i className="fa-regular fa-heart like fa-xl"></i>
-                  </button>
-                  <button className="feed_btn">
-                    <i className="fa-regular fa-comment fa-xl"></i>
-                  </button>
-                  <button className="feed_btn">
-                    <i className="fa-regular fa-share-from-square fa-xl"></i>
-                  </button>
-                </section>
-                <section className="bookmark">
-                  <button className="feed_btn">
-                    <i className="fa-regular fa-bookmark fa-xl"></i>
-                  </button>
-                </section>
-              </section>
-              <section className="like_list_box">
-                <div className="like_feed_user">
-                  <img
-                    alt="aa"
-                    className="like_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                  <a href="/">lshyun955</a>님&nbsp;
-                  <span className="bold">외&nbsp;10명</span>이&nbsp; 좋아합니다.
-                </div>
-              </section>
-              <section className="feed_comment">
-                <Comment commentList={commentArr} />
-              </section>
-              <section className="comment_box">
-                <input
-                  onKeyDown={enterCheck}
-                  onChange={valueCheck}
-                  // 질문1
-                  value={comment}
-                  className="write_comment"
-                  type="text"
-                  placeholder="댓글 달기"
-                />
-                <button
-                  // 질문2
-                  onClick={() => {
-                    writeComment("lshyun955", comment);
-                  }}
-                  className="write_comment_btn"
-                >
-                  게시
-                </button>
-              </section>
-            </section>
-          </article>
+          <Feed
+            enterCheck={enterCheck}
+            valueCheck={valueCheck}
+            writeComment={writeComment}
+            feedList={feedList}
+            comment={comment}
+          />
         </section>
         <aside className="aside_section">
           <section className="profile_box">
