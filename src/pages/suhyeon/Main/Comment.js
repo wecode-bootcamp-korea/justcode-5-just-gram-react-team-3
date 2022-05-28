@@ -1,21 +1,34 @@
-function Comment(props) {
-  console.log(props);
-  const comments = props.commentList.map((v) => (
-    <div key={v.id} className="comment_style">
+import { useState } from "react";
+import heartImage from "../assets/heart.png";
+import pinkheartImage from "../assets/pinkHeart.png";
+
+function Comment({ commentId, author, content, isLiked }) {
+  const [commentIsLike, setCommentIsLike] = useState(isLiked);
+  const changeHeart = () => {
+    if (commentIsLike === true) {
+      setCommentIsLike(false);
+    } else {
+      setCommentIsLike(true);
+    }
+  };
+  return (
+    <div key={commentId} className="comment_style">
       <div className="like_btn_box1">
-        <a href="/">{v.author}</a>
-        <span className="comment_content">{v.content}</span>
+        <a href="/suHyeonMain">{author}</a>
+        <span className="comment_content">{content}</span>
       </div>
       <div className="like_btn_box2">
         <button className="remove_comment">삭제</button>
-        <button className="comment_like_btn">
-          <img src="/images/suhyeon/heart.png" width="15px" />
+        <button className="comment_like_btn" onClick={changeHeart}>
+          <img
+            src={commentIsLike ? pinkheartImage : heartImage}
+            alt="comment-heart"
+            width="15px"
+          />
         </button>
       </div>
     </div>
-  ));
-
-  return <>{comments}</>;
+  );
 }
 
 export default Comment;
