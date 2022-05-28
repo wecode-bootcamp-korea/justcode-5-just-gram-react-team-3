@@ -2,9 +2,8 @@ import "./Main.scss";
 import { useEffect, useState } from "react";
 import Feed from "./Feed";
 function Main() {
-  let [commentArr, setCommentArr] = useState([]);
-  let [comment, setComment] = useState("");
   const [feedList, setFeedList] = useState([]);
+  console.log(feedList);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,23 +15,6 @@ function Main() {
     };
     fetchData();
   }, []);
-
-  const enterCheck = (e) => {
-    if (e.key === "Enter") {
-      writeComment("lshyun955", e.target.value);
-      e.target.value = "";
-    }
-  };
-
-  const valueCheck = (e) => {
-    setComment(e.target.value);
-  };
-
-  const writeComment = (writer, comment) => {
-    let temp = [...commentArr, { writer, comment }];
-    setCommentArr(temp);
-    setComment("");
-  };
 
   return (
     <main className="main_container">
@@ -66,13 +48,21 @@ function Main() {
       </nav>
       <div className="contents">
         <section className="feed_group">
-          <Feed
-            enterCheck={enterCheck}
-            valueCheck={valueCheck}
-            writeComment={writeComment}
-            feedList={feedList}
-            comment={comment}
-          />
+          {feedList.map((feed) => {
+            return (
+              <Feed
+                key={feed.feedId}
+                author={feed.author.nickname}
+                content={feed.content}
+                date={feed.date}
+                comments={feed.comments}
+                imageUrl={feed.imageUrl}
+                likePeople={feed.likePeople}
+                profileImageUrl={feed.author.imageUrl}
+                isLiked={feed.isLiked}
+              />
+            );
+          })}
         </section>
         <aside className="aside_section">
           <section className="profile_box">
