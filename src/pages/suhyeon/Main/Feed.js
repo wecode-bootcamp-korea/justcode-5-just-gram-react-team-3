@@ -40,17 +40,21 @@ function Feed({
     let temp = [
       ...commentArr,
       {
-        id: commentArr.length + 1,
+        id: commentArr[commentArr.length - 1].id + 1,
         author: "lshyun955",
         content: comment,
         isLiked: false,
       },
     ];
-    console.log(temp);
     setCommentArr(temp);
     setComment("");
   };
 
+  const deleteComment = (id) => {
+    let temp = [...commentArr.filter((v) => v.id !== id)];
+    console.log(temp);
+    setCommentArr(temp);
+  };
   return (
     <article className="feed_container">
       <section className="feed_header">
@@ -115,6 +119,7 @@ function Feed({
                 author={comment.author}
                 content={comment.content}
                 isLiked={comment.isLiked}
+                deleteEvent={deleteComment}
               />
             );
           })}
