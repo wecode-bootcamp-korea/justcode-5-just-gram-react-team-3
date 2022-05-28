@@ -1,48 +1,76 @@
-span {
-	font-size: 10px;
+$theme-background-color: rgba(249, 247, 247, 0.872);
+$theme-border-line: 1px solid rgb(234, 230, 230);
+$theme-color: #0095f6;
+$font-size: 10px;
+$font-size-span: 10px;
+$font-size-logo: 20px;
+$font-size-id: 12px;
+$font-size-underId: 12px;
+$font-size-content: 12px;
+$font-size-header: 12px;
+
+@mixin flex-vh-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.Main {
-	height: 100%;
+@mixin flex-v-center {
+	display: flex;
+	align-items: center;
+}
+
+@mixin flex-h-center {
+	display: flex;
+	justify-content: center;
+}
+
+@mixin flex-direction-column {
+	display: flex;
+	flex-direction: column;
+
+}
+
+html, body, #root {
+	margin: 0;
+}
+
+.main-page {
+	height: 100vh;
 }
 
 body.main-body {
 	margin: 0;
-	background-color: rgba(249, 247, 247, 0.872);
+	background-color: $theme-background-color;
 }
 
 .main-container {
-	display: flex;
-	flex-direction: column;
+	@include flex-direction-column()
 	
 }
 
 nav {
 	background-color: white;
-	border-bottom: 1px solid rgb(234, 230, 230);
+	border-bottom: $theme-border-line;
 
 }
 
 .nav-content {
-	display: flex;
+	@include flex-v-center;
 	justify-content: space-between;
-	align-items: center;
 	margin: 15px 20px;
 }
 
 .nav-left {
-	display: flex;
-	align-items: center;
+	@include flex-v-center;
 }
 
 .nav-center {
 	position: relative;
-	display: flex;
-	align-items: center;
+	@include flex-v-center;
 }
 .nav-right {
-	display: flex;
-	align-items: center;
+	@include flex-v-center;
 }
 
 .icon-insta {
@@ -54,7 +82,7 @@ nav {
 .nav-left {
 	span {
 	font-family: 'Lobster', cursive;
-	font-size: 18px;
+	font-size: $font-size-logo;
 	text-align: center;
 }
 }
@@ -63,29 +91,28 @@ nav {
 	position: absolute;
 	left: 24%;
 	width: 13px;
+	
+	&.visible {
 	opacity: 0.5;
-}
+	}
+	
+	&.invisible {
+	opacity: 0;
+}}
 
 .icon-more {
 	width: 10px;
 }
 
-.icon-search-invisible {
-	opacity: 0;
-}
-
-#search {
-	display: flex;
-	align-items: center;
+.search {
+	@include flex-v-center;
 	text-align: center;
 	padding: 1px 15px;
-	background-color: rgba(249, 247, 247, 0.872);
-	border: 1px solid rgb(230, 230, 230);
+	background-color: $theme-background-color;
+	border: $theme-border-line;
 	opacity: 0.5;
 
 	&:focus {
-	display: flex;
-	align-items: center;
 	text-align: left;
 	opacity: 1;
 	outline-width: 0; 
@@ -104,23 +131,43 @@ input:focus::placeholder {
 	margin: 0 8px;
 }
 */
+/*
 img {
 	width: 16px;
 	margin: 0 8px;
 }
+*/
 
-.feed-icons {
+.icon-insta {
+	width: 23px;
+}
+
+.nav-right {
 	img {
-	margin: 0 3px;
+		width: 16px;
+		margin: 0 8px;
+	}
 }
+
+.author-icon-profile {
+	width: 22px;
+	margin: 0 8px;
 }
 
+.feed-icons, .author-more {
+	img {
+		width: 16px;
+		margin: 0 3px;
+	}
+}
 
-
-.icon-search-invisible {
+.user-icon {
 	width: 16px;
-	opacity: 0;
+	margin: 0 8px;
 }
+
+
+
 /*
 img {
 	width: 20px;
@@ -136,44 +183,39 @@ img.photo {
 	flex-shrink: 0;
 }
 
-main  {
-	display: flex;
-	justify-content: center;
+.main-feeds  {
+	@include flex-h-center;
+	margin-top: 30px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .feeds {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include flex-vh-center;
 	margin: 0 10px;
 }
 
 
 
 article {
-	display: flex;
-	flex-direction: column;
+	@include flex-direction-column;
 	align-items: space-between;
 	
 	border: 1px solid rgb(230, 230, 230);
 	margin-top: 30px;
-	margin-left: auto;
+	margin: auto;
 	background-color: white;
 }
 
 .article-header {
-	display: flex;
-	align-items: center;
+	@include flex-v-center;
 	justify-content: space-between;	
 	background-color: white;
 	padding: 10px 5px;
 }
 
 .author-profile {
-	display: flex;
-	align-items: center;
+	@include flex-v-center;
 }
 
 .author-profile-icon {
@@ -181,9 +223,8 @@ article {
 }
 
 .author-info {
-	display: flex;
+	@include flex-v-center;
 	flex-direction: column;
-	align-items: center;
 	left: 40px;
 	margin: 0 2px;
 }
@@ -193,7 +234,7 @@ article {
 	left: 10px;
 	margin: 0;
 	padding: 0;
-	font-size: 10px;
+	font-size: $font-size-id;
 	font-weight: bold;
 }
 
@@ -201,7 +242,7 @@ article {
 	left: 10px;
 	margin: 0;
 	padding: 0;
-	font-size: 10px;
+	font-size: $font-size-underId;
 }
 
 .frame {
@@ -209,41 +250,37 @@ article {
 }
 
 .feed-icons {
-	display: flex;
+	@include flex-v-center;
 	justify-content: space-between;
-	align-items: center;
 	margin: 7px;
 }
 
 .feed-icons-left, .feed-icons-right {
-	display: flex;
-	align-items: center;
+	@include flex-v-center;
 }
 
 .likeby {
-	display: flex;
-	align-items: center;
+	@include flex-v-center;
 }
 #user-id-likeby {
 	font-weight: bold;
-	font-size: 10px;
+	font-size: $font-size-id;
 }
 
 #text-likeby {
-	font-size: 12px;
+	font-size: $font-size-id;
 }
 
-.comment {
-	display: flex;
-	flex-direction: column;
+.feed-content, .comment {
+	@include flex-direction-column;
 	margin: 0 7px;
 }
 
-.comment-first span, .comment-second span {
-	font-size: 10px;
+.feed-content span, .comment-first span, .comment-second span {
+	font-size: $font-size-content;
 }
 
-span#comment-first-id, span#comment-second-id {
+span#author-id, span#comment-first-id, span#comment-second-id {
 	font-weight: bold;
 }
 
@@ -253,29 +290,30 @@ span#comment-first-id, span#comment-second-id {
 }
 
 #time-stamp {
-	font-size: 10px;
+	font-size: $font-size-underId;
 	color: grey;
 }
 
 .new-comment {
 	display: flex;
 	justify-content: space-between;	
-	border-top: 1px solid rgb(230, 230, 230);
+	border-top: $theme-border-line;
 	padding: 7px 7px;
+	margin: 5px 0 0 0;
 }
 
 #new-comment-input {
 	border: 0;
-	font-size: 8px;
+	font-size: $font-size-content;
 	width: 80%;	
 }
 
 
 #post-btn {
-	color: #0095f6;
+	color: $theme-color;
 	right: 0;
 	background-color: white;
-	font-size: 10px;
+	font-size: $font-size-content;
 	border: 0;
 	
 	&:disabled {
@@ -284,22 +322,24 @@ span#comment-first-id, span#comment-second-id {
 }
 
 .main-right {
-	display: flex;
-	flex-direction: column;
-	
-	margin: 30px 20px 0 0;
-	max-width: 200px;
+	@include flex-direction-column;
+	margin: 0 20px 0 0;
+	max-width: 250px;
+}
+
+@media screen and (max-width: 630px) {
+	.main-right {
+		display: none;
+	}	
 }
 
 .login-user-header {
-	display: flex;
-	align-items: center;
-	padding: 10px 5px;
+	@include flex-v-center;
+	padding: 10px 0 6px 5px;
 }
 
 .login-user-profile {
-	display: flex;
-	align-items: center;
+	@include flex-v-center;
 }
 
 #login-profile-icon {
@@ -308,9 +348,8 @@ span#comment-first-id, span#comment-second-id {
 }
 
 .login-user-info {
-	display: flex;
+	@include flex-v-center;
 	flex-direction: column;
-	align-items: center;
 	left: 40px;
 	margin: 0 2px;
 }
@@ -319,7 +358,7 @@ span#comment-first-id, span#comment-second-id {
 	left: 10px;
 	margin: 0;
 	padding: 0;
-	font-size: 10px;
+	font-size: $font-size-id;
 	font-weight: bold;
 }
 
@@ -327,15 +366,14 @@ span#comment-first-id, span#comment-second-id {
 	left: 10px;
 	margin: 0;
 	padding: 0;
-	font-size: 10px;
+	font-size: $font-size-underId;
 }
 
 .main-right-container {
-	display: flex;
-	flex-direction: column;
+	@include flex-direction-column;
 	justify-content: space-between;
 	background-color: white;
-	border: 1px solid rgb(230, 230, 230);
+	border: $theme-border-line;
 	margin: 5px 10px;
 	padding: 0 0 8px 0;
 }
@@ -344,7 +382,7 @@ span#comment-first-id, span#comment-second-id {
 .header-title {
 	display: flex;
 	justify-content: space-between;
-	font-size: 12px;
+	font-size: $font-size-header;
 	padding: 0 14px;	
 }
 
@@ -374,58 +412,51 @@ span#comment-first-id, span#comment-second-id {
 }
 
 .story-content, .recommend-content {
-	display: flex;
-	flex-direction: column;
+	@include flex-direction-column;
 	background-color: white;
 	margin: 0 10px 0 0;
-	overflow: auto;
 }
 
 .story-user, .recommend-user-left {
-	display: flex;
-	align-items: center;
+	@include flex-v-center;
 	margin: 3px 0;
 }
 
 .recommend-user {
-	display: flex;
+	@include flex-v-center;
 	justify-content: space-between;
-	align-items: center;
 }
 
 .story-user-info, .rf-user-info {
-	display: flex;
-	flex-direction: column;
+	@include flex-direction-column;
 	margin: 0;
 }
 
 .story-user-info p, .rf-user-info p {
-	font-size: 10px;
+	font-size: $font-size-id;
 	margin: 0;
 	text-align: center;
 }
 
 .recommend-user-right {
-	display: flex;
-	align-items: center;
+	@include flex-direction-column;
 }
 
 .follow {
-	color: #0898f6;
-	font-size: 10px;
+	color: $theme-color;
+	font-size: $font-size-content;
 	font-weight: bold;
 	margin: 0;
 	text-align: center;
 }
 
 .company-info {
-	display: flex;
-	flex-direction: column;
+	@include flex-direction-column;
 	padding: 0 0 0 13px;
 }
 
 .company-info p {
 	max-width: 90%;
-	font-size: 11px;
+	font-size: $font-size-content;
 	color: grey;
 }

@@ -2,15 +2,11 @@
 	box-sizing: border-box;
 }
 
-html, body, #root {
-  height: 100%;
-	margin: 0;
-}
-
-body.Login {
+.Login {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100vh;
 }
 
 .main-container-login, .login-container, .input-container, .login-btn-container {
@@ -20,7 +16,7 @@ body.Login {
 
 .main-container-login {
 	width : 350px;
-	margin: 0 0 10px;
+	margin: 0 0 100px;
 	padding: 40px 35px 20px 35px;
 	border: 1px solid lightgray;
 	border-radius: 1px;
