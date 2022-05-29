@@ -276,8 +276,26 @@ article {
 	margin: 0 7px;
 }
 
-.feed-content span, .comment-first span, .comment-second span {
+.comment-content {
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.feed-content span, .comment-content span {
 	font-size: $font-size-content;
+}
+
+.manage-comment {
+	display: flex;
+}
+
+.like-comment-btn, .remove-comment-btn {
+	color: $theme-color;
+	right: 0;
+	background-color: white;
+	font-size: $font-size-content;
+	border: 0;
 }
 
 span#author-id, span#comment-first-id, span#comment-second-id {

@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "../pages/suhyeon/Login/Login";
-import Main from "../pages/suhyeon/Main/Main";
+import Login from "../pages/jieunkim/Login/Login";
+import Main from "../pages/jieunkim/Main/Main";
 
 function Router() {
   return (

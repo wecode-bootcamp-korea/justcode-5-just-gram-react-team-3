@@ -3,23 +3,29 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Comment from "./Comment";
 import "./Main.scss";
+
 function Main() {
   /* Image */
   const imgLiked = "/images/jieunkim/heart-red.png";
   const imgNotLiked = "/images/jieunkim/heart.png";
   const loginUserId = useLocation().state;
   const authorId = "anonymous";
-  
+
   const feedContent = "hahahahah";
   
+  const commentFirstId = "anonymous";
+  const commentSecondId = "anonymous";
+
   const [searchBarInput, setSearchBarInput] = useState("");
   const [isActiveSearchBar, setActiveSearchBar] = useState(false);
+
   const [isLiked, setLiked] = useState(false);
   const [commentFirst, setCommentFirst] = useState("");
   const [commentSecond, setCommentSecond] = useState("");
   const [commentInput, setCommentInput] = useState("");
-  const commentFirstId = "anonymous";
-  const commentSecondId = "anonymous";
+  
+  const [isShownCommentOpt, setShownCommentOpt] = useState("");
+  
   const [dt, setDt] = useState("time-stamp");
 
   // useEffect(() => {
@@ -36,22 +42,55 @@ function Main() {
   //   return res;
   // }
 
+const userDatabase = [
+  {id: "wecode_bootcamp",
+   like: true
+  },
+  {id: "wecode_founder",
+  like: false
+}
+]
+   useEffect(() => {
+     let res = [];
+    let usersReturned = () => {
+      userDatabase.forEach(user => {
+        console.log(user)
+        for(let name in user) {
+          console.log("name: ", name)
+          if (user[name].includes(searchBarInput)) {
+            res.push(user.name)
+          }
+        }
+      } )
+      return res;
+    };
+    console.log("res: ", res);
+  }, [searchBarInput]);
+
+
   const handleEnterKey = (e) => {
-    return e.key === "Enter"; 
-  }
+    return e.key === "Enter";
+  };
 
   const handleSearchBarInput = (e) => {
     if (handleEnterKey(e)) {
-      setSearchBarInput(""); 
+      setSearchBarInput("");
     }
-  }
+  };
 
   const handleLiked = () => {
     setLiked(!isLiked);
-  }
+  };
 
   const iconLiked = isLiked ? imgLiked : imgNotLiked;
 
+  const handleCommentLikeBtn = () => {
+    return 0;
+  };
+
+  const handleRemoveBtn = () => {
+    return 0;
+  };
 
   const isActiveCommentInput = () => {
     return commentInput.length > 0;
@@ -107,14 +146,17 @@ function Main() {
                   placeholder="검색"
                   value={searchBarInput}
                   onFocus={() => {
-                    setActiveSearchBar(true)}}
+                    setActiveSearchBar(true);
+                  }}
                   onBlur={() => {
-                      setActiveSearchBar(false)}}
+                    setActiveSearchBar(false);
+                  }}
                   onChange={(event) => {
-                    setSearchBarInput(event.target.value)}}
-                    onKeyUp={(event) => {
-                      handleSearchBarInput(event)
-                    }}
+                    setSearchBarInput(event.target.value);
+                  }}
+                  onKeyUp={(event) => {
+                    handleSearchBarInput(event);
+                  }}
                 />
                 <img
                   className={`icon-search ${
@@ -191,8 +233,10 @@ function Main() {
                     <img
                       className="icon-like"
                       alt="like"
-                      src= {iconLiked}                       
-                      onClick={() => {handleLiked()}}
+                      src={iconLiked}
+                      onClick={() => {
+                        handleLiked();
+                      }}
                     />
                     <img
                       className="icon-chat"
@@ -234,17 +278,68 @@ function Main() {
                   </div>
                 </div>
                 <div className="comment">
-                  <div className="comment-first">
-                    <span id="comment-first-id">{commentFirstId}</span>
-                    <span>&nbsp;</span>
-                    <span id="comment-first-text">{commentFirst}</span>
-                    <span>&nbsp;</span>
-                    <span>&nbsp;</span>
+                  <div className="comment-content"
+
+                  onMouseEnter={() => setShownCommentOpt(true)}
+                  onMouseLeave={() => setShownCommentOpt(false)}
+            >
+                    <div className="comment-first-content">
+                      <span id="comment-first-id">{commentFirstId}</span>
+                      <span>&nbsp;</span>
+                      <span id="comment-first-text">{commentFirst}</span>
+                      <span>&nbsp;</span>
+                      <span>&nbsp;</span>
+                    </div>
+                    <div className="manage-comment">
+                      <div className="like-comment">
+                        <button
+                          className="like-comment-btn"
+                          id="like-comment-btn"
+                          onClick={handleCommentLikeBtn}
+                        >
+                          {isShownCommentOpt && (<span>좋아요</span>)}
+                        </button>
+                      </div>
+                      <div className="remove-comment">
+                        <button
+                          className="remove-comment-btn"
+                          id="remove-comment-btn"
+                          onClick={handleRemoveBtn}
+                        >
+                          {isShownCommentOpt && (<span>삭제</span>)}
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="comment-second">
-                    <span id="comment-second-id">{commentSecondId}</span>
-                    <span>&nbsp;</span>
-                    <span id="comment-second-text">{commentSecond}</span>
+                  <div className="comment-content"
+                      onMouseEnter={() => setShownCommentOpt(true)}
+                      onMouseLeave={() => setShownCommentOpt(false)}
+                >
+                    <div className="comment-second-content">
+                      <span id="comment-second-id">{commentSecondId}</span>
+                      <span>&nbsp;</span>
+                      <span id="comment-second-text">{commentSecond}</span>
+                    </div>
+                    <div className="manage-comment">
+                      <div className="like-comment">
+                        <button
+                          className="like-comment-btn"
+                          id="like-comment-btn"
+                          onClick={handleCommentLikeBtn}
+                        >
+                          좋아요
+                        </button>
+                      </div>
+                      <div className="remove-comment">
+                        <button
+                          className="remove-comment-btn"
+                          id="remove-comment-btn"
+                          onClick={handleRemoveBtn}
+                        >
+                          삭제
+                        </button>
+                      </div>
+                    </div>
                   </div>
                   <div className="last-updated">
                     <span id="time-stamp">{dt}</span>
@@ -482,7 +577,6 @@ function Main() {
         <script src="./js/main.js"></script>
       </body>
     </div>
-
   );
 }
 
