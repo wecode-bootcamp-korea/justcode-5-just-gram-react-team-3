@@ -51,8 +51,7 @@ function Feed({
   };
 
   const deleteComment = (id) => {
-    let temp = [...commentArr.filter((v) => v.id !== id)];
-    console.log(temp);
+    let temp = commentArr.filter((v) => v.id !== id);
     setCommentArr(temp);
   };
   return (
@@ -116,6 +115,7 @@ function Feed({
             return (
               <Comment
                 key={comment.id}
+                id={comment.id}
                 author={comment.author}
                 content={comment.content}
                 isLiked={comment.isLiked}
