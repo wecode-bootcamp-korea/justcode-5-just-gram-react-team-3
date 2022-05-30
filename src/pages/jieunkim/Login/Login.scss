@@ -1,5 +1,10 @@
 $theme-color: #0095f6;
 
+@mixin flex-direction-column {
+	display: flex;
+	flex-direction: column;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -11,12 +16,8 @@ $theme-color: #0095f6;
 	height: 100vh;
 }
 
-.main-container-login,
-.login-container,
-.input-container,
-.login-btn-container {
-	display: flex;
-	flex-direction: column;
+.container-align {
+	@include flex-direction-column;
 }
 
 .main-container-login {
@@ -60,16 +61,6 @@ $theme-color: #0095f6;
 	}
 }
 
-.login-btn-container {
-	a {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-decoration: none;
-	}
-}
-
-
 #login-btn {
 	width: 100%;
 	padding: 7px 0;
@@ -79,9 +70,11 @@ $theme-color: #0095f6;
 	color: white;
 	font-size: 14px;
 	font-weight: bold;
+	cursor: pointer;
 
 	&:disabled {
 		background-color: #b2dffc;
+		cursor: auto;
 	}
 }
 
@@ -93,7 +86,12 @@ $theme-color: #0095f6;
 }
 
 .password-request {
-	color: #00376b;
+	color: $theme-color;
 	font-size: 12px;
 	text-align: center;
+	font-weight: bold;
+
+	&:hover {
+		cursor: pointer;
+	}
 }

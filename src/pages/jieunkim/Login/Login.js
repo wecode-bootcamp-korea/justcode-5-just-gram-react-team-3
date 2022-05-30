@@ -23,12 +23,12 @@ function Login() {
 
   return (
     <div className="Login">
-      <div className="main-container-login">
+      <div className="main-container-login container-align">
         <header className="logo">
           <p>justgram</p>
         </header>
-        <div className="login-container">
-          <div className="input-container">
+        <div className="login-container container-align">
+          <div className="input-container container-align">
             <input
               type="text"
               id="user-id"
@@ -48,7 +48,7 @@ function Login() {
               }}
             />
           </div>
-          <div className="login-btn-container">
+          <div className="login-btn-container container-align">
             <button
               id="login-btn"
               disabled={!(isActiveLoginBtn())}
