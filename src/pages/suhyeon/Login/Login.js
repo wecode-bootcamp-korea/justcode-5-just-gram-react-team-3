@@ -1,6 +1,6 @@
-import "./Login.scss";
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Login.scss";
 
 function Login() {
   const [user, setUser] = useState({

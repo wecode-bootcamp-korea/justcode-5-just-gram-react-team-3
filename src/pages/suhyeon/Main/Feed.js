@@ -1,7 +1,9 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Comment from "./Comment";
 import heartImage from "../assets/heart.png";
 import pinkheartImage from "../assets/pinkHeart.png";
-import { useState } from "react";
+
 function Feed({
   author,
   content,
@@ -21,15 +23,17 @@ function Feed({
   };
 
   const enterCheck = (e) => {
+    const { value } = e.target;
     if (e.key === "Enter") {
-      if (e.target.value !== "") {
+      if (value !== "") {
         writeComment();
       }
     }
   };
 
   const valueCheck = (e) => {
-    setComment(e.target.value);
+    const { value } = e.target;
+    setComment(value);
   };
 
   const writeComment = () => {
@@ -55,7 +59,7 @@ function Feed({
       <section className="feed_header">
         <section className="feed_writer">
           <img className="feed_writer_photo" alt="" src={profileImageUrl} />
-          <a href="/suHyeonMain">{author}</a>
+          <Link to="/suHyeonMain">{author}</Link>
         </section>
         <button className="feed_btn">
           <img src="/images/suhyeon/more.png" alt="more" width="20px" />
@@ -96,13 +100,13 @@ function Feed({
         <section className="like_list_box">
           <div className="like_feed_user">
             <img alt="aa" className="like_photo" src={likePeople.imageUrl} />
-            <a href="/suHyeonMain">{likePeople.nickname}</a>님&nbsp;
+            <Link to="/suHyeonMain">{likePeople.nickname}</Link>님&nbsp;
             <span className="bold">외&nbsp;{likePeople.count}명</span>
             이&nbsp; 좋아합니다.
           </div>
         </section>
         <div className="main_content">
-          <a href="/suHyeonMain">{author}</a>
+          <Link to="/suHyeonMain">{author}</Link>
           <span className="each_feed_content">{content}</span>
           <div className="feed_date">작성일:{date}</div>
         </div>
