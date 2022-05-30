@@ -96,6 +96,16 @@ img {
         color: lightblue;
         margin: 0 0 0 200px;
       }
+
+      .activated {
+        color: blue;
+        cursor: pointer;
+      }
+
+      .deactivated {
+        color: lightblue;
+        cursor: auto;
+      }
     }
   }
 

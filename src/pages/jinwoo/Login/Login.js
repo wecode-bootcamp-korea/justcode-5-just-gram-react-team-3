@@ -35,24 +35,19 @@ function Login() {
       <div className="loginForm">
         <input
           type="text"
-          id="id-input"
           onKeyUp={updateBtn}
           onChange={handleIdInput}
           placeholder="전화번호, 사용자 이름 또는 이메일"
         />
         <input
           type="password"
-          id="pw-input"
           onKeyUp={updateBtn}
           onChange={handlePwInput}
           placeholder="비밀번호"
         />
         <button
           disabled={isValid ? false : true}
-          style={{
-            backgroundColor: isValid ? 'rgb(115,180,226)' : 'rgb(172,212,234)',
-            cursor: isValid ? 'pointer' : 'auto',
-          }}
+          className={isValid ? 'activated' : 'deactivated'}
           onClick={goToMain}
         >
           로그인

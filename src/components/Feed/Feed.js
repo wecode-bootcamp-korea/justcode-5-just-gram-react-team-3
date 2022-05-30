@@ -133,12 +133,8 @@ function Feed(props) {
               value={commentValue}
             />
             <button
-              id="write-btn"
               disabled={isValid ? false : true}
-              style={{
-                color: isValid ? 'blue' : 'lightblue',
-                cursor: isValid ? 'pointer' : 'auto',
-              }}
+              className={isValid ? 'activated' : 'deactivated'}
               onClick={postComment}
             >
               게시

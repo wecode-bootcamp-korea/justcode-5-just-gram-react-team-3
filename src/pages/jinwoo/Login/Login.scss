@@ -49,6 +49,16 @@
       border: 0;
       border-radius: 10px;
     }
+
+    .activated {
+      background-color: rgb(115, 180, 226);
+      cursor: pointer;
+    }
+
+    .deactivated {
+      background-color: rgb(172, 212, 234);
+      cursor: auto;
+    }
   }
 
   #searchPw {
