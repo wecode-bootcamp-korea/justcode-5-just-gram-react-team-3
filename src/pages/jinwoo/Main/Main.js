@@ -40,23 +40,20 @@ function Main() {
   return (
     <div className="main">
       <nav className="navigation">
-        <div className="nav-left">
-          <div id="insta-icon">
+        <div className="navLeft">
+          <div id="instaIcon">
             <FontAwesomeIcon icon="fa-brands fa-instagram" />
           </div>
           <div id="division" />
           <div id="logo">Justgram</div>
         </div>
-        <div className="nav-center">
-          <div id="search-icon">
+        <div className="navCenter">
+          <div id="searchIcon">
             <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" width="15px" />
           </div>
           <input id="search" type="text" placeholder="검색" />
-          <div id="search-result">
-            <div id="search-user"></div>
-          </div>
         </div>
-        <div className="nav-right">
+        <div className="navRight">
           <div>
             <img
               src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png"
@@ -71,31 +68,12 @@ function Main() {
               alt="하트"
             />
           </div>
-          <div id="user">
+          <div>
             <img
               src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/profile.png"
               width="35px"
               alt="마이페이지"
             />
-            <div id="my-menu">
-              <ul>
-                <li>
-                  <i className="fa-regular fa-circle-user" />
-                  <span>프로필</span>
-                </li>
-                <li>
-                  <i className="fa-regular fa-bookmark" />
-                  <span>저장됨</span>
-                </li>
-                <li>
-                  <i className="fa-solid fa-gear" />
-                  <span>설정</span>
-                </li>
-                <li>
-                  <span>로그아웃</span>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </nav>
@@ -114,149 +92,149 @@ function Main() {
             />
           );
         })}
-        <div className="main-right">
+        <div className="mainRight">
           <div className="ad">
-            <div className="ad-contents">
+            <div className="adContents">
               <img
                 src="images/jinwoo/rudy.jpeg"
-                id="profile-img"
+                id="profileImg"
                 alt="프로필 이미지"
               />
             </div>
-            <div className="ad-contents">
+            <div className="adContents">
               <div>
-                <span className="nickname">wecode_bootcamp</span>
+                <span className="nickName">wecode_bootcamp</span>
               </div>
-              <div className="ad-desc">WeCode | 위코드</div>
+              <div className="adDesc">WeCode | 위코드</div>
             </div>
           </div>
           <div className="story">
-            <div className="story-top">
-              <div className="story-text">스토리</div>
+            <div className="storyTop">
+              <div className="storyText">스토리</div>
               <div className="all">모두 보기</div>
             </div>
-            <div className="story-user">
+            <div className="storyUser">
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profile-img"
+                  id="profileImg"
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="story-user-right">
-                <div className="nickname">im__rudy</div>
+              <div id="storyUserRight">
+                <div className="nickName">im__rudy</div>
                 <div className="time">16분 전</div>
               </div>
             </div>
-            <div className="story-user">
+            <div className="storyUser">
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profile-img"
+                  id="profileImg"
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="story-user-right">
-                <div className="nickname">im__rudy</div>
+              <div id="storyUserRight">
+                <div className="nickName">im__rudy</div>
                 <div className="time">16분 전</div>
               </div>
             </div>
-            <div className="story-user">
+            <div className="storyUser">
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profile-img"
+                  id="profileImg"
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="story-user-right">
-                <div className="nickname">im__rudy</div>
+              <div id="storyUserRight">
+                <div className="nickName">im__rudy</div>
                 <div className="time">16분 전</div>
               </div>
             </div>
-            <div className="story-user">
+            <div className="storyUser">
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profile-img"
+                  id="profileImg"
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="story-user-right">
-                <div className="nickname">im__rudy</div>
+              <div id="storyUserRight">
+                <div className="nickName">im__rudy</div>
                 <div className="time">16분 전</div>
               </div>
             </div>
           </div>
           <div className="suggestion">
-            <div className="suggestion-top">
-              <div className="suggestion-text">회원님을 위한 추천</div>
+            <div className="suggestionTop">
+              <div className="suggestionText">회원님을 위한 추천</div>
               <div className="all">모두 보기</div>
             </div>
-            <div className="suggestion-user">
+            <div className="suggestionUser">
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profile-img"
+                  id="profileImg"
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="suggestion-user-right">
-                <div className="nickname">im__rudy</div>
+              <div id="suggestionUserRight">
+                <div className="nickName">im__rudy</div>
                 <div className="others">im_jw님 외 2명이...</div>
               </div>
-              <button className="follow-btn">팔로우</button>
+              <button className="followBtn">팔로우</button>
             </div>
-            <div className="suggestion-user">
+            <div className="suggestionUser">
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profile-img"
+                  id="profileImg"
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="suggestion-user-right">
-                <div className="nickname">im__rudy</div>
+              <div id="suggestionUserRight">
+                <div className="nickName">im__rudy</div>
                 <div className="others">im_jw님 외 2명이...</div>
               </div>
-              <button className="follow-btn">팔로우</button>
+              <button className="followBtn">팔로우</button>
             </div>
-            <div className="suggestion-user">
+            <div className="suggestionUser">
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profile-img"
+                  id="profileImg"
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="suggestion-user-right">
-                <div className="nickname">im__rudy</div>
+              <div id="suggestionUserRight">
+                <div className="nickName">im__rudy</div>
                 <div className="others">im_jw님 외 2명이...</div>
               </div>
-              <button className="follow-btn">팔로우</button>
+              <button className="followBtn">팔로우</button>
             </div>
-            <div className="suggestion-user">
+            <div className="suggestionUser">
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profile-img"
+                  id="profileImg"
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="suggestion-user-right">
-                <div className="nickname">im__rudy</div>
+              <div id="suggestionUserRight">
+                <div className="nickName">im__rudy</div>
                 <div className="others">im_jw님 외 2명이...</div>
               </div>
-              <button className="follow-btn">팔로우</button>
+              <button className="followBtn">팔로우</button>
             </div>
           </div>
-          <p className="info-text">
+          <p className="infoText">
             Justgram · 정보 · 지원 · 홍보 센터 · API ·<br />
             채용 정보 · 개인정보처리방침 약관 ·<br />
             디렉터리 · 프로필 · 해시태그 · 언어
             <br />
           </p>
-          <p className="info-text">
+          <p className="infoText">
             <i className="fa-solid fa-copyright" />
             2022 JUSTGRAM
           </p>

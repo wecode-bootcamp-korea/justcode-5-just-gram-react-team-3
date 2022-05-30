@@ -57,32 +57,36 @@ function Feed(props) {
   return (
     <div>
       <article className="feeds">
-        <div className="feeds-top">
-          <div className="feeds-top-left">
+        <div className="feedsTop">
+          <div className="feedsTopLeft">
             <div>
               <img
                 src={props.profileImage}
-                id="profile-img"
+                id="profileImg"
                 alt="프로필 이미지"
               />
             </div>
-            <span className="nickname">{props.userName}</span>
+            <span className="nickName">{props.userName}</span>
           </div>
-          <div className="feeds-top-right">
+          <div className="feedsTopRight">
             <i className="fa-solid fa-ellipsis" />
           </div>
         </div>
         <img
           src={props.imageUrl}
           alt="피드 이미지"
-          id="feed-img"
+          id="feedImg"
           width="500px"
           height="500px"
         />
-        <div className="feeds-icons">
-          <div className="feeds-icons-left">
-            <div id="feed-heart">
-              <FontAwesomeIcon icon="fa-solid fa-heart" color="gray" />
+        <div className="feedsIcons">
+          <div className="feedsIconsLeft">
+            <div>
+              <FontAwesomeIcon
+                icon="fa-solid fa-heart"
+                color="gray"
+                className="heart"
+              />
             </div>
             <div>
               <FontAwesomeIcon icon="fa-solid fa-comment" />
@@ -95,20 +99,20 @@ function Feed(props) {
             <i className="fa-regular fa-bookmark" />
           </div>
         </div>
-        <div className="feeds-likes">
+        <div className="feedsLikes">
           <div>
             <img
               src={props.likePeople.likePeopleImageUrl}
-              id="profile-img"
+              id="profileImg"
               alt="프로필 이미지"
             />
           </div>
           <div>
-            <span className="nickname">{props.likePeople.nickname}</span>님 외{' '}
+            <span className="nickName">{props.likePeople.nickname}</span>님 외{' '}
             {props.likePeople.likeCnt}명이 좋아합니다
           </div>
         </div>
-        <div className="feeds-comments">
+        <div className="feedsComments">
           {commentList.map((comment) => {
             return (
               <Comment
@@ -118,8 +122,8 @@ function Feed(props) {
               />
             );
           })}
-          <div className="time feed-time">{props.date}</div>
-          <div className="write-comment">
+          <div className="time feedTime">{props.date}</div>
+          <div className="writeComment">
             <input
               onKeyUp={updateBtn}
               onChange={handleCommentInput}

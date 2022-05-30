@@ -27,12 +27,12 @@ function Login() {
   const navigate = useNavigate();
 
   const goToMain = () => {
-    navigate('/jinwooMain');
+    navigate('/main');
   };
   return (
     <div className="container">
       <h1>Justgram</h1>
-      <div className="login-form">
+      <div className="loginForm">
         <input
           type="text"
           id="id-input"
@@ -58,7 +58,7 @@ function Login() {
           로그인
         </button>
       </div>
-      <a href="/" id="search-pw">
+      <a href="/" id="searchPw">
         비밀번호를 잊으셨나요?
       </a>
     </div>

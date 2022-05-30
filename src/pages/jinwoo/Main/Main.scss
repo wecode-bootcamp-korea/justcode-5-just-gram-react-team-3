@@ -4,338 +4,243 @@
 
 .main {
   position: relative;
-  margin: 70px 0 0 0;
-}
 
-.navigation {
-  display: flex;
-  min-width: 600px;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 30px;
-  height: 70px;
-  background-color: white;
-  padding: 30px;
-}
-
-.nav-left,
-.nav-center,
-.nav-right {
-  display: flex;
-  background-color: white;
-}
-
-.nav-center {
-  position: relative;
-}
-
-#search-icon {
-  background-color: transparent;
-  position: relative;
-  bottom: 5px;
-}
-
-.fa-magnifying-glass {
-  position: absolute;
-  top: 18px;
-  right: 60px;
-  background-color: #f9f9f9;
-}
-
-#search {
-  padding: 0 20px;
-  height: 40px;
-}
-
-.nav-right {
   img {
+    margin: 0 4px;
     cursor: pointer;
-    background-color: white;
   }
-  div {
+
+  .navigation {
+    display: flex;
+    min-width: 600px;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30px;
+    height: 15px;
     background-color: white;
-  }
-}
+    padding: 30px;
+    margin-top: 60px;
 
-#user {
-  position: relative;
-}
+    .navCenter,
+    .navRight {
+      display: flex;
+      background-color: white;
+    }
 
-#my-menu {
-  position: absolute;
-  display: none;
-  width: 200px;
-  height: 170px;
-  background-color: white;
-  right: 0;
-  top: 50px;
-  z-index: 1;
-  border: 1px solid lightgray;
-}
+    .navLeft {
+      display: flex;
+      background-color: white;
 
-#my-menu {
-  ul {
-    list-style: none;
-    font-size: 20px;
-    padding: 10px;
-    li {
-      color: black;
-      padding: 10px;
-      &:nth-child(2) {
-        padding: 0 12px;
+      #instaIcon {
+        font-size: 40px;
+        margin: 5px 0 0 0;
+        cursor: pointer;
+        background-color: white;
       }
-      &:nth-child(4) {
-        border-top: 1px solid lightgray;
+
+      #logo {
+        font-family: 'Lobster', cursive;
+        font-size: 40px;
+        cursor: pointer;
+        background-color: white;
+      }
+
+      #division {
+        background: black;
+        width: 2px;
+        margin: 10px;
+        height: 35px;
+      }
+    }
+
+    .navCenter {
+      position: relative;
+
+      #searchIcon {
+        background-color: transparent;
+        position: relative;
+        bottom: 15px;
+        left: 90px;
+        margin: 3px 0 0 0;
+
+        .fa-magnifying-glass {
+          position: absolute;
+          top: 18px;
+          right: 60px;
+          background-color: #f9f9f9;
+        }
+      }
+
+      #search {
+        padding: 0 20px;
+        height: 40px;
+        text-align: center;
+        outline: none;
         width: 200px;
-        font-size: 16px;
-        position: absolute;
-        right: 0;
-        padding: 14px 0;
+        background-color: rgb(249, 249, 249);
+        border: 1px solid lightgray;
+      }
+    }
+
+    .navRight {
+      img {
+        cursor: pointer;
+        background-color: white;
+      }
+      div {
+        background-color: white;
       }
     }
   }
-  &:after {
-    border-top: 0px solid transparent;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid lightgray;
-    content: '';
-    position: absolute;
-    left: 169px;
-    top: -10px;
+
+  main {
+    background-color: rgb(249, 249, 249);
+    height: 100vh;
+    width: 100vw;
+    min-width: 600px;
+    padding: 30px;
+
+    .mainRight {
+      position: absolute;
+      top: 0;
+      left: 70vw;
+      margin: 150px auto;
+      width: 400px;
+
+      .ad {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin: 10px 30px;
+        background-color: transparent;
+
+        .adContents {
+          background-color: #f9f9f9;
+
+          .nickName,
+          .adDesc {
+            background-color: #f9f9f9;
+          }
+        }
+
+        #profileImg {
+          border-radius: 50px;
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .story {
+        border: 1px solid lightgray;
+        margin: 30px;
+        padding: 10px;
+        background-color: white;
+
+        &Top {
+          display: flex;
+          width: 300px;
+          padding: 10px;
+          justify-content: space-between;
+          background-color: white;
+        }
+
+        &Text {
+          background-color: white;
+        }
+
+        &User {
+          display: flex;
+          padding: 5px;
+          background-color: white;
+
+          div {
+            background-color: white;
+          }
+          &Right {
+            .time {
+              background-color: white;
+            }
+          }
+        }
+      }
+    }
+
+    .suggestion {
+      min-width: 320px;
+      border: 1px solid lightgray;
+      background-color: white;
+      margin: 30px;
+      padding: 10px;
+
+      &Top {
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        background-color: white;
+      }
+
+      &User {
+        display: flex;
+        padding: 5px;
+        background-color: white;
+
+        &Right {
+          .others {
+            padding-bottom: 5px;
+            width: 140px;
+            background-color: white;
+          }
+        }
+
+        div {
+          background-color: white;
+        }
+
+        .followBtn {
+          display: flex;
+          position: relative;
+          top: 10px;
+          font-size: 12px;
+          background-color: transparent;
+          border: 0;
+          cursor: pointer;
+          color: rgb(114, 176, 233);
+          margin: 0 0 0 80px;
+        }
+      }
+    }
+
+    .others,
+    .adDesc,
+    .storyText,
+    .suggestionText {
+      color: gray;
+      background-color: white;
+    }
+
+    .nickName {
+      font-weight: 800;
+      cursor: pointer;
+      background-color: white;
+    }
+
+    .infoText {
+      min-width: 320px;
+      color: lightgray;
+      background-color: transparent;
+      margin: 30px;
+      padding: 10px;
+    }
   }
-  span {
-    padding: 0 10px;
+
+  .all {
     cursor: pointer;
-  }
-}
-
-#search-icon {
-  position: relative;
-  left: 90px;
-  margin: 3px 0 0 0;
-}
-
-#search {
-  text-align: center;
-  outline: none;
-  width: 200px;
-  background-color: rgb(249, 249, 249);
-  border: 1px solid lightgray;
-}
-
-#search-result {
-  position: relative;
-  margin: 30px 0 0 0;
-}
-
-#search-user {
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  position: absolute;
-  top: 40px;
-  right: 0;
-  width: 280px;
-  align-items: center;
-  border: 1px solid lightgray;
-  background-color: white;
-}
-
-.user-card {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  border-bottom: 1px solid lightgray;
-}
-
-#search-img {
-  display: flex;
-  width: 60px;
-  margin: 10px;
-  height: 60px;
-  border-radius: 60px;
-}
-
-#search-username {
-  font-size: 20px;
-}
-
-#search-subname {
-  font-size: 20px;
-  font-weight: 200;
-}
-
-#insta-icon {
-  font-size: 40px;
-  margin: 5px 0 0 0;
-  cursor: pointer;
-  background-color: white;
-}
-
-#logo {
-  font-family: 'Lobster', cursive;
-  font-size: 40px;
-  cursor: pointer;
-  background-color: white;
-}
-
-img {
-  margin: 0 4px;
-  cursor: pointer;
-}
-
-#division {
-  background: black;
-  width: 2px;
-  margin: 10px;
-  height: 35px;
-}
-
-main {
-  background-color: rgb(249, 249, 249);
-  height: 100vh;
-  width: 100vw;
-  min-width: 600px;
-  padding: 30px;
-}
-
-.fa-heart {
-  cursor: pointer;
-}
-
-.others,
-.ad-desc,
-.story-text,
-.suggestion-text {
-  color: gray;
-}
-
-.time {
-  background-color: white;
-}
-
-.others {
-  padding-bottom: 5px;
-  width: 140px;
-  background-color: white;
-}
-
-.nickname {
-  font-weight: 800;
-  cursor: pointer;
-  background-color: white;
-}
-
-.main-right {
-  position: absolute;
-  top: 0;
-  left: 70vw;
-  margin: 150px auto;
-  width: 400px;
-}
-
-.ad {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  margin: 10px 30px;
-  background-color: transparent;
-}
-
-.ad-contents {
-  background-color: #f9f9f9;
-}
-
-.ad-contents .nickname,
-.ad-contents > .ad-desc {
-  background-color: #f9f9f9;
-}
-
-.ad #profile-img {
-  border-radius: 50px;
-  width: 50px;
-  height: 50px;
-}
-
-.story {
-  border: 1px solid lightgray;
-  margin: 30px;
-  padding: 10px;
-  background-color: white;
-  &-text {
     background-color: white;
   }
-}
-
-.story-top {
-  display: flex;
-  width: 300px;
-  padding: 10px;
-  justify-content: space-between;
-  background-color: white;
-}
-
-.story-user {
-  display: flex;
-  padding: 5px;
-  background-color: white;
-  div {
-    background-color: white;
-  }
-}
-
-.all {
-  cursor: pointer;
-  background-color: white;
-}
-
-.suggestion {
-  min-width: 320px;
-  border: 1px solid lightgray;
-  background-color: white;
-  margin: 30px;
-  padding: 10px;
-}
-
-.suggestion-top {
-  display: flex;
-  padding: 10px;
-  justify-content: space-between;
-  background-color: white;
-}
-
-.suggestion-user {
-  display: flex;
-  padding: 5px;
-  background-color: white;
-  div {
-    background-color: white;
-  }
-}
-
-.follow-btn {
-  display: flex;
-  position: relative;
-  top: 10px;
-  font-size: 12px;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-  color: rgb(114, 176, 233);
-  margin: 0 0 0 80px;
-}
-
-.info-text {
-  min-width: 320px;
-  color: lightgray;
-  background-color: transparent;
-  margin: 30px;
-  padding: 10px;
 }
 
 @media screen and (max-width: 900px) {
-  .main-right {
+  .mainRight {
     display: none;
   }
 }

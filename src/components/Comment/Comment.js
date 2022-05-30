@@ -9,14 +9,18 @@ library.add(faHeart);
 function Comment(props) {
   return (
     <>
-      <div className="user-comment">
-        <div>
-          <span className="username">{props.userName}</span>
-          <span className="comment-value"> {props.content}</span>
+      <div className="userComment">
+        <div className="comment">
+          <span className="userName">{props.userName}</span>
+          <span> {props.content}</span>
         </div>
-        <div className="comment-right">
-          <FontAwesomeIcon icon="fa-solid fa-heart" color="gray" />
-          <button className="delete-comment-btn">삭제</button>
+        <div className="commentRight">
+          <FontAwesomeIcon
+            icon="fa-solid fa-heart"
+            color="gray"
+            className="heart"
+          />
+          <button className="deleteCommentBtn">삭제</button>
         </div>
       </div>
     </>

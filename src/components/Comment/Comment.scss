@@ -1,31 +1,41 @@
-.user-comment {
+.userComment {
   width: 450px;
   display: flex;
   justify-content: space-between;
   position: relative;
   left: 20px;
   padding-bottom: 5px;
-}
 
-.comment-right {
-  height: 20px;
-  display: flex;
-  align-items: center;
-}
+  .comment {
+    word-break: break-all;
+    padding-right: 10px;
+    .userName {
+      font-weight: 800;
+      cursor: pointer;
+    }
+  }
 
-.username {
-  font-weight: 800;
-  cursor: pointer;
-}
+  .commentRight {
+    height: 20px;
+    display: flex;
+    align-items: center;
 
-.delete-comment-btn {
-  position: relative;
-  top: 1px;
-  border: 0;
-  width: 50px;
-  height: 20px;
-  font-size: 16px;
-  background-color: transparent;
-  color: black;
-  cursor: pointer;
+    .heart {
+      cursor: pointer;
+    }
+
+    .deleteCommentBtn {
+      position: relative;
+      top: 1px;
+      border: 0;
+      width: 30px;
+      padding: 0;
+      margin: 10px;
+      height: 20px;
+      font-size: 16px;
+      background-color: transparent;
+      color: black;
+      cursor: pointer;
+    }
+  }
 }
