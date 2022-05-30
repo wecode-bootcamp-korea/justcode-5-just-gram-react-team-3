@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import './Login.scss';
 
@@ -53,9 +53,9 @@ function Login() {
           로그인
         </button>
       </div>
-      <a href="/" id="searchPw">
+      <Link to="/jinwooLogin" id="searchPw">
         비밀번호를 잊으셨나요?
-      </a>
+      </Link>
     </div>
   );
 }
