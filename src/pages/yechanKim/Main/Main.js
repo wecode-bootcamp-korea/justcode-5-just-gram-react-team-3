@@ -1,36 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Comment from "../../../components/Comment/Comment";
 import "./Main.scss";
 
 function Main() {
-  const [comment, setComment] = useState("");
-  const commentArr = [];
-  const commentWrap = document.createElement("ul");
+  const [comment, setComment] = useState();
+  const [isComment, setIsComment] = useState(false);
 
-  function makeComment() {
-    const commentInput = document.getElementById("comment");
-    const commentBox = document.getElementsByClassName("display-comment")[0];
-    const commentHtml = `<li><a href=""><b>yechan</b></a>
-  <span class="text">${comment}</span>
-  <span class="material-symbols-outlined">favorite</span></li>`;
-    commentArr.push(commentHtml);
-    const sumComment = commentArr.join("");
-    commentWrap.innerHTML = sumComment;
-    commentBox.appendChild(commentWrap);
-    commentInput.value = "";
-  }
+  // useEffect((e) => {
+  //   saveComment(e);
+  // });
   function saveComment(e) {
+    const { value, tagName } = e.target;
+    const commentInput = document.getElementById("comment");
     if (e.key === "Enter") {
-      if (comment.length >= 1) {
-        makeComment();
+      if (value.length >= 1) {
+        setComment(value);
       }
-    } else if (e.target.tagName === "BUTTON") {
-      if (comment.length >= 1) {
-        makeComment();
+    } else if (tagName === "BUTTON") {
+      if (commentInput.value.length >= 1) {
+        setComment(commentInput.value);
       }
     }
+    commentInput.value = "";
   }
   return (
-    <div>
+    <div className="Main">
       <nav>
         <div className="logo-title">
           <img src="/images/yechanKim/instagram.png" alt="instagram" />
@@ -85,14 +79,13 @@ function Main() {
                 </a>
                 <p className="'text">......</p>
               </div>
-              <div className="display-comment"></div>
+              <div className="display-comment">
+                <Comment comment={comment} />
+              </div>
               <span className="info">42분 전</span>
             </div>
             <div className="leave-comment">
               <input
-                onChange={(e) => {
-                  setComment(e.target.value);
-                }}
                 onKeyPress={(e) => saveComment(e)}
                 id="comment"
                 type="text"
