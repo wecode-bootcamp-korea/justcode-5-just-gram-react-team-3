@@ -27,7 +27,7 @@ function Login() {
   const navigate = useNavigate();
 
   const goToMain = () => {
-    navigate('/main');
+    navigate('/jinwooMain');
   };
   return (
     <div className="container">
