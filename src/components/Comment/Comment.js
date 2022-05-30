@@ -8,9 +8,13 @@ library.add(faHeart);
 
 function Comment(props) {
   const [isDeleted, setIsDeleted] = useState(false);
-
   const delComment = () => {
     setIsDeleted(true);
+  };
+
+  const [isLiked, setIsLiked] = useState(false);
+  const toggleHeartBtn = () => {
+    setIsLiked(!isLiked);
   };
 
   return (
@@ -26,8 +30,8 @@ function Comment(props) {
           <div className="commentRight">
             <FontAwesomeIcon
               icon="fa-solid fa-heart"
-              color="gray"
-              className="heart"
+              className={isLiked ? 'redHeart' : 'grayHeart'}
+              onClick={toggleHeartBtn}
             />
             <button className="deleteCommentBtn" onClick={delComment}>
               삭제

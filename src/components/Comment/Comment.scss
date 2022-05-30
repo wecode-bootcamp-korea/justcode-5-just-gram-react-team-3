@@ -20,7 +20,13 @@
     display: flex;
     align-items: center;
 
-    .heart {
+    .redHeart {
+      color: red;
+      cursor: pointer;
+    }
+
+    .grayHeart {
+      color: gray;
       cursor: pointer;
     }
 
