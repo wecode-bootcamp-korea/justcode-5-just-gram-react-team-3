@@ -5,11 +5,7 @@ import pinkheartImage from "../assets/pinkHeart.png";
 function Comment({ id, author, content, isLiked, deleteEvent }) {
   const [commentIsLike, setCommentIsLike] = useState(isLiked);
   const changeHeart = () => {
-    if (commentIsLike === true) {
-      setCommentIsLike(false);
-    } else {
-      setCommentIsLike(true);
-    }
+    commentIsLike ? setCommentIsLike(false) : setCommentIsLike(true);
   };
 
   const hadleEvent = (commentId) => {

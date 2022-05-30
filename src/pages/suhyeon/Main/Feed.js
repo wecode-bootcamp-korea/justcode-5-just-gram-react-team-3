@@ -17,11 +17,7 @@ function Feed({
   const [isLike, setIsLike] = useState(isLiked);
 
   const changeHeart = () => {
-    if (isLike === true) {
-      setIsLike(false);
-    } else {
-      setIsLike(true);
-    }
+    isLike ? setIsLike(false) : setIsLike(true);
   };
 
   const enterCheck = (e) => {
