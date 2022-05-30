@@ -1,3 +1,5 @@
+$theme-color: #0095f6;
+
 * {
 	box-sizing: border-box;
 }
@@ -9,13 +11,16 @@
 	height: 100vh;
 }
 
-.main-container-login, .login-container, .input-container, .login-btn-container {
+.main-container-login,
+.login-container,
+.input-container,
+.login-btn-container {
 	display: flex;
 	flex-direction: column;
 }
 
 .main-container-login {
-	width : 350px;
+	width: 350px;
 	margin: 0 0 100px;
 	padding: 40px 35px 20px 35px;
 	border: 1px solid lightgray;
@@ -24,14 +29,14 @@
 
 .logo {
 	display: flex;
-	justify-content: center;	
-	
+	justify-content: center;
+
 	p {
-	text-align: center;
-	margin: 0;
-	font-size: 45px;
-	font-family: 'Lobster', cursive;
-}
+		text-align: center;
+		margin: 0;
+		font-size: 45px;
+		font-family: 'Lobster', cursive;
+	}
 }
 
 .login-container {
@@ -45,30 +50,30 @@
 
 .input-container {
 	input {
-	margin: 3px 0;
-	padding: 11px 8px;
-	background: #fafafa; 
-	border: 1px solid #dbdbdb;
-	border-radius: 3px;
-	color: #a5a5a5;
-	font-size: 12px;
-}
+		margin: 3px 0;
+		padding: 11px 8px;
+		background: #fafafa;
+		border: 1px solid #dbdbdb;
+		border-radius: 3px;
+		color: #a5a5a5;
+		font-size: 12px;
+	}
 }
 
 .login-btn-container {
-	 a {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-decoration: none;
-}
+	a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-decoration: none;
+	}
 }
 
 
 #login-btn {
 	width: 100%;
 	padding: 7px 0;
-	background-color: #0095f6;
+	background-color: $theme-color;
 	border: 0;
 	border-radius: 3px;
 	color: white;

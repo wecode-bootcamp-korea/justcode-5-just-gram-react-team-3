@@ -1,31 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import { Link } from "react-router-dom"
-import { useState } from "react";
 import "./Login.scss";
-// class Login extends React.Component {
-//   render() {
-//     return();
-//   }
-// }
 
 function Login() {
   const [userId, setUserId] = useState("");
   const [userPassword, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const goToMain = () => {
-    navigate("/main");
-  };
-
-  const getUserId = () => {
-    return userId;
-  }
+ 
   const isActiveLoginBtn = () => {
-    if (userId.includes("@") && userPassword.length > 7) {
-      return true;
-    }
-    return false;
+    return (userId.includes("@") && userPassword.length > 7);
   }
 
   const buttonOnclick = () => {

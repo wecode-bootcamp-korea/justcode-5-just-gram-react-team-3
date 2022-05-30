@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import ReactTooltip from "react-tooltip";
 import Comment from "./Comment";
 import MyMenu from "./MyMenu";
 import "./Main.scss";
@@ -10,8 +9,7 @@ function Main() {
   /* Image */
   const imgLiked = "/images/jieunkim/heart-red.png";
   const imgNotLiked = "/images/jieunkim/heart.png";
-  
-  
+
   /* temp variables/functions to be done */
   const loginUserId = useLocation().state;
   const authorId = "anonymous";
@@ -19,11 +17,9 @@ function Main() {
   const likedById = "iLikeThisFeed";
   const commentFirstId = "anonymous";
   const commentSecondId = "anonymous";
-  
+
   const [dt, setDt] = useState("time-stamp");
   const [cntLiked, setCntLiked] = useState(0);
-
-  
 
   /* useState */
   const [searchBarInput, setSearchBarInput] = useState("");
@@ -39,9 +35,6 @@ function Main() {
   const [commentSecond, setCommentSecond] = useState("");
   const [commentInput, setCommentInput] = useState("");
   const [isShownCommentOpt, setShownCommentOpt] = useState("");
-  
-
-  
 
   // useEffect(() => {
   //   let secTimer = setInterval( () => {
@@ -57,43 +50,38 @@ function Main() {
   //   return res;
   // }
 
-const userDatabase = [
-  {id: "wecode_bootcamp",
-   like: true
-  },
-  {id: "wecode_founder",
-  like: false
-}
-]
-//    useEffect(() => {
-//      let res = [];
-//     let usersReturned = () => {
-//       userDatabase.forEach(user => {
-//         console.log(user)
-//         for(let e in user) {
-//           console.log("name: ", name)
-//           if (user[name].includes(searchBarInput)) {
-//             res.push(user.name)
-//           }
-//         }
-//       } )
-//       return res;
-//     };
-//     console.log("res: ", res);
-//   }, [searchBarInput]);
-// useEffect(() => {
-    
-// }, [isLiked]);
+  const userDatabase = [
+    { id: "wecode_bootcamp", like: true },
+    { id: "wecode_founder", like: false },
+  ];
+  //    useEffect(() => {
+  //      let res = [];
+  //     let usersReturned = () => {
+  //       userDatabase.forEach(user => {
+  //         console.log(user)
+  //         for(let e in user) {
+  //           console.log("name: ", name)
+  //           if (user[name].includes(searchBarInput)) {
+  //             res.push(user.name)
+  //           }
+  //         }
+  //       } )
+  //       return res;
+  //     };
+  //     console.log("res: ", res);
+  //   }, [searchBarInput]);
+  // useEffect(() => {
 
-// const practiceUseCallBack = useCallback(() => {
+  // }, [isLiked]);
 
-// }, [isLiked]);
+  // const practiceUseCallBack = useCallback(() => {
 
-// const cntLikedUseMemo = React.useMemo(() => {
-// return 0;
+  // }, [isLiked]);
 
-// }, [isLiked]); 
+  // const cntLikedUseMemo = React.useMemo(() => {
+  // return 0;
 
+  // }, [isLiked]);
 
   const handleEnterKey = (e) => {
     return e.key === "Enter";
@@ -107,17 +95,15 @@ const userDatabase = [
   };
 
   const searchUser = (userSubString) => {
-    let res = userDatabase.filter(user => {
+    let res = userDatabase.filter((user) => {
       return user.id.includes(userSubString);
-    })
+    });
     console.log(res);
     return res;
   };
 
   const handleLiked = () => {
-    console.log("fn call: ", isLiked)
     setLiked(!isLiked);
-    console.log("fn call after: ", isLiked)
   };
 
   const iconLiked = isLiked ? imgLiked : imgNotLiked;
@@ -129,7 +115,7 @@ const userDatabase = [
   const handleRemoveBtn = () => {
     return 0;
   };
-  
+
   const isActiveCommentInput = () => {
     return commentInput.length > 0;
   }; // callBack : combined with action. e.g button click
@@ -167,8 +153,8 @@ const userDatabase = [
       <body className="main-body">
         <div className="main-container">
           <nav>
-            <div className="nav-content">
-              <div className="nav-left">
+            <div className="nav nav-content">
+              <div className="nav nav-left">
                 <img
                   className="icon-insta"
                   alt="insta-icon"
@@ -176,7 +162,7 @@ const userDatabase = [
                 />
                 <span>justgram</span>
               </div>
-              <div className="nav-center">
+              <div className="nav nav-center">
                 <input
                   type="text"
                   className="search"
@@ -204,7 +190,7 @@ const userDatabase = [
                   src="/images/jieunkim/search.png"
                 />
               </div>
-              <div className="nav-right">
+              <div className="nav nav-right">
                 <div>
                   <img
                     className="icon-explore"
@@ -220,26 +206,25 @@ const userDatabase = [
                   />
                 </div>
                 <div>
-                <img 
+                  <img
                     className="icon-profile"
                     alt="profile-icon"
                     src="/images/jieunkim/profile-img/profile.png"
-                    onClick={() => {setVisibility(!visibility)}}>
-                  </img>
-                  <MyMenu 
-                    onClose={popupCloseHandler}
-                    show={visibility}
-                  />
-                   </div>
+                    onClick={() => {
+                      setVisibility(!visibility);
+                    }}
+                  ></img>
+                  <MyMenu onClose={popupCloseHandler} show={visibility} />
+                </div>
               </div>
             </div>
           </nav>
           <main className="main-feeds">
             <div className="feeds">
-              <article>
+              <article className="article-container">
                 <div className="article-header">
                   <div className="author-profile">
-                    <div className="author-profile-icon">
+                    <div className="author-profile-icon user-profile">
                       <img
                         className="author-icon-profile"
                         id="author-icon-profile"
@@ -247,11 +232,11 @@ const userDatabase = [
                         src="/images/jieunkim/profile-img/cat.png"
                       />
                     </div>
-                    <div className="author-info">
-                      <p className="author-id" id="author-id">
+                    <div className="author-info user-info">
+                      <p className="author-id user-id" id="author-id">
                         user_id
                       </p>
-                      <p className="author-location" id="author-location">
+                      <p className="author-location user-location" id="author-location">
                         location
                       </p>
                     </div>
@@ -266,7 +251,8 @@ const userDatabase = [
                 </div>
                 <div className="frame">
                   <img
-                    className="photo"
+                    className="feed-photo"
+                    id="feed-photo"
                     alt=""
                     src="/images/jieunkim/photo.png"
                   />
@@ -279,7 +265,6 @@ const userDatabase = [
                       src={iconLiked}
                       onClick={() => {
                         handleLiked();
-                        console.log(isLiked)
                       }}
                     />
                     <img
@@ -383,7 +368,7 @@ const userDatabase = [
                           id="like-comment-btn"
                           onClick={handleCommentLikeBtn}
                         >
-                        {isShownCommentOpt && <span>좋아요</span>}
+                          {isShownCommentOpt && <span>좋아요</span>}
                         </button>
                       </div>
                       <div className="remove-comment">
@@ -414,7 +399,7 @@ const userDatabase = [
                   />
                   <div className="post">
                     <button
-                    class="post-btn"
+                      className="post-btn"
                       id="post-btn"
                       disabled={!isActivePostBtn()}
                       onClick={handlePostBtn}
@@ -427,18 +412,16 @@ const userDatabase = [
             </div>
             <div className="main-right">
               <div className="login-user-header">
-                <div className="login-user-profile">
-                  <div className="login-user-profile">
+                <div className="login-user-profile user-profile">
                     <img
                       id="login-profile-icon"
                       alt="me"
-                      src="/images/jieunkim/login-user.png"
+                      src="/images/jieunkim/profile-img/login-user.png"
                     />
-                  </div>
                 </div>
-                <div className="login-user-info">
-                  <p id="login-user-id">user_id</p>
-                  <p id="login-user-location">location</p>
+                <div className="login-user-info user-info">
+                  <p id="login-user-id" class="login-user-id user-id">user_id</p>
+                  <p id="login-user-location" class="login-user-location user-location">location where </p>
                 </div>
               </div>
               <div className="story main-right-container">
@@ -453,7 +436,7 @@ const userDatabase = [
                         className="user-icon"
                         id="user1-icon"
                         alt="rf1"
-                        src="/images/jieunkim/man.png"
+                        src="/images/jieunkim/profile-img/man.png"
                       />
                     </div>
                     <div className="story-user-info user-info">
@@ -464,17 +447,17 @@ const userDatabase = [
                         className="story-user-update user-update"
                         id="story-user1-update"
                       >
-                        update
+                        update when
                       </p>
                     </div>
                   </div>
                   <div className="story-user">
-                    <div className="story-user-profile">
+                    <div className="story-user-profile user-profile">
                       <img
                         className="user-icon"
                         id="story-user2-icon"
                         alt="rf2"
-                        src="/images/jieunkim/user.png"
+                        src="/images/jieunkim/profile-img/user.png"
                       />
                     </div>
                     <div className="story-user-info user-info">
@@ -495,7 +478,7 @@ const userDatabase = [
                         className="user-icon"
                         id="story-user3-icon"
                         alt="rf3"
-                        src="/images/jieunkim/user.png"
+                        src="/images/jieunkim/profile-img/user.png"
                       />
                     </div>
                     <div className="story-user-info user-info">
@@ -516,7 +499,7 @@ const userDatabase = [
                         className="user-icon"
                         id="story-user4-icon"
                         alt="rf4"
-                        src="/images/jieunkim/user.png"
+                        src="/images/jieunkim/profile-img/user.png"
                       />
                     </div>
                     <div className="story-user-info user-info">
@@ -546,7 +529,7 @@ const userDatabase = [
                           className="user-icon"
                           id="rf1-icon"
                           alt="rf1"
-                          src="/images/jieunkim/user.png"
+                          src="/images/jieunkim/profile-img/user.png"
                         />
                       </div>
                       <div className="rf-user-info user-info">
@@ -572,7 +555,7 @@ const userDatabase = [
                           className="user-icon"
                           id="rf1-icon"
                           alt="rf1"
-                          src="/images/jieunkim/user.png"
+                          src="/images/jieunkim/profile-img/user.png"
                         />
                       </div>
                       <div className="rf-user-info user-info">
@@ -598,7 +581,7 @@ const userDatabase = [
                           className="user-icon"
                           id="rf1-icon"
                           alt="rf1"
-                          src="/images/jieunkim/user.png"
+                          src="/images/jieunkim/profile-img/user.png"
                         />
                       </div>
                       <div className="rf-user-info user-info">
