@@ -31,11 +31,8 @@ function Feed(props) {
   const [isValid, setIsValid] = useState(false);
 
   const updateBtn = () => {
-    if (commentValue !== '') {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
+    const commentValid = commentValue !== '';
+    setIsValid(commentValid);
     if (isValid && window.event.keyCode === 13) {
       postComment();
     }

@@ -9,11 +9,8 @@ function Login() {
   const [isValid, setIsValid] = useState(false);
 
   const updateBtn = () => {
-    if (idValue.includes('@') && pwValue.length >= 5) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
+    const isIdPwInputValid = idValue.includes('@') && pwValue.length >= 5;
+    setIsValid(isIdPwInputValid);
   };
 
   const handleIdInput = (e) => {
