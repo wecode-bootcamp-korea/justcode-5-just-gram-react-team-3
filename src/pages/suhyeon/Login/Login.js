@@ -7,25 +7,21 @@ function Login() {
     id: "",
     password: "",
   });
-  const [isActivate, setIsActivate] = useState(false);
 
   const navigate = useNavigate();
+
   const isValid = user.id.includes("@") && user.password.length > 7;
 
   const goToMain = () => {
     navigate("/suHyeonMain");
   };
+
   const handleInput = (e) => {
     const { value, name } = e.target;
     setUser({
       ...user,
       [name]: value,
     });
-    validationBtn();
-  };
-
-  const validationBtn = () => {
-    setIsActivate(isValid);
   };
 
   return (
@@ -50,12 +46,10 @@ function Login() {
         />
 
         <button
-          className={
-            isActivate ? "activated-login-btn" : "deactivated-login-btn"
-          }
+          className={isValid ? "activated-login-btn" : "deactivated-login-btn"}
           type="submit"
           onClick={goToMain}
-          disabled={!isActivate}
+          disabled={!isValid}
         >
           로그인
         </button>

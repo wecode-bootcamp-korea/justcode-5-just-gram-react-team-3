@@ -1,6 +1,13 @@
 import "./Main.scss";
 import { useEffect, useState } from "react";
 import Feed from "./Feed";
+import Story from "./Story";
+import Recommend from "./Recommend";
+import Info from "./Info";
+import { storyData } from "./stroyData";
+import { recommendData } from "./recommendData";
+import { infoData } from "./infoData";
+
 function Main() {
   const [feedList, setFeedList] = useState([]);
   console.log(feedList);
@@ -84,84 +91,15 @@ function Main() {
               <button className="feed_btn aside_btn">모두 보기</button>
             </section>
             <section className="story_list">
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">3시간 전</span>
-                </div>
-              </div>
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">16분 전</span>
-                </div>
-              </div>
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">25분 전</span>
-                </div>
-              </div>
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">20시간 전</span>
-                </div>
-              </div>
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">23시간 전</span>
-                </div>
-              </div>
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">방금 전</span>
-                </div>
-              </div>
+              {storyData.map((v) => (
+                <Story
+                  key={v.id}
+                  imageUrl={v.src}
+                  nickname={v.nickname}
+                  altValue={v.alt}
+                  date={v.date}
+                />
+              ))}
             </section>
           </section>
           <section className="recommend_box">
@@ -170,125 +108,22 @@ function Main() {
               <button className="feed_btn aside_btn">모두 보기</button>
             </section>
             <section className="story_list">
-              <div className="recommend_top_content">
-                <div className="recommend_photo_info">
-                  <img
-                    alt="aa"
-                    className="recommend_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                  <div className="recommend_profile_info">
-                    <a href="/">JustCode</a>
-                    <span className="follow_info">
-                      lshyun955님&nbsp;이 팔로...
-                    </span>
-                  </div>
-                </div>
-                <div className="follow_btn_box">
-                  <button className="follow_btn">팔로우</button>
-                </div>
-              </div>
-              <div className="recommend_top_content">
-                <div className="recommend_photo_info">
-                  <img
-                    alt="aa"
-                    className="recommend_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                  <div className="recommend_profile_info">
-                    <a href="/">JustCode</a>
-                    <span className="follow_info">
-                      lshyun955님&nbsp;이 팔로...
-                    </span>
-                  </div>
-                </div>
-                <div className="follow_btn_box">
-                  <button className="follow_btn">팔로우</button>
-                </div>
-              </div>
-              <div className="recommend_top_content">
-                <div className="recommend_photo_info">
-                  <img
-                    alt="aa"
-                    className="recommend_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                  <div className="recommend_profile_info">
-                    <a href="/">JustCode</a>
-                    <span className="follow_info">
-                      lshyun955님&nbsp;이 팔로...
-                    </span>
-                  </div>
-                </div>
-                <div className="follow_btn_box">
-                  <button className="follow_btn">팔로우</button>
-                </div>
-              </div>
-              <div className="recommend_top_content">
-                <div className="recommend_photo_info">
-                  <img
-                    alt="aa"
-                    className="recommend_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                  <div className="recommend_profile_info">
-                    <a href="/">JustCode</a>
-                    <span className="follow_info">
-                      lshyun955님&nbsp;이 팔로...
-                    </span>
-                  </div>
-                </div>
-                <div className="follow_btn_box">
-                  <button className="follow_btn">팔로우</button>
-                </div>
-              </div>
+              {recommendData.map((v) => (
+                <Recommend
+                  key={v.id}
+                  imageUrl={v.src}
+                  altValue={v.alt}
+                  nickname={v.nickname}
+                  info={v.info}
+                />
+              ))}
             </section>
           </section>
           <section className="company_info_box">
             <div className="etc_info">
-              <a className="info_link_box" href="/">
-                Justgram 정보
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                지원
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                홍보 센터
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                API
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                채용 정보
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                개인정보처리방침
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                약관
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                디렉터리
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                프로필
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                해시태그
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                언어
-              </a>
+              {infoData.map((v) => (
+                <Info key={v.id} infoName={v.infoName} />
+              ))}
             </div>
             <div className="copyright">© 2022 JUSTGRAM</div>
           </section>
