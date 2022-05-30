@@ -262,12 +262,11 @@ article {
 .likeby {
 	@include flex-v-center;
 }
-#user-id-likeby {
+.user-id-likedby {
 	font-weight: bold;
-	font-size: $font-size-id;
 }
 
-#text-likeby {
+.text-likedby {
 	font-size: $font-size-id;
 }
 
@@ -327,7 +326,7 @@ span#author-id, span#comment-first-id, span#comment-second-id {
 }
 
 
-#post-btn {
+.post-btn {
 	color: $theme-color;
 	right: 0;
 	background-color: white;

@@ -1,32 +1,47 @@
 import React from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import ReactTooltip from "react-tooltip";
 import Comment from "./Comment";
+import MyMenu from "./MyMenu";
 import "./Main.scss";
 
 function Main() {
   /* Image */
   const imgLiked = "/images/jieunkim/heart-red.png";
   const imgNotLiked = "/images/jieunkim/heart.png";
+  
+  
+  /* temp variables/functions to be done */
   const loginUserId = useLocation().state;
   const authorId = "anonymous";
-
   const feedContent = "hahahahah";
-  
+  const likedById = "iLikeThisFeed";
   const commentFirstId = "anonymous";
   const commentSecondId = "anonymous";
+  
+  const [dt, setDt] = useState("time-stamp");
+  const [cntLiked, setCntLiked] = useState(0);
 
+  
+
+  /* useState */
   const [searchBarInput, setSearchBarInput] = useState("");
   const [isActiveSearchBar, setActiveSearchBar] = useState(false);
+  const [visibility, setVisibility] = useState(false);
+
+  const popupCloseHandler = (e) => {
+    setVisibility(e);
+  };
 
   const [isLiked, setLiked] = useState(false);
   const [commentFirst, setCommentFirst] = useState("");
   const [commentSecond, setCommentSecond] = useState("");
   const [commentInput, setCommentInput] = useState("");
-  
   const [isShownCommentOpt, setShownCommentOpt] = useState("");
   
-  const [dt, setDt] = useState("time-stamp");
+
+  
 
   // useEffect(() => {
   //   let secTimer = setInterval( () => {
@@ -50,22 +65,34 @@ const userDatabase = [
   like: false
 }
 ]
-   useEffect(() => {
-     let res = [];
-    let usersReturned = () => {
-      userDatabase.forEach(user => {
-        console.log(user)
-        for(let name in user) {
-          console.log("name: ", name)
-          if (user[name].includes(searchBarInput)) {
-            res.push(user.name)
-          }
-        }
-      } )
-      return res;
-    };
-    console.log("res: ", res);
-  }, [searchBarInput]);
+//    useEffect(() => {
+//      let res = [];
+//     let usersReturned = () => {
+//       userDatabase.forEach(user => {
+//         console.log(user)
+//         for(let e in user) {
+//           console.log("name: ", name)
+//           if (user[name].includes(searchBarInput)) {
+//             res.push(user.name)
+//           }
+//         }
+//       } )
+//       return res;
+//     };
+//     console.log("res: ", res);
+//   }, [searchBarInput]);
+// useEffect(() => {
+    
+// }, [isLiked]);
+
+// const practiceUseCallBack = useCallback(() => {
+
+// }, [isLiked]);
+
+// const cntLikedUseMemo = React.useMemo(() => {
+// return 0;
+
+// }, [isLiked]); 
 
 
   const handleEnterKey = (e) => {
@@ -74,12 +101,23 @@ const userDatabase = [
 
   const handleSearchBarInput = (e) => {
     if (handleEnterKey(e)) {
-      setSearchBarInput("");
+      setSearchBarInput(e.target.value);
+      searchUser(e.target.value);
     }
   };
 
+  const searchUser = (userSubString) => {
+    let res = userDatabase.filter(user => {
+      return user.id.includes(userSubString);
+    })
+    console.log(res);
+    return res;
+  };
+
   const handleLiked = () => {
+    console.log("fn call: ", isLiked)
     setLiked(!isLiked);
+    console.log("fn call after: ", isLiked)
   };
 
   const iconLiked = isLiked ? imgLiked : imgNotLiked;
@@ -91,10 +129,10 @@ const userDatabase = [
   const handleRemoveBtn = () => {
     return 0;
   };
-
+  
   const isActiveCommentInput = () => {
     return commentInput.length > 0;
-  };
+  }; // callBack : combined with action. e.g button click
 
   const handleKeyOnInput = (e) => {
     if (handleEnterKey(e)) {
@@ -182,12 +220,17 @@ const userDatabase = [
                   />
                 </div>
                 <div>
-                  <img
+                <img 
                     className="icon-profile"
                     alt="profile-icon"
-                    src="/images/jieunkim/profile.png"
+                    src="/images/jieunkim/profile-img/profile.png"
+                    onClick={() => {setVisibility(!visibility)}}>
+                  </img>
+                  <MyMenu 
+                    onClose={popupCloseHandler}
+                    show={visibility}
                   />
-                </div>
+                   </div>
               </div>
             </div>
           </nav>
@@ -236,6 +279,7 @@ const userDatabase = [
                       src={iconLiked}
                       onClick={() => {
                         handleLiked();
+                        console.log(isLiked)
                       }}
                     />
                     <img
@@ -261,11 +305,22 @@ const userDatabase = [
                   <img
                     className="icon-likeby user-icon"
                     alt="who"
-                    src="/images/jieunkim/profile-likeby.png"
+                    src="/images/jieunkim/profile-img/profile-likeby.png"
                   />
-                  <span id="user-id-likeby">anonymous</span>
+                  <span
+                    className="user-id-likedby text-likedby"
+                    id="user-id-likedby"
+                  >
+                    {likedById}
+                  </span>
                   <span>&nbsp;</span>
-                  <span id="text-likeby">like it</span>
+                  <span className="text-likedby">님 외&nbsp;</span>
+                  <span className="text-likedby" id="text-likedby">
+                    {cntLiked}
+                  </span>
+                  <span className="text-likedby">명이</span>
+                  <span>&nbsp;</span>
+                  <span className="text-likedby">좋아합니다.</span>
                 </div>
                 <div className="feed-content">
                   <div className="feed-content-inner">
@@ -278,11 +333,11 @@ const userDatabase = [
                   </div>
                 </div>
                 <div className="comment">
-                  <div className="comment-content"
-
-                  onMouseEnter={() => setShownCommentOpt(true)}
-                  onMouseLeave={() => setShownCommentOpt(false)}
-            >
+                  <div
+                    className="comment-content"
+                    onMouseEnter={() => setShownCommentOpt(true)}
+                    onMouseLeave={() => setShownCommentOpt(false)}
+                  >
                     <div className="comment-first-content">
                       <span id="comment-first-id">{commentFirstId}</span>
                       <span>&nbsp;</span>
@@ -297,7 +352,7 @@ const userDatabase = [
                           id="like-comment-btn"
                           onClick={handleCommentLikeBtn}
                         >
-                          {isShownCommentOpt && (<span>좋아요</span>)}
+                          {isShownCommentOpt && <span>좋아요</span>}
                         </button>
                       </div>
                       <div className="remove-comment">
@@ -306,15 +361,16 @@ const userDatabase = [
                           id="remove-comment-btn"
                           onClick={handleRemoveBtn}
                         >
-                          {isShownCommentOpt && (<span>삭제</span>)}
+                          {isShownCommentOpt && <span>삭제</span>}
                         </button>
                       </div>
                     </div>
                   </div>
-                  <div className="comment-content"
-                      onMouseEnter={() => setShownCommentOpt(true)}
-                      onMouseLeave={() => setShownCommentOpt(false)}
-                >
+                  <div
+                    className="comment-content"
+                    onMouseEnter={() => setShownCommentOpt(true)}
+                    onMouseLeave={() => setShownCommentOpt(false)}
+                  >
                     <div className="comment-second-content">
                       <span id="comment-second-id">{commentSecondId}</span>
                       <span>&nbsp;</span>
@@ -327,7 +383,7 @@ const userDatabase = [
                           id="like-comment-btn"
                           onClick={handleCommentLikeBtn}
                         >
-                          좋아요
+                        {isShownCommentOpt && <span>좋아요</span>}
                         </button>
                       </div>
                       <div className="remove-comment">
@@ -336,7 +392,7 @@ const userDatabase = [
                           id="remove-comment-btn"
                           onClick={handleRemoveBtn}
                         >
-                          삭제
+                          {isShownCommentOpt && <span>삭제</span>}
                         </button>
                       </div>
                     </div>
@@ -358,6 +414,7 @@ const userDatabase = [
                   />
                   <div className="post">
                     <button
+                    class="post-btn"
                       id="post-btn"
                       disabled={!isActivePostBtn()}
                       onClick={handlePostBtn}
