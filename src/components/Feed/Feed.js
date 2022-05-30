@@ -29,6 +29,7 @@ function Feed(props) {
   const [commentValue, setCommentValue] = useState('');
   const [commentList, setCommentList] = useState(props.comment);
   const [isValid, setIsValid] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   const updateBtn = () => {
     const commentValid = commentValue !== '';
@@ -49,6 +50,10 @@ function Feed(props) {
     ]);
     setCommentValue('');
     setIsValid(false);
+  };
+
+  const toggleHeartBtn = () => {
+    setIsLiked(!isLiked);
   };
 
   return (
@@ -81,8 +86,8 @@ function Feed(props) {
             <div>
               <FontAwesomeIcon
                 icon="fa-solid fa-heart"
-                color="gray"
-                className="heart"
+                className={isLiked ? 'redHeart' : 'grayHeart'}
+                onClick={toggleHeartBtn}
               />
             </div>
             <div>
