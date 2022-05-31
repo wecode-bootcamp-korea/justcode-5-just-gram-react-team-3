@@ -42,10 +42,6 @@ function Login() {
       });
   };
 
-  const successSignUp = () => {
-    alert('회원가입 완료!');
-  };
-
   const signUpBtn = () => {
     fetch('http://52.79.143.176:8000/users/signup', {
       method: 'POST',
@@ -59,7 +55,9 @@ function Login() {
     })
       .then((response) => response.json())
       .then((result) => {
-        result.userId !== undefined ? successSignUp() : alert(result.message);
+        result.userId !== undefined
+          ? alert('회원가입 완료!')
+          : alert(result.message);
       });
   };
 
