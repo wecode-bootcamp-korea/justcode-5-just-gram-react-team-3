@@ -1,59 +1,39 @@
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Comment from "./Comment";
+import Feed from "./Feed";
 import MyMenu from "./MyMenu";
 import "./Main.scss";
 
 function Main() {
-  /* Image */
-  const imgLiked = "/images/jieunkim/heart-red.png";
-  const imgNotLiked = "/images/jieunkim/heart.png";
+  const pageFeedId = 1;
+  const commentLimit = 3;
 
   /* temp variables/functions to be done */
-  const loginUserId = useLocation().state;
-  const authorId = "anonymous";
-  const feedContent = "hahahahah";
-  const likedById = "iLikeThisFeed";
-  const commentFirstId = "anonymous";
-  const commentSecondId = "anonymous";
+  const getLoginUserId = useLocation().state;
 
-  const [dt, setDt] = useState("time-stamp");
-  const [cntLiked, setCntLiked] = useState(0);
+  const loginUserId = getLoginUserId == null ? "temp" : getLoginUserId;
 
   /* useState */
   const [searchBarInput, setSearchBarInput] = useState("");
   const [isActiveSearchBar, setActiveSearchBar] = useState(false);
-  const [visibility, setVisibility] = useState(false);
+  const [isMyMenuVisible, setMyMenuVisible] = useState(false);
 
   const popupCloseHandler = (e) => {
-    setVisibility(e);
+    setMyMenuVisible(e);
   };
 
-  const [isLiked, setLiked] = useState(false);
-  const [commentFirst, setCommentFirst] = useState("");
-  const [commentSecond, setCommentSecond] = useState("");
-  const [commentInput, setCommentInput] = useState("");
-  const [isShownCommentOpt, setShownCommentOpt] = useState("");
+  
+  const [feeds, setFeeds] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/data/CommentData.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setFeeds(data);
+      });
+  });
 
-  // useEffect(() => {
-  //   let secTimer = setInterval( () => {
-  //     setDt(postedSince);
-  //   }, 10)
-  // }, []);
 
-  // const postedSince = () => {
-  //   // const current = new Date();
-  //   // date.get
-
-  //   let res = 5;
-  //   return res;
-  // }
-
-  const userDatabase = [
-    { id: "wecode_bootcamp", like: true },
-    { id: "wecode_founder", like: false },
-  ];
   //    useEffect(() => {
   //      let res = [];
   //     let usersReturned = () => {
@@ -90,65 +70,20 @@ function Main() {
   const handleSearchBarInput = (e) => {
     if (handleEnterKey(e)) {
       setSearchBarInput(e.target.value);
-      searchUser(e.target.value);
+      //searchUser(e.target.value);
     }
   };
 
-  const searchUser = (userSubString) => {
-    let res = userDatabase.filter((user) => {
-      return user.id.includes(userSubString);
-    });
-    console.log(res);
-    return res;
-  };
+  // const searchUser = (userSubString) => {
+  //   let res = userDatabase.filter((user) => {
+  //     return user.id.includes(userSubString);
+  //   });
+  //   console.log(res);
+  //   return res;
+  // };
 
-  const handleLiked = () => {
-    setLiked(!isLiked);
-  };
 
-  const iconLiked = isLiked ? imgLiked : imgNotLiked;
-
-  const handleCommentLikeBtn = () => {
-    return 0;
-  };
-
-  const handleRemoveBtn = () => {
-    return 0;
-  };
-
-  const isActiveCommentInput = () => {
-    return commentInput.length > 0;
-  }; // callBack : combined with action. e.g button click
-
-  const handleKeyOnInput = (e) => {
-    if (handleEnterKey(e)) {
-      handleInputComment();
-    }
-  };
-
-  const isActivePostBtn = () => {
-    return isActiveCommentInput();
-  };
-
-  const handlePostBtn = () => {
-    if (isActivePostBtn) {
-      handleInputComment();
-    }
-  };
-
-  const handleInputComment = () => {
-    if (commentFirst === "") {
-      setCommentFirst(commentInput);
-    } else if (commentSecond === "") {
-      setCommentSecond(commentInput);
-    } else {
-      setCommentFirst(commentSecond);
-      setCommentSecond(commentInput);
-    }
-    setCommentInput("");
-  };
-
-  return (
+   return (
     <div className="main-page">
       <body className="main-body">
         <div className="main-container">
@@ -211,217 +146,52 @@ function Main() {
                     alt="profile-icon"
                     src="/images/jieunkim/profile-img/profile.png"
                     onClick={() => {
-                      setVisibility(!visibility);
+                      setMyMenuVisible(!isMyMenuVisible);
                     }}
                   ></img>
-                  <MyMenu onClose={popupCloseHandler} show={visibility} />
+                  <MyMenu onClose={popupCloseHandler} show={isMyMenuVisible} />
                 </div>
               </div>
             </div>
           </nav>
           <main className="main-feeds">
             <div className="feeds">
-              <article className="article-container">
-                <div className="article-header">
-                  <div className="author-profile">
-                    <div className="author-profile-icon user-profile">
-                      <img
-                        className="author-icon-profile"
-                        id="author-icon-profile"
-                        alt="author"
-                        src="/images/jieunkim/profile-img/cat.png"
-                      />
-                    </div>
-                    <div className="author-info user-info">
-                      <p className="author-id user-id" id="author-id">
-                        user_id
-                      </p>
-                      <p className="author-location user-location" id="author-location">
-                        location
-                      </p>
-                    </div>
-                  </div>
-                  <div className="author-more">
-                    <img
-                      className="icon-more"
-                      alt="more"
-                      src="/images/jieunkim/more.png"
-                    ></img>
-                  </div>
-                </div>
-                <div className="frame">
-                  <img
-                    className="feed-photo"
-                    id="feed-photo"
-                    alt=""
-                    src="/images/jieunkim/photo.png"
+              {feeds.filter((feed) => feed.feedId === pageFeedId).map((feed) => {
+                return (
+                  <Feed                    
+                    key={feed.feedId}
+                    loginUserId={loginUserId}
+                    author={feed.author}
+                    content={feed.content}
+                    isLiked={feed.isLiked}
+                    likePeople={feed.likePeople}
+                    imageUrl={feed.imageUrl}
+                    date={feed.date}
+                    comments={feed.comments}
+                    commentLimit={commentLimit}
                   />
-                </div>
-                <div className="feed-icons">
-                  <div className="feed-icons-left">
-                    <img
-                      className="icon-like"
-                      alt="like"
-                      src={iconLiked}
-                      onClick={() => {
-                        handleLiked();
-                      }}
-                    />
-                    <img
-                      className="icon-chat"
-                      alt="chat"
-                      src="/images/jieunkim/chat.png"
-                    />
-                    <img
-                      className="icon-upload"
-                      alt="upload"
-                      src="/images/jieunkim/upload.png"
-                    />
-                  </div>
-                  <div className="feed-icons-right">
-                    <img
-                      className="icon-bookmark"
-                      alt="bookmark"
-                      src="/images/jieunkim/bookmark-white.png"
-                    />
-                  </div>
-                </div>
-                <div className="likeby">
-                  <img
-                    className="icon-likeby user-icon"
-                    alt="who"
-                    src="/images/jieunkim/profile-img/profile-likeby.png"
-                  />
-                  <span
-                    className="user-id-likedby text-likedby"
-                    id="user-id-likedby"
-                  >
-                    {likedById}
-                  </span>
-                  <span>&nbsp;</span>
-                  <span className="text-likedby">님 외&nbsp;</span>
-                  <span className="text-likedby" id="text-likedby">
-                    {cntLiked}
-                  </span>
-                  <span className="text-likedby">명이</span>
-                  <span>&nbsp;</span>
-                  <span className="text-likedby">좋아합니다.</span>
-                </div>
-                <div className="feed-content">
-                  <div className="feed-content-inner">
-                    <span id="author-id">{authorId}</span>
-                    <span>&nbsp;</span>
-                    <span id="feed-content-text">{feedContent}</span>
-                    <span>&nbsp;</span>
-                    <span>&nbsp;</span>
-                    <span className="show-more">더 보기</span>
-                  </div>
-                </div>
-                <div className="comment">
-                  <div
-                    className="comment-content"
-                    onMouseEnter={() => setShownCommentOpt(true)}
-                    onMouseLeave={() => setShownCommentOpt(false)}
-                  >
-                    <div className="comment-first-content">
-                      <span id="comment-first-id">{commentFirstId}</span>
-                      <span>&nbsp;</span>
-                      <span id="comment-first-text">{commentFirst}</span>
-                      <span>&nbsp;</span>
-                      <span>&nbsp;</span>
-                    </div>
-                    <div className="manage-comment">
-                      <div className="like-comment">
-                        <button
-                          className="like-comment-btn"
-                          id="like-comment-btn"
-                          onClick={handleCommentLikeBtn}
-                        >
-                          {isShownCommentOpt && <span>좋아요</span>}
-                        </button>
-                      </div>
-                      <div className="remove-comment">
-                        <button
-                          className="remove-comment-btn"
-                          id="remove-comment-btn"
-                          onClick={handleRemoveBtn}
-                        >
-                          {isShownCommentOpt && <span>삭제</span>}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="comment-content"
-                    onMouseEnter={() => setShownCommentOpt(true)}
-                    onMouseLeave={() => setShownCommentOpt(false)}
-                  >
-                    <div className="comment-second-content">
-                      <span id="comment-second-id">{commentSecondId}</span>
-                      <span>&nbsp;</span>
-                      <span id="comment-second-text">{commentSecond}</span>
-                    </div>
-                    <div className="manage-comment">
-                      <div className="like-comment">
-                        <button
-                          className="like-comment-btn"
-                          id="like-comment-btn"
-                          onClick={handleCommentLikeBtn}
-                        >
-                          {isShownCommentOpt && <span>좋아요</span>}
-                        </button>
-                      </div>
-                      <div className="remove-comment">
-                        <button
-                          className="remove-comment-btn"
-                          id="remove-comment-btn"
-                          onClick={handleRemoveBtn}
-                        >
-                          {isShownCommentOpt && <span>삭제</span>}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="last-updated">
-                    <span id="time-stamp">{dt}</span>
-                  </div>
-                </div>
-                <div className="new-comment">
-                  <input
-                    type="text"
-                    id="new-comment-input"
-                    placeholder="댓글 달기..."
-                    value={commentInput}
-                    onChange={(event) => {
-                      setCommentInput(event.target.value);
-                    }}
-                    onKeyUp={handleKeyOnInput}
-                  />
-                  <div className="post">
-                    <button
-                      className="post-btn"
-                      id="post-btn"
-                      disabled={!isActivePostBtn()}
-                      onClick={handlePostBtn}
-                    >
-                      게시
-                    </button>
-                  </div>
-                </div>
-              </article>
+                );
+              })}
             </div>
             <div className="main-right">
               <div className="login-user-header">
                 <div className="login-user-profile user-profile">
-                    <img
-                      id="login-profile-icon"
-                      alt="me"
-                      src="/images/jieunkim/profile-img/login-user.png"
-                    />
+                  <img
+                    id="login-profile-icon"
+                    alt="me"
+                    src="/images/jieunkim/profile-img/login-user.png"
+                  />
                 </div>
                 <div className="login-user-info user-info">
-                  <p id="login-user-id" class="login-user-id user-id">user_id</p>
-                  <p id="login-user-location" class="login-user-location user-location">location where </p>
+                  <p id="login-user-id" className="login-user-id user-id">
+                    {loginUserId}
+                  </p>
+                  <p
+                    id="login-user-location"
+                    className="login-user-location user-location"
+                  >
+                    location where{" "}
+                  </p>
                 </div>
               </div>
               <div className="story main-right-container">

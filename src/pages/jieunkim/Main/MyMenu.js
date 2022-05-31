@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import popupStyles from "./MyMenu.scss";
-import PropTypes from "prop-types";
-import ReactTooltip from "react-tooltip";
+import "./MyMenu.scss";
+
 const MyMenu = (props) => {
   const [show, setShow] = useState(false);
 
@@ -44,9 +43,4 @@ const MyMenu = (props) => {
   );
 };
 
-MyMenu.propTypes = {
-  title: PropTypes.string.isRequired,
-  show: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
 export default MyMenu;
