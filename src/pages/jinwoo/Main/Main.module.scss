@@ -63,7 +63,7 @@
         left: 90px;
         margin: 3px 0 0 0;
 
-        .fa-magnifying-glass {
+        .icon {
           position: absolute;
           top: 18px;
           right: 60px;
@@ -114,6 +114,12 @@
         margin: 10px 30px;
         background-color: transparent;
 
+        #profileImg {
+          border-radius: 50px;
+          width: 50px;
+          height: 50px;
+        }
+
         .adContents {
           background-color: #f9f9f9;
 
@@ -122,12 +128,13 @@
             background-color: #f9f9f9;
           }
         }
+      }
 
-        #profileImg {
-          border-radius: 50px;
-          width: 50px;
-          height: 50px;
-        }
+      #profileImg {
+        border-radius: 30px;
+        width: 30px;
+        height: 30px;
+        margin-top: 4px;
       }
 
       .story {

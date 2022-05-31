@@ -65,7 +65,7 @@ function Login() {
           로그인
         </button>
       </div>
-      <Link to="/jinwooLogin" id="searchPw">
+      <Link to="/jinwooLogin" id={styles.searchPw}>
         비밀번호를 잊으셨나요?
       </Link>
     </div>

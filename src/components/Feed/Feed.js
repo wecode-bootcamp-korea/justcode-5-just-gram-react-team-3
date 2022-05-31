@@ -64,7 +64,7 @@ function Feed(props) {
             <div>
               <img
                 src={props.profileImage}
-                id="profileImg"
+                id={styles.profileImg}
                 alt="프로필 이미지"
               />
             </div>
@@ -77,7 +77,7 @@ function Feed(props) {
         <img
           src={props.imageUrl}
           alt="피드 이미지"
-          id="feedImg"
+          id={styles.feedImg}
           width="500px"
           height="500px"
         />

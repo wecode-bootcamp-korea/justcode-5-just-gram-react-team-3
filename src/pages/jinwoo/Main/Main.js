@@ -49,7 +49,11 @@ function Main() {
         </div>
         <div className={styles.navCenter}>
           <div id={styles.searchIcon}>
-            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" width="15px" />
+            <FontAwesomeIcon
+              className={styles.icon}
+              icon="fa-solid fa-magnifying-glass"
+              width="15px"
+            />
           </div>
           <input id={styles.search} type="text" placeholder="검색" />
         </div>
