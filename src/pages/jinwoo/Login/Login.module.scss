@@ -59,13 +59,18 @@
       background-color: rgb(172, 212, 234);
       cursor: auto;
     }
+
+    .signUp {
+      background-color: rgb(115, 180, 226);
+      cursor: pointer;
+    }
   }
 
   #searchPw {
     color: purple;
     text-align: center;
     background-color: white;
-    margin: 200px auto 0;
+    margin: 100px auto 0;
     text-decoration: none;
   }
 }
