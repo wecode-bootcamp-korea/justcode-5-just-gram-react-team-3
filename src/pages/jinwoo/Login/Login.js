@@ -11,6 +11,9 @@ function Login() {
   const updateBtn = () => {
     const isIdPwInputValid = idValue.includes('@') && pwValue.length >= 5;
     setIsValid(isIdPwInputValid);
+    if (isIdPwInputValid && window.event.keyCode === 13) {
+      loginBtn();
+    }
   };
 
   const handleIdInput = (e) => {
