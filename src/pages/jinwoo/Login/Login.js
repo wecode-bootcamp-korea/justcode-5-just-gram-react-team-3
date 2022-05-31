@@ -4,28 +4,29 @@ import { useNavigate, Link } from 'react-router-dom';
 import styles from './Login.module.scss';
 
 function Login() {
-  const [idValue, setIdValue] = useState('');
-  const [pwValue, setPwValue] = useState('');
-  const [isValid, setIsValid] = useState(false);
+  const [inputValues, setInputValues] = useState({
+    email: '',
+    password: '',
+  });
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setInputValues({
+      ...inputValues,
+      [name]: value,
+    });
+  };
 
+  const [isValid, setIsValid] = useState(false);
   const updateBtn = () => {
-    const isIdPwInputValid = idValue.includes('@') && pwValue.length >= 5;
+    const isIdPwInputValid =
+      inputValues.email.includes('@') && inputValues.password.length >= 5;
     setIsValid(isIdPwInputValid);
     if (isIdPwInputValid && window.event.keyCode === 13) {
       loginBtn();
     }
   };
 
-  const handleIdInput = (e) => {
-    setIdValue(e.target.value);
-  };
-
-  const handlePwInput = (e) => {
-    setPwValue(e.target.value);
-  };
-
   const navigate = useNavigate();
-
   const loginBtn = () => {
     fetch('http://52.79.143.176:8000/users/login', {
       method: 'POST',
@@ -33,8 +34,8 @@ function Login() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: idValue,
-        password: pwValue,
+        email: inputValues.email,
+        password: inputValues.password,
       }),
     })
       .then((response) => response.json())
@@ -52,8 +53,8 @@ function Login() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: idValue,
-        password: pwValue,
+        email: inputValues.email,
+        password: inputValues.password,
       }),
     })
       .then((response) => response.json())
@@ -69,15 +70,17 @@ function Login() {
       <h1>Justgram</h1>
       <div className={styles.loginForm}>
         <input
+          name="email"
           type="text"
           onKeyUp={updateBtn}
-          onChange={handleIdInput}
+          onChange={handleInput}
           placeholder="전화번호, 사용자 이름 또는 이메일"
         />
         <input
+          name="password"
           type="password"
           onKeyUp={updateBtn}
-          onChange={handlePwInput}
+          onChange={handleInput}
           placeholder="비밀번호"
         />
         <button
