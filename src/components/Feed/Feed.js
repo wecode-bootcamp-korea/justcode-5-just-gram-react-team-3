@@ -9,6 +9,7 @@ import {
   faCircleUser,
   faGear,
   faMagnifyingGlass,
+  faEllipsis,
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -23,6 +24,7 @@ library.add(
   faGear,
   faMagnifyingGlass,
   faInstagram,
+  faEllipsis,
 );
 
 function Feed(props) {
@@ -71,7 +73,7 @@ function Feed(props) {
             <span className={styles.nickName}>{props.userName}</span>
           </div>
           <div className={styles.feedsTopRight}>
-            <i className="fa-solid fa-ellipsis" />
+            <FontAwesomeIcon icon="fa-solid fa-ellipsis" />
           </div>
         </div>
         <img
@@ -100,7 +102,7 @@ function Feed(props) {
             </div>
           </div>
           <div>
-            <i className="fa-regular fa-bookmark" />
+            <FontAwesomeIcon icon="fa-solid fa-bookmark" color="gray" />
           </div>
         </div>
         <div className={styles.feedsLikes}>
