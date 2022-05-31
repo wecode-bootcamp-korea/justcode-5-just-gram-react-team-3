@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Main.scss';
+import styles from './Main.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHeart,
@@ -38,22 +38,22 @@ function Main() {
   }, []);
 
   return (
-    <div className="main">
-      <nav className="navigation">
-        <div className="navLeft">
-          <div id="instaIcon">
+    <div className={styles.main}>
+      <nav className={styles.navigation}>
+        <div className={styles.navLeft}>
+          <div id={styles.instaIcon}>
             <FontAwesomeIcon icon="fa-brands fa-instagram" />
           </div>
-          <div id="division" />
-          <div id="logo">Justgram</div>
+          <div id={styles.division} />
+          <div id={styles.logo}>Justgram</div>
         </div>
-        <div className="navCenter">
-          <div id="searchIcon">
+        <div className={styles.navCenter}>
+          <div id={styles.searchIcon}>
             <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" width="15px" />
           </div>
-          <input id="search" type="text" placeholder="검색" />
+          <input id={styles.search} type="text" placeholder="검색" />
         </div>
-        <div className="navRight">
+        <div className={styles.navRight}>
           <div>
             <img
               src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png"
@@ -92,149 +92,149 @@ function Main() {
             />
           );
         })}
-        <div className="mainRight">
-          <div className="ad">
-            <div className="adContents">
+        <div className={styles.mainRight}>
+          <div className={styles.ad}>
+            <div className={styles.adContents}>
               <img
                 src="images/jinwoo/rudy.jpeg"
-                id="profileImg"
+                id={styles.profileImg}
                 alt="프로필 이미지"
               />
             </div>
-            <div className="adContents">
+            <div className={styles.adContents}>
               <div>
-                <span className="nickName">wecode_bootcamp</span>
+                <span className={styles.nickName}>wecode_bootcamp</span>
               </div>
-              <div className="adDesc">WeCode | 위코드</div>
+              <div className={styles.adDesc}>WeCode | 위코드</div>
             </div>
           </div>
-          <div className="story">
-            <div className="storyTop">
-              <div className="storyText">스토리</div>
-              <div className="all">모두 보기</div>
+          <div className={styles.story}>
+            <div className={styles.storyTop}>
+              <div className={styles.storyText}>스토리</div>
+              <div className={styles.all}>모두 보기</div>
             </div>
-            <div className="storyUser">
+            <div className={styles.storyUser}>
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profileImg"
+                  id={styles.profileImg}
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="storyUserRight">
-                <div className="nickName">im__rudy</div>
-                <div className="time">16분 전</div>
+              <div id={styles.storyUserRight}>
+                <div className={styles.nickName}>im__rudy</div>
+                <div className={styles.time}>16분 전</div>
               </div>
             </div>
-            <div className="storyUser">
+            <div className={styles.storyUser}>
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profileImg"
+                  id={styles.profileImg}
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="storyUserRight">
-                <div className="nickName">im__rudy</div>
-                <div className="time">16분 전</div>
+              <div id={styles.storyUserRight}>
+                <div className={styles.nickName}>im__rudy</div>
+                <div className={styles.time}>16분 전</div>
               </div>
             </div>
-            <div className="storyUser">
+            <div className={styles.storyUser}>
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profileImg"
+                  id={styles.profileImg}
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="storyUserRight">
-                <div className="nickName">im__rudy</div>
-                <div className="time">16분 전</div>
+              <div id={styles.storyUserRight}>
+                <div className={styles.nickName}>im__rudy</div>
+                <div className={styles.time}>16분 전</div>
               </div>
             </div>
-            <div className="storyUser">
+            <div className={styles.storyUser}>
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profileImg"
+                  id={styles.profileImg}
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="storyUserRight">
-                <div className="nickName">im__rudy</div>
-                <div className="time">16분 전</div>
+              <div id={styles.storyUserRight}>
+                <div className={styles.nickName}>im__rudy</div>
+                <div className={styles.time}>16분 전</div>
               </div>
             </div>
           </div>
-          <div className="suggestion">
-            <div className="suggestionTop">
-              <div className="suggestionText">회원님을 위한 추천</div>
-              <div className="all">모두 보기</div>
+          <div className={styles.suggestion}>
+            <div className={styles.suggestionTop}>
+              <div className={styles.suggestionText}>회원님을 위한 추천</div>
+              <div className={styles.all}>모두 보기</div>
             </div>
-            <div className="suggestionUser">
+            <div className={styles.suggestionUser}>
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profileImg"
+                  id={styles.profileImg}
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="suggestionUserRight">
-                <div className="nickName">im__rudy</div>
-                <div className="others">im_jw님 외 2명이...</div>
+              <div id={styles.suggestionUserRight}>
+                <div className={styles.nickName}>im__rudy</div>
+                <div className={styles.others}>im_jw님 외 2명이...</div>
               </div>
-              <button className="followBtn">팔로우</button>
+              <button className={styles.followBtn}>팔로우</button>
             </div>
-            <div className="suggestionUser">
+            <div className={styles.suggestionUser}>
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profileImg"
+                  id={styles.profileImg}
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="suggestionUserRight">
-                <div className="nickName">im__rudy</div>
-                <div className="others">im_jw님 외 2명이...</div>
+              <div id={styles.suggestionUserRight}>
+                <div className={styles.nickName}>im__rudy</div>
+                <div className={styles.others}>im_jw님 외 2명이...</div>
               </div>
-              <button className="followBtn">팔로우</button>
+              <button className={styles.followBtn}>팔로우</button>
             </div>
-            <div className="suggestionUser">
+            <div className={styles.suggestionUser}>
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profileImg"
+                  id={styles.profileImg}
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="suggestionUserRight">
-                <div className="nickName">im__rudy</div>
-                <div className="others">im_jw님 외 2명이...</div>
+              <div id={styles.suggestionUserRight}>
+                <div className={styles.nickName}>im__rudy</div>
+                <div className={styles.others}>im_jw님 외 2명이...</div>
               </div>
-              <button className="followBtn">팔로우</button>
+              <button className={styles.followBtn}>팔로우</button>
             </div>
-            <div className="suggestionUser">
+            <div className={styles.suggestionUser}>
               <div>
                 <img
                   src="images/jinwoo/rudy.jpeg"
-                  id="profileImg"
+                  id={styles.profileImg}
                   alt="프로필 이미지"
                 />
               </div>
-              <div id="suggestionUserRight">
-                <div className="nickName">im__rudy</div>
-                <div className="others">im_jw님 외 2명이...</div>
+              <div id={styles.suggestionUserRight}>
+                <div className={styles.nickName}>im__rudy</div>
+                <div className={styles.others}>im_jw님 외 2명이...</div>
               </div>
-              <button className="followBtn">팔로우</button>
+              <button className={styles.followBtn}>팔로우</button>
             </div>
           </div>
-          <p className="infoText">
+          <p className={styles.infoText}>
             Justgram · 정보 · 지원 · 홍보 센터 · API ·<br />
             채용 정보 · 개인정보처리방침 약관 ·<br />
             디렉터리 · 프로필 · 해시태그 · 언어
             <br />
           </p>
-          <p className="infoText">
+          <p className={styles.infoText}>
             <i className="fa-solid fa-copyright" />
             2022 JUSTGRAM
           </p>

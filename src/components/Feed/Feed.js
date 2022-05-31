@@ -12,7 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
-import './Feed.scss';
+import styles from './Feed.module.scss';
 
 library.add(
   faHeart,
@@ -58,9 +58,9 @@ function Feed(props) {
 
   return (
     <div>
-      <article className="feeds">
-        <div className="feedsTop">
-          <div className="feedsTopLeft">
+      <article className={styles.feeds}>
+        <div className={styles.feedsTop}>
+          <div className={styles.feedsTopLeft}>
             <div>
               <img
                 src={props.profileImage}
@@ -68,9 +68,9 @@ function Feed(props) {
                 alt="프로필 이미지"
               />
             </div>
-            <span className="nickName">{props.userName}</span>
+            <span className={styles.nickName}>{props.userName}</span>
           </div>
-          <div className="feedsTopRight">
+          <div className={styles.feedsTopRight}>
             <i className="fa-solid fa-ellipsis" />
           </div>
         </div>
@@ -81,12 +81,14 @@ function Feed(props) {
           width="500px"
           height="500px"
         />
-        <div className="feedsIcons">
-          <div className="feedsIconsLeft">
+        <div className={styles.feedsIcons}>
+          <div className={styles.feedsIconsLeft}>
             <div>
               <FontAwesomeIcon
                 icon="fa-solid fa-heart"
-                className={isLiked ? 'redHeart' : 'grayHeart'}
+                className={
+                  isLiked ? `${styles.redHeart}` : `${styles.grayHeart}`
+                }
                 onClick={toggleHeartBtn}
               />
             </div>
@@ -101,20 +103,20 @@ function Feed(props) {
             <i className="fa-regular fa-bookmark" />
           </div>
         </div>
-        <div className="feedsLikes">
+        <div className={styles.feedsLikes}>
           <div>
             <img
               src={props.likePeople.likePeopleImageUrl}
-              id="profileImg"
+              id={styles.profileImg}
               alt="프로필 이미지"
             />
           </div>
           <div>
-            <span className="nickName">{props.likePeople.nickname}</span>님 외{' '}
-            {props.likePeople.likeCnt}명이 좋아합니다
+            <span className={styles.nickName}>{props.likePeople.nickname}</span>
+            님 외 {props.likePeople.likeCnt}명이 좋아합니다
           </div>
         </div>
-        <div className="feedsComments">
+        <div className={styles.feedsComments}>
           {commentList.map((comment) => {
             return (
               <Comment
@@ -124,19 +126,23 @@ function Feed(props) {
               />
             );
           })}
-          <div className="time feedTime">{props.date}</div>
-          <div className="writeComment">
+          <div className={`${styles.time} ${styles.feedTime}`}>
+            {props.date}
+          </div>
+          <div className={styles.writeComment}>
             <input
               onKeyUp={updateBtn}
               onChange={handleCommentInput}
-              id="comment"
+              id={styles.comment}
               type="text"
               placeholder="댓글 달기..."
               value={commentValue}
             />
             <button
               disabled={isValid ? false : true}
-              className={isValid ? 'activated' : 'deactivated'}
+              className={
+                isValid ? `${styles.activated}` : `${styles.deactivated}`
+              }
               onClick={postComment}
             >
               게시

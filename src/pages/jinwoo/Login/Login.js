@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-import './Login.scss';
+import styles from './Login.module.scss';
 
 function Login() {
   const [idValue, setIdValue] = useState('');
@@ -27,9 +27,9 @@ function Login() {
     navigate('/jinwooMain');
   };
   return (
-    <div className="container">
+    <div className={styles.container}>
       <h1>Justgram</h1>
-      <div className="loginForm">
+      <div className={styles.loginForm}>
         <input
           type="text"
           onKeyUp={updateBtn}
@@ -44,7 +44,7 @@ function Login() {
         />
         <button
           disabled={isValid ? false : true}
-          className={isValid ? 'activated' : 'deactivated'}
+          className={isValid ? `${styles.activated}` : `${styles.deactivated}`}
           onClick={goToMain}
         >
           로그인
