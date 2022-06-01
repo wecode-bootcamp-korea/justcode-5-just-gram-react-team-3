@@ -5,7 +5,7 @@ import "./Login.scss";
 
 
 function Login() {
-  const signupAPI = "http://52.79.143.176:8000/users/signup";
+  const signUpAPI = "http://52.79.143.176:8000/users/signup";
   const loginAPI = "http://52.79.143.176:8000/users/login";
   const [userId, setUserId] = useState("");
   const [userPassword, setPassword] = useState("");
@@ -16,60 +16,86 @@ function Login() {
     return (userId.includes("@") && userPassword.length > 7);
   }
 
-  // const buttonOnclick = () => {
-  //   if (isActiveLoginBtn()) {
-  //     navigate("/main",
-  //     {state: userId});
-  //   } else {
-  //     navigate("/");
-  //   }
-  // }
+  const handleEnterKey = (e) => {
+    return e.key === "Enter";
+  };
+
+  const handleKey = (classId) => {
+    if (handleEnterKey && isActiveLoginBtn) {
+      loginWithAPI();
+    }
+  }
+
+  const login = () => {
+    if (isActiveLoginBtn()) {
+      navigate("/main",
+      {state: userId});
+    } else {
+      navigate("/");
+    }
+  }
 
   const buttonOnclick = () => {
     if (isActiveLoginBtn()) {
-      fetch(loginAPI, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: userId,
-          password: userPassword,
-        }),
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          console.log("결과: ", result)
-          let msg = result.message;
-          if (msg.includes("SUCCESS")) {
-            navigate("/main",
-            {state: userId});
-          } else if (msg.includes('client input invalid')) {
-            alert("please check your id and password")
-            navigate("/");
-          } else {
-            navigate("/");
-          }
-        });
+      login();
+      //loginWithAPI();
     }
   }
 
   const buttonOnclickSignup = () => {
     if (isActiveLoginBtn()) {
-      fetch(signupAPI, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: userId,
-          password: userPassword,
-        }),
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          console.log("결과: ", result)
-          let msg = result.message;
+      signUp();
+    }
+  }
+
+  const loginWithAPI = () => {
+      fetchAPI(loginAPI)
+  }
+
+  const signUp= () => {
+    fetchAPI(signUpAPI)
+}
+
+  const fetchAPI = (address) => {
+    fetch(address, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: userId,
+        password: userPassword,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (address.includes('login')) {
+          isLoginValid(result)
+        } else if (address.includes('signup')) {
+          isSignUpValid(result)
+        } else {
+          alert("target not valid")
+        }
+      }); 
+  }
+
+  const isLoginValid = (fetchResult) => {
+    console.log("결과: ", fetchResult)
+    let msg = fetchResult.message;
+    if (msg.includes("SUCCESS")) {
+      navigate("/main",
+      {state: userId});
+    } else if (msg.includes('client input invalid')) {
+      alert("please check your id and password")
+      navigate("/");
+    } else {
+      navigate("/");
+    }
+  }
+
+  const isSignUpValid = (fetchResult) => {
+    console.log("결과: ", fetchResult)
+          let msg = fetchResult.message;
           if (msg.includes("SUCCESS")) {
             navigate("/main",
             {state: userId});
@@ -83,10 +109,7 @@ function Login() {
             alert('SignUp failed.')
             navigate("/");
           }
-        });
-    }
   }
-
 
   return (
     <div className="Login">
@@ -104,6 +127,7 @@ function Login() {
               onChange={(event) => {
                 setUserId(event.target.value);
               }}
+              onKeyUp={handleKey}
             />
             <input
               type="password"

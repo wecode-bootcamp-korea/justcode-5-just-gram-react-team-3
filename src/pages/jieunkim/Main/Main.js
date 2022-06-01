@@ -22,7 +22,6 @@ function Main() {
   const popupCloseHandler = (e) => {
     setMyMenuVisible(e);
   };
-
   
   const [feeds, setFeeds] = useState([]);
   useEffect(() => {

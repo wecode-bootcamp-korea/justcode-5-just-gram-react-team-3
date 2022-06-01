@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./Comment.scss"
+
 const Comment =(props) => {
   const imgLiked = "/images/jieunkim/heart-red.png";
 
@@ -7,23 +8,17 @@ const Comment =(props) => {
   const content = props.content;
 
   const [isShownCommentOpt, setShownCommentOpt] = useState(false);
-  const [isCommentRemoved, setCommentRemove] = useState(false);
   const [isCommentLiked, setCommentLiked] = useState(props.isLiked);
-  
 
   const handleCommentLikeBtn = () => {
-    console.log(props.key)
-    console.log(props.removed)
     setCommentLiked(!isCommentLiked);
   };
 
   const handleRemoveBtn = () => {
-    setCommentRemove(isCommentRemoved);
+    props.handleRemovedData(props.id)
   };
 
   return (
-    <>
-    {isCommentRemoved ? (<></>) :
     <>
       <div className="comment-content"
         onMouseEnter={() => setShownCommentOpt(true)}
@@ -65,8 +60,6 @@ const Comment =(props) => {
         </div>
         </div> 
       </div>
-    </>
-    }
     </>
   );
 }

@@ -1,48 +1,68 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
 import Comment from "./Comment";
-import { format, formatDistance, formatRelative, subDays } from 'date-fns'
+import { formatDistance, subDays } from 'date-fns'
 
 const Feed = (props) => {
+  const useComponentDidMount = () => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = true;
+    }, []);
+    return ref.current;
+  };
 
-	const [isLiked, setLiked] = useState(false);
-	const [cntLiked, setCntLiked] = useState(0);
+  const isComponentMounted = useComponentDidMount();
 
-  const [commentInput, setCommentInput] = useState("");
-	const [commentList, setCommentList] = useState(props.comments);
-	
-	const [isShownCommentOpt, setShownCommentOpt] = useState(false);
-
-	const [dt, setDt] = useState("time-stamp");
-
-
-	const imgLiked = "/images/jieunkim/heart-red.png";
+  const imgLiked = "/images/jieunkim/heart-red.png";
   const imgNotLiked = "/images/jieunkim/heart.png";
-	const iconLiked = isLiked ? imgLiked : imgNotLiked;
 
-	const currentDate = new Date();
-	const postedDate = new Date(props.date);
-	
-	const sincePosted = formatDistance(subDays(postedDate, 0), currentDate, {addSuffix: false});
+  const [isLiked, setLiked] = useState(false);
+  const [cntLiked, setCntLiked] = useState(props.likePeople.likeCnt);
+  const [commentInput, setCommentInput] = useState("");
+  const [commentList, setCommentList] = useState(props.comments);
+  const [commentRemovedList, setCommentRemovedList] = useState([]);
+  const [timeStamp, setTimeStamp] = useState("time-stamp");
 
-	//const sincePosed = (currentDate.getTime() - postedDate.getTime()) / 60
-	const handleLiked = () => {
+  const handleRemovedData = (element) => {
+    setCommentRemovedList([...commentRemovedList, element]);
+  };
+
+  const iconLiked = isLiked ? imgLiked : imgNotLiked;
+
+  const handleLiked = () => {
     setLiked(!isLiked);
   };
 
-	const handleEnterKey = (e) => {
+  useEffect(() => {
+    if (isComponentMounted) {
+      isLiked ? setCntLiked(cntLiked + 1) : setCntLiked(cntLiked - 1);
+    }
+  }, [isLiked]);
+
+  const currentDate = new Date();
+  const postedDate = new Date(props.date);
+
+  const sincePosted = formatDistance(subDays(postedDate, 0), currentDate, {
+    addSuffix: false,
+  });
+
+  useEffect(() => {
+    setTimeStamp(sincePosted);
+  }, [sincePosted]);
+
+  const handleEnterKey = (e) => {
     return e.key === "Enter";
   };
 
-	const isActiveCommentInput = () => {
+  const isActiveCommentInput = () => {
     return commentInput.length > 0;
-  }; 
+  };
 
-	const isActivePostBtn = () => {
+  const isActivePostBtn = () => {
     return isActiveCommentInput();
   };
 
-	const handleKeyOnInput = (e) => {
+  const handleKeyOnInput = (e) => {
     if (handleEnterKey(e)) {
       postCommentInput();
     }
@@ -54,7 +74,7 @@ const Feed = (props) => {
     }
   };
 
-	const postCommentInput = () => {
+  const postCommentInput = () => {
     setCommentList([
       ...commentList,
       {
@@ -64,10 +84,8 @@ const Feed = (props) => {
         isLiked: isLiked,
       },
     ]);
-		console.log(commentList);
-		console.log(commentList[commentList.length - 1].id);
     setCommentInput("");
-  }
+  };
 
   return (
     <article className="article-container">
@@ -147,7 +165,7 @@ const Feed = (props) => {
         <span>&nbsp;</span>
         <span className="text-likedby">님 외&nbsp;</span>
         <span className="text-likedby" id="text-likedby">
-          {props.likePeople.likeCnt}
+          {cntLiked}
         </span>
         <span className="text-likedby">명이</span>
         <span>&nbsp;</span>
@@ -164,19 +182,24 @@ const Feed = (props) => {
         </div>
       </div>
       <div className="comment">
-					{commentList.slice(-props.commentLimit).map((comment) => (
-          <Comment 
-					key ={comment.id}
-					author = {comment.author}
-					content = {comment.content}
-					isLiked = {comment.isLiked} 
-					/>
-        ))}
-				</div>
-        <div className="last-updated">
-          <span id="time-stamp">&nbsp;&nbsp;{sincePosted}&nbsp;전</span>
-        </div>
-				
+        {commentList
+          .filter((comment) => !commentRemovedList.includes(comment.id))
+          .slice(-props.commentLimit)
+          .map((comment) => (
+            <Comment
+              key={comment.id}
+              id={comment.id}
+              author={comment.author}
+              content={comment.content}
+              isLiked={comment.isLiked}
+              handleRemovedData={handleRemovedData}
+            />
+          ))}
+      </div>
+      <div className="last-updated">
+        <span id="time-stamp">&nbsp;&nbsp;{timeStamp}&nbsp;전</span>
+      </div>
+
       <div className="new-comment">
         <input
           type="text"
