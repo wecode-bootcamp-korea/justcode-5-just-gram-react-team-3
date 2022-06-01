@@ -68,13 +68,14 @@ function Login() {
   return (
     <div className={styles.container}>
       <h1>Justgram</h1>
-      <div className={styles.loginForm}>
+      <form className={styles.loginForm}>
         <input
           name="email"
           type="text"
           onKeyUp={updateBtn}
           onChange={handleInput}
           placeholder="전화번호, 사용자 이름 또는 이메일"
+          autoComplete="username"
         />
         <input
           name="password"
@@ -82,18 +83,21 @@ function Login() {
           onKeyUp={updateBtn}
           onChange={handleInput}
           placeholder="비밀번호"
+          autoComplete="current-password"
         />
+
         <button
+          type="button"
           disabled={isValid ? false : true}
           className={isValid ? `${styles.activated}` : `${styles.deactivated}`}
           onClick={loginBtn}
         >
           로그인
         </button>
-        <button className={styles.signUp} onClick={signUpBtn}>
+        <button type="button" className={styles.signUp} onClick={signUpBtn}>
           회원가입
         </button>
-      </div>
+      </form>
       <Link to="/jinwooLogin" id={styles.searchPw}>
         비밀번호를 잊으셨나요?
       </Link>
