@@ -1,18 +1,22 @@
 $theme-background-color: rgba(249, 247, 247, 0.872);
 $theme-border-line: 1px solid rgb(234, 230, 230);
-$tooltip-shadow: 0 0 2px 0 lightgrey
-;
+$tooltip-shadow: 0 0 2px 0 lightgrey;
+
+@mixin flex-v-center {
+	display: flex;
+	align-items: center;
+}
 
 .tooltip-container {
-  position: relative;
+	position: relative;
 }
 
 .tooltip-box {
 	background-color: white;
-  position: absolute;
-  border-radius: 5px;
+	position: absolute;
+	border-radius: 5px;
 	right: 10px;
-  display: none;
+	display: none;
 }
 
 .tooltip-box.visible {
@@ -22,15 +26,18 @@ $tooltip-shadow: 0 0 2px 0 lightgrey
 }
 
 .tooltip-arrow {
-  position: absolute;
-  top: -10px;
-  right: 8%;
-  border-width: 5px;
+	position: absolute;
+	top: -10px;
+	right: 8%;
+	border-width: 5px;
 	box-shadow: $tooltip-shadow;
 }
 
-.tooltip-profile, .tooltip-save, .tooltip-setting, .tooltip-logout {
-	display: flex;
+.tooltip-profile,
+.tooltip-save,
+.tooltip-setting,
+.tooltip-logout {
+	@include flex-v-center;
 	margin: 15px 10px;
 }
 

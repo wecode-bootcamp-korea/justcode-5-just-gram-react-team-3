@@ -1,0 +1,76 @@
+$theme-background-color: rgba(249, 247, 247, 0.872);
+$theme-border-line: 0.5px solid rgb(234, 230, 230);
+$tooltip-shadow: 0 0 2px 0 lightgrey;
+
+@mixin flex-v-center {
+	display: flex;
+	align-items: center;
+}
+
+.searchBarRes {
+	background-color: white;
+	position: absolute;
+	top: 160%;
+	left: 3%;
+	border-radius: 5px;
+	right: 10px;
+}
+
+.searchBarRes.visible {
+	border: $theme-border-line;
+}
+
+
+.searchRes-container-hide {
+	display: none;
+}
+
+.searchRes-container {
+	border-bottom: $theme-border-line;
+}
+
+.searchRes-box {
+	background-color: white;
+	border-radius: 5px;
+	right: 10px;
+	display: none;
+}
+
+.searchRes-box.visible {
+	display: flex;
+	flex-direction: column;
+	box-shadow: $tooltip-shadow;
+}
+
+.searchRes-arrow {
+	position: absolute;
+	top: -10px;
+	right: 8%;
+	border-width: 5px;
+	box-shadow: $tooltip-shadow;
+}
+
+.tooltip-profile {
+	display: flex;
+	margin: 15px 10px;
+
+	p {
+		width: 150px;
+		font-size: 12px;
+	}
+}
+
+.searchRes-profile {
+	@include flex-v-center;
+	margin: 0;
+
+	&:hover {
+		background-color: $theme-background-color;
+	}
+}
+
+.searchRes-profile-content {
+	@include flex-v-center;
+	margin: 15px 10px;
+
+}

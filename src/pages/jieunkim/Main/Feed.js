@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Comment from "./Comment";
-import { formatDistance, subDays } from 'date-fns'
+import { formatDistance, subDays } from "date-fns";
 
 const Feed = (props) => {
   const useComponentDidMount = () => {
