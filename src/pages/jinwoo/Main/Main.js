@@ -12,7 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
-import Feed from '../../../components/Feed/Feed';
+import Feed from '../../../components/jinwoo/Feed/Feed';
 
 library.add(
   faHeart,

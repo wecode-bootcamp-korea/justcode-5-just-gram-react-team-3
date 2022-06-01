@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Comment from '../../components/Comment/Comment';
+import Comment from '../Comment/Comment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHeart,
