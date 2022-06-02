@@ -1,48 +1,26 @@
-import React, { useInsertionEffect } from "react";
-import { useState, useEffect, useCallback } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, {  useState, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import MyMenu from "./MyMenu";
 import Feed from "./Feed";
 import "./Main.scss";
 import "./SearchBar.scss"
-import userEvent from "@testing-library/user-event";
 
 function Main() {
+  /* TODO feed carousel */
   const pageFeedId = 1;
   const commentLimit = 3;
 
   /* temp variables/functions to be done */
   const getLoginUserId = useLocation().state;
+  const loginUserId = getLoginUserId == null ? "anonymous" : getLoginUserId.split("@")[0];
 
-  const loginUserId = getLoginUserId == null ? "temp" : getLoginUserId;
-
-  /* useState */
   const [searchBarInput, setSearchBarInput] = useState("");
   const [isActiveSearchBar, setActiveSearchBar] = useState(false);
   const [isMyMenuVisible, setMyMenuVisible] = useState(false);
+  
   const [isSearchResVisible, setSearchResVisible] = useState(false);
-  const [userList, setUserList] = useState([]);
-  const [feeds, setFeeds] = useState([]);
-
-  const popupCloseHandler = (e) => {
-    setMyMenuVisible(e);
-  };
-
-  useEffect(() => {
-    fetch("http://localhost:3000/data/CommentData.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setFeeds(data);
-      });
-  });
-
-
-  useEffect(() => {
-    setUserList(Array.from(new Set(feeds
-      .map((feed) => feed.author || feed.comments.author))))
-  },[feeds])
-
+  
   const handleEnterKey = (e) => {
     return e.key === "Enter";
   };
@@ -52,10 +30,34 @@ function Main() {
       setSearchBarInput(e.target.value);
     }
   };
+
+  const [feeds, setFeeds] = useState([]);
+  const [userList, setUserList] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/data/jieunkim/CommentData.json")
+    .then((res) => res.json())
+    .then((data) => {
+      setFeeds(data);
+      setUserList(Array.from(new Set(data
+        .map((feed) => ({[feed.author]: feed.profileImageUrl}))))) 
+    });
+  });
   
+    
+  /* TODO : merge inputs handler */  
+  const [inputs, setInputs] = useState({});
+  const handleInputByName = (event) => {
+    setInputs((prevInputs) => ({
+      ...prevInputs, [event.target.name]: event.target.value
+    }))}
+      
+  // const popupCloseHandler = (e) => {
+  //   setMyMenuVisible(e);
+  // };
+
     return (
       <div className="main-page">
-        <body className="main-body">
+        <div className="main-body">
           <div className="main-container">
             <nav>
               <div className="nav nav-content">
@@ -91,7 +93,6 @@ function Main() {
                         setSearchResVisible(!isSearchResVisible);
                       }
                     }}
-                    onClick={console.log()}
                   />
                   <img
                     className={`icon-search ${
@@ -103,12 +104,13 @@ function Main() {
                   {!isSearchResVisible ? <></> : 
                   <div className={!isSearchResVisible ? "searchBarRes visible" : "searchBarRes"}>
                     {userList
-                      .filter((user) => user.includes(searchBarInput))
+                      .filter((user) => Object.keys(user).toString().includes(searchBarInput))
                       .map((user, index) => (
                         <SearchBar 
                         key={index} 
                         show={true}
-                        user={user} 
+                        user={Object.keys(user).toString()}
+                        profileImageUrl={Object.values(user).toString()}
                         />
                       ))}
                   </div>}
@@ -138,7 +140,7 @@ function Main() {
                       }}
                     ></img>
                     <MyMenu
-                      onClose={popupCloseHandler}
+                      //onClose={popupCloseHandler}
                       show={isMyMenuVisible}
                     />
                   </div>
@@ -154,6 +156,7 @@ function Main() {
                       <Feed
                         key={feed.feedId}
                         loginUserId={loginUserId}
+                        profileImageUrl={feed.profileImageUrl}
                         author={feed.author}
                         content={feed.content}
                         isLiked={feed.isLiked}
@@ -207,7 +210,7 @@ function Main() {
                           className="story-user-id user-id"
                           id="story-user1-id"
                         >
-                          user_id
+                          lee
                         </p>
                         <p
                           className="story-user-update user-update"
@@ -223,7 +226,7 @@ function Main() {
                           className="user-icon"
                           id="story-user2-icon"
                           alt="rf2"
-                          src="/images/jieunkim/profile-img/user.png"
+                          src="/images/jieunkim/profile-img/user-profile.png"
                         />
                       </div>
                       <div className="story-user-info user-info">
@@ -231,7 +234,7 @@ function Main() {
                           className="story-user-id user-id"
                           id="story-user2-id"
                         >
-                          user_id
+                          park
                         </p>
                         <p
                           className="story-user-update user-update"
@@ -247,7 +250,7 @@ function Main() {
                           className="user-icon"
                           id="story-user3-icon"
                           alt="rf3"
-                          src="/images/jieunkim/profile-img/user.png"
+                          src="/images/jieunkim/profile-img/man2.png"
                         />
                       </div>
                       <div className="story-user-info user-info">
@@ -255,7 +258,7 @@ function Main() {
                           className="story-user-id user-id"
                           id="story-user3-id"
                         >
-                          user_id
+                          seong
                         </p>
                         <p
                           className="story-user-update user-update"
@@ -271,7 +274,7 @@ function Main() {
                           className="user-icon"
                           id="story-user4-icon"
                           alt="rf4"
-                          src="/images/jieunkim/profile-img/user.png"
+                          src="/images/jieunkim/profile-img/account.png"
                         />
                       </div>
                       <div className="story-user-info user-info">
@@ -279,7 +282,7 @@ function Main() {
                           className="story-user-id user-id"
                           id="story-user4-id"
                         >
-                          user_id
+                          jung
                         </p>
                         <p
                           className="story-user-update user-update"
@@ -304,12 +307,38 @@ function Main() {
                             className="user-icon"
                             id="rf1-icon"
                             alt="rf1"
-                            src="/images/jieunkim/profile-img/user.png"
+                            src="/images/jieunkim/profile-img/man-avatar.png"
                           />
                         </div>
                         <div className="rf-user-info user-info">
                           <p className="rf-user-id user-id" id="rf1-id">
-                            user_id
+                            wecode
+                          </p>
+                          <p
+                            className="rf-user-update user-update"
+                            id="rf1-update"
+                          >
+                            location
+                          </p>
+                        </div>
+                      </div>
+                      <div className="recommend-user-right">
+                        <p className="follow">팔로우</p>
+                      </div>
+                    </div>
+                    <div className="recommend-user">
+                      <div className="recommend-user-left">
+                        <div className="rf-profile user-profile">
+                          <img
+                            className="user-icon"
+                            id="rf1-icon"
+                            alt="rf1"
+                            src="/images/jieunkim/profile-img/user2.png"
+                          />
+                        </div>
+                        <div className="rf-user-info user-info">
+                          <p className="rf-user-id user-id" id="rf1-id">
+                            justcode
                           </p>
                           <p
                             className="rf-user-update user-update"
@@ -335,33 +364,7 @@ function Main() {
                         </div>
                         <div className="rf-user-info user-info">
                           <p className="rf-user-id user-id" id="rf1-id">
-                            user_id
-                          </p>
-                          <p
-                            className="rf-user-update user-update"
-                            id="rf1-update"
-                          >
-                            location
-                          </p>
-                        </div>
-                      </div>
-                      <div className="recommend-user-right">
-                        <p className="follow">팔로우</p>
-                      </div>
-                    </div>
-                    <div className="recommend-user">
-                      <div className="recommend-user-left">
-                        <div className="rf-profile user-profile">
-                          <img
-                            className="user-icon"
-                            id="rf1-icon"
-                            alt="rf1"
-                            src="/images/jieunkim/profile-img/user.png"
-                          />
-                        </div>
-                        <div className="rf-user-info user-info">
-                          <p className="rf-user-id user-id" id="rf1-id">
-                            user_id
+                            bootcamp
                           </p>
                           <p
                             className="rf-user-update user-update"
@@ -390,7 +393,7 @@ function Main() {
           </div>
 
           <script src="./js/main.js"></script>
-        </body>
+        </div>
       </div>
     );
 }

@@ -24,7 +24,7 @@ const SearchBar = (props) => {
               className="author-icon-profile"
               id="author-icon-profile"
               alt="author"
-              src="/images/jieunkim/profile-img/cat.png"
+              src={props.profileImageUrl}
             />
           </div>
           <div className="author-info user-info">

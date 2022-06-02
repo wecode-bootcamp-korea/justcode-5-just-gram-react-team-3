@@ -4,10 +4,10 @@ import "./MyMenu.scss";
 const MyMenu = (props) => {
   const [show, setShow] = useState(false);
 
-  const closeHandler = (e) => {
-    setShow(false);
-    props.onClose(false);
-  };
+  // const closeHandler = (e) => {
+  //   setShow(false);
+  //   props.onClose(false);
+  // };
 
   useEffect(() => {
     setShow(props.show);

@@ -16,7 +16,7 @@ const Feed = (props) => {
   const imgLiked = "/images/jieunkim/heart-red.png";
   const imgNotLiked = "/images/jieunkim/heart.png";
 
-  const [isLiked, setLiked] = useState(false);
+  const [isLiked, setLiked] = useState(props.isLiked);
   const [cntLiked, setCntLiked] = useState(props.likePeople.likeCnt);
   const [commentInput, setCommentInput] = useState("");
   const [commentList, setCommentList] = useState(props.comments);
@@ -96,7 +96,7 @@ const Feed = (props) => {
               className="author-icon-profile"
               id="author-icon-profile"
               alt="author"
-              src="/images/jieunkim/profile-img/cat.png"
+              src={props.profileImageUrl}
             />
           </div>
           <div className="author-info user-info">
@@ -121,7 +121,7 @@ const Feed = (props) => {
           className="feed-photo"
           id="feed-photo"
           alt=""
-          src="/images/jieunkim/photo.png"
+          src={props.imageUrl}
         />
       </div>
       <div className="feed-icons">
@@ -157,7 +157,7 @@ const Feed = (props) => {
         <img
           className="icon-likeby user-icon"
           alt="who"
-          src="/images/jieunkim/profile-img/profile-likeby.png"
+          src={props.likePeople.imageUrl}
         />
         <span className="user-id-likedby text-likedby" id="user-id-likedby">
           {props.likePeople.nickname}

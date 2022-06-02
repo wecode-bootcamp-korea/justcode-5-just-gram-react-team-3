@@ -7,132 +7,132 @@
     "imageUrl": "url",
     "isLiked": true,
     "likePeople": {
-      "imageUrl": "imageUrl",
+      "likePeopleImageUrl": "likePeopleImageUrl",
       "nickname": "nick",
       "likeCnt": 13
     },
     "date": "2022-05-27",
     "comments": [
       {
-        "id": 1,
-        "author": "lee",
-        "content": "Hi1!",
+        "commentId": 1,
+        "commentAuthor": "lee",
+        "commentContent": "Hi1!",
         "isLiked": true
       },
       {
-        "id": 2,
-        "author": "kim",
-        "content": "Hi2!",
+        "commentId": 2,
+        "commentAuthor": "kim",
+        "commentContent": "Hi2!",
         "isLiked": true
       },
       {
-        "id": 3,
-        "author": "park",
-        "content": "Hi3!",
+        "commentId": 3,
+        "commentAuthor": "park",
+        "commentContent": "Hi3!",
         "isLiked": true
       },
       {
-        "id": 4,
-        "author": "jung",
-        "content": "Hi4!",
+        "commentId": 4,
+        "commentAuthor": "jung",
+        "commentContent": "Hi4!",
         "isLiked": false
       },
       {
-        "id": 5,
-        "author": "seong",
-        "content": "Hi5!",
+        "commentId": 5,
+        "commentAuthor": "seong",
+        "commentContent": "Hi5!",
         "isLiked": false
       }
     ]
   },
   {
     "feedId": 2,
-    "author": "kima",
+    "author": "kim",
     "profileImageUrl": "profileUrl",
     "content": "안녕!",
     "imageUrl": "url",
     "isLiked": true,
     "likePeople": {
-      "imageUrl": "imageUrl",
+      "likePeopleImageUrl": "likePeopleImageUrl",
       "nickname": "nick",
       "likeCnt": 13
     },
     "date": "2022-05-26",
     "comments": [
       {
-        "id": 1,
-        "author": "lee",
-        "content": "Hi1!",
+        "commentId": 1,
+        "commentAuthor": "lee",
+        "commentContent": "Hi1!",
         "isLiked": true
       },
       {
-        "id": 2,
-        "author": "kim",
-        "content": "Hi2!",
+        "commentId": 2,
+        "commentAuthor": "kim",
+        "commentContent": "Hi2!",
         "isLiked": true
       },
       {
-        "id": 3,
-        "author": "park",
-        "content": "Hi3!",
+        "commentId": 3,
+        "commentAuthor": "park",
+        "commentContent": "Hi3!",
         "isLiked": true
       },
       {
-        "id": 4,
-        "author": "jung",
-        "content": "Hi4!",
+        "commentId": 4,
+        "commentAuthor": "jung",
+        "commentContent": "Hi4!",
         "isLiked": false
       },
       {
-        "id": 5,
-        "author": "seong",
-        "content": "Hi5!",
+        "commentId": 5,
+        "commentAuthor": "seong",
+        "commentContent": "Hi5!",
         "isLiked": false
       }
     ]
   },
   {
     "feedId": 3,
-    "author": "kimb",
+    "author": "kim",
     "profileImageUrl": "profileUrl",
     "content": "안녕!",
     "imageUrl": "url",
     "isLiked": true,
     "likePeople": {
-      "imageUrl": "imageUrl",
+      "likePeopleImageUrl": "likePeopleImageUrl",
       "nickname": "nick",
       "likeCnt": 13
     },
     "date": "2022-05-26",
     "comments": [
       {
-        "id": 1,
-        "author": "lee",
-        "content": "Hi1!",
+        "commentId": 1,
+        "commentAuthor": "lee",
+        "commentContent": "Hi1!",
         "isLiked": true
       },
       {
-        "id": 2,
-        "author": "kim",
-        "content": "Hi2!",
+        "commentId": 2,
+        "commentAuthor": "kim",
+        "commentContent": "Hi2!",
         "isLiked": true
       },
       {
-        "id": 3,
-        "author": "park",
-        "content": "Hi3!",
+        "commentId": 3,
+        "commentAuthor": "park",
+        "commentContent": "Hi3!",
         "isLiked": true
       },
       {
-        "id": 4,
-        "author": "jung",
-        "content": "Hi4!",
+        "commentId": 4,
+        "commentAuthor": "jung",
+        "commentContent": "Hi4!",
         "isLiked": false
       },
       {
-        "id": 5,
-        "author": "seong",
-        "content": "Hi5!",
+        "commentId": 5,
+        "commentAuthor": "seong",
+        "commentContent": "Hi5!",
         "isLiked": false
       }
     ]
@@ -145,40 +145,40 @@
     "imageUrl": "url",
     "isLiked": true,
     "likePeople": {
-      "imageUrl": "imageUrl",
+      "likePeopleImageUrl": "likePeopleImageUrl",
       "nickname": "nick",
       "likeCnt": 13
     },
     "date": "2022-05-26",
     "comments": [
       {
-        "id": 1,
-        "author": "lee",
-        "content": "Hi1!",
+        "commentId": 1,
+        "commentAuthor": "lee",
+        "commentContent": "Hi1!",
         "isLiked": true
       },
       {
-        "id": 2,
-        "author": "kim",
-        "content": "Hi2!",
+        "commentId": 2,
+        "commentAuthor": "kim",
+        "commentContent": "Hi2!",
         "isLiked": true
       },
       {
-        "id": 3,
-        "author": "park",
-        "content": "Hi3!",
+        "commentId": 3,
+        "commentAuthor": "park",
+        "commentContent": "Hi3!",
         "isLiked": true
       },
       {
-        "id": 4,
-        "author": "jung",
-        "content": "Hi4!",
+        "commentId": 4,
+        "commentAuthor": "jung",
+        "commentContent": "Hi4!",
         "isLiked": false
       },
       {
-        "id": 5,
-        "author": "seong",
-        "content": "Hi5!",
+        "commentId": 5,
+        "commentAuthor": "seong",
+        "commentContent": "Hi5!",
         "isLiked": false
       }
     ]
@@ -191,40 +191,40 @@
     "imageUrl": "url",
     "isLiked": true,
     "likePeople": {
-      "imageUrl": "imageUrl",
+      "likePeopleImageUrl": "likePeopleImageUrl",
       "nickname": "nick",
       "likeCnt": 13
     },
     "date": "2022-05-26",
     "comments": [
       {
-        "id": 1,
-        "author": "lee",
-        "content": "Hi1!",
+        "commentId": 1,
+        "commentAuthor": "lee",
+        "commentContent": "Hi1!",
         "isLiked": true
       },
       {
-        "id": 2,
-        "author": "kim",
-        "content": "Hi2!",
+        "commentId": 2,
+        "commentAuthor": "kim",
+        "commentContent": "Hi2!",
         "isLiked": true
       },
       {
-        "id": 3,
-        "author": "park",
-        "content": "Hi3!",
+        "commentId": 3,
+        "commentAuthor": "park",
+        "commentContent": "Hi3!",
         "isLiked": true
       },
       {
-        "id": 4,
-        "author": "jung",
-        "content": "Hi4!",
+        "commentId": 4,
+        "commentAuthor": "jung",
+        "commentContent": "Hi4!",
         "isLiked": false
       },
       {
-        "id": 5,
-        "author": "seong",
-        "content": "Hi5!",
+        "commentId": 5,
+        "commentAuthor": "seong",
+        "commentContent": "Hi5!",
         "isLiked": false
       }
     ]
@@ -237,40 +237,40 @@
     "imageUrl": "url",
     "isLiked": true,
     "likePeople": {
-      "imageUrl": "imageUrl",
+      "likePeopleImageUrl": "likePeopleImageUrl",
       "nickname": "nick",
       "likeCnt": 13
     },
     "date": "2022-05-26",
     "comments": [
       {
-        "id": 1,
-        "author": "lee",
-        "content": "Hi1!",
+        "commentId": 1,
+        "commentAuthor": "lee",
+        "commentContent": "Hi1!",
         "isLiked": true
       },
       {
-        "id": 2,
-        "author": "kim",
-        "content": "Hi2!",
+        "commentId": 2,
+        "commentAuthor": "kim",
+        "commentContent": "Hi2!",
         "isLiked": true
       },
       {
-        "id": 3,
-        "author": "park",
-        "content": "Hi3!",
+        "commentId": 3,
+        "commentAuthor": "park",
+        "commentContent": "Hi3!",
         "isLiked": true
       },
       {
-        "id": 4,
-        "author": "jung",
-        "content": "Hi4!",
+        "commentId": 4,
+        "commentAuthor": "jung",
+        "commentContent": "Hi4!",
         "isLiked": false
       },
       {
-        "id": 5,
-        "author": "seong",
-        "content": "Hi5!",
+        "commentId": 5,
+        "commentAuthor": "seong",
+        "commentContent": "Hi5!",
         "isLiked": false
       }
     ]
@@ -283,40 +283,40 @@
     "imageUrl": "url",
     "isLiked": true,
     "likePeople": {
-      "imageUrl": "imageUrl",
+      "likePeopleImageUrl": "likePeopleImageUrl",
       "nickname": "nick",
       "likeCnt": 13
     },
     "date": "2022-05-26",
     "comments": [
       {
-        "id": 1,
-        "author": "lee",
-        "content": "Hi1!",
+        "commentId": 1,
+        "commentAuthor": "lee",
+        "commentContent": "Hi1!",
         "isLiked": true
       },
       {
-        "id": 2,
-        "author": "kim",
-        "content": "Hi2!",
+        "commentId": 2,
+        "commentAuthor": "kim",
+        "commentContent": "Hi2!",
         "isLiked": true
       },
       {
-        "id": 3,
-        "author": "park",
-        "content": "Hi3!",
+        "commentId": 3,
+        "commentAuthor": "park",
+        "commentContent": "Hi3!",
         "isLiked": true
       },
       {
-        "id": 4,
-        "author": "jung",
-        "content": "Hi4!",
+        "commentId": 4,
+        "commentAuthor": "jung",
+        "commentContent": "Hi4!",
         "isLiked": false
       },
       {
-        "id": 5,
-        "author": "seong",
-        "content": "Hi5!",
+        "commentId": 5,
+        "commentAuthor": "seong",
+        "commentContent": "Hi5!",
         "isLiked": false
       }
     ]
@@ -329,40 +329,40 @@
     "imageUrl": "url",
     "isLiked": true,
     "likePeople": {
-      "imageUrl": "imageUrl",
+      "likePeopleImageUrl": "likePeopleImageUrl",
       "nickname": "nick",
       "likeCnt": 13
     },
     "date": "2022-05-26",
     "comments": [
       {
-        "id": 1,
-        "author": "lee",
-        "content": "Hi1!",
+        "commentId": 1,
+        "commentAuthor": "lee",
+        "commentContent": "Hi1!",
         "isLiked": true
       },
       {
-        "id": 2,
-        "author": "kim",
-        "content": "Hi2!",
+        "commentId": 2,
+        "commentAuthor": "kim",
+        "commentContent": "Hi2!",
         "isLiked": true
       },
       {
-        "id": 3,
-        "author": "park",
-        "content": "Hi3!",
+        "commentId": 3,
+        "commentAuthor": "park",
+        "commentContent": "Hi3!",
         "isLiked": true
       },
       {
-        "id": 4,
-        "author": "jung",
-        "content": "Hi4!",
+        "commentId": 4,
+        "commentAuthor": "jung",
+        "commentContent": "Hi4!",
         "isLiked": false
       },
       {
-        "id": 5,
-        "author": "seong",
-        "content": "Hi5!",
+        "commentId": 5,
+        "commentAuthor": "seong",
+        "commentContent": "Hi5!",
         "isLiked": false
       }
     ]
@@ -375,40 +375,40 @@
     "imageUrl": "url",
     "isLiked": true,
     "likePeople": {
-      "imageUrl": "imageUrl",
+      "likePeopleImageUrl": "likePeopleImageUrl",
       "nickname": "nick",
       "likeCnt": 13
     },
     "date": "2022-05-26",
     "comments": [
       {
-        "id": 1,
-        "author": "lee",
-        "content": "Hi1!",
+        "commentId": 1,
+        "commentAuthor": "lee",
+        "commentContent": "Hi1!",
         "isLiked": true
       },
       {
-        "id": 2,
-        "author": "kim",
-        "content": "Hi2!",
+        "commentId": 2,
+        "commentAuthor": "kim",
+        "commentContent": "Hi2!",
         "isLiked": true
       },
       {
-        "id": 3,
-        "author": "park",
-        "content": "Hi3!",
+        "commentId": 3,
+        "commentAuthor": "park",
+        "commentContent": "Hi3!",
         "isLiked": true
       },
       {
-        "id": 4,
-        "author": "jung",
-        "content": "Hi4!",
+        "commentId": 4,
+        "commentAuthor": "jung",
+        "commentContent": "Hi4!",
         "isLiked": false
       },
       {
-        "id": 5,
-        "author": "seong",
-        "content": "Hi5!",
+        "commentId": 5,
+        "commentAuthor": "seong",
+        "commentContent": "Hi5!",
         "isLiked": false
       }
     ]
@@ -421,40 +421,40 @@
     "imageUrl": "url",
     "isLiked": true,
     "likePeople": {
-      "imageUrl": "imageUrl",
+      "likePeopleImageUrl": "likePeopleImageUrl",
       "nickname": "nick",
       "likeCnt": 13
     },
     "date": "2022-05-26",
     "comments": [
       {
-        "id": 1,
-        "author": "lee",
-        "content": "Hi1!",
+        "commentId": 1,
+        "commentAuthor": "lee",
+        "commentContent": "Hi1!",
         "isLiked": true
       },
       {
-        "id": 2,
-        "author": "kim",
-        "content": "Hi2!",
+        "commentId": 2,
+        "commentAuthor": "kim",
+        "commentContent": "Hi2!",
         "isLiked": true
       },
       {
-        "id": 3,
-        "author": "park",
-        "content": "Hi3!",
+        "commentId": 3,
+        "commentAuthor": "park",
+        "commentContent": "Hi3!",
         "isLiked": true
       },
       {
-        "id": 4,
-        "author": "jung",
-        "content": "Hi4!",
+        "commentId": 4,
+        "commentAuthor": "jung",
+        "commentContent": "Hi4!",
         "isLiked": false
       },
       {
-        "id": 5,
-        "author": "seong",
-        "content": "Hi5!",
+        "commentId": 5,
+        "commentAuthor": "seong",
+        "commentContent": "Hi5!",
         "isLiked": false
       }
     ]

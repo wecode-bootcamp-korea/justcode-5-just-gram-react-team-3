@@ -5,12 +5,12 @@ import "./Login.scss";
 
 
 function Login() {
+  const navigate = useNavigate();
   const signUpAPI = "http://52.79.143.176:8000/users/signup";
   const loginAPI = "http://52.79.143.176:8000/users/login";
+  
   const [userId, setUserId] = useState("");
   const [userPassword, setPassword] = useState("");
-
-  const navigate = useNavigate();
  
   const isActiveLoginBtn = () => {
     return (userId.includes("@") && userPassword.length > 7);
@@ -28,17 +28,17 @@ function Login() {
 
   const login = () => {
     if (isActiveLoginBtn()) {
-      navigate("/main",
+      navigate("/jieunkimMain",
       {state: userId});
     } else {
-      navigate("/");
+      navigate("/jieunkimLogin");
     }
   }
 
   const buttonOnclick = () => {
     if (isActiveLoginBtn()) {
-      login();
-      //loginWithAPI();
+      //login();
+      loginWithAPI();
     }
   }
 
@@ -80,34 +80,33 @@ function Login() {
   }
 
   const isLoginValid = (fetchResult) => {
-    console.log("결과: ", fetchResult)
     let msg = fetchResult.message;
     if (msg.includes("SUCCESS")) {
-      navigate("/main",
+      navigate("/jieunkimMain",
       {state: userId});
-    } else if (msg.includes('client input invalid')) {
-      alert("please check your id and password")
-      navigate("/");
+    // Todo : alert message fn 
+    //} else if (msg.includes('client input invalid')) {
+    //alert("please check your id and password")
+    //navigate("/jieunkimLogin");
     } else {
-      navigate("/");
+      navigate("/jieunkimLogin");
     }
   }
 
   const isSignUpValid = (fetchResult) => {
-    console.log("결과: ", fetchResult)
           let msg = fetchResult.message;
           if (msg.includes("SUCCESS")) {
-            navigate("/main",
+            navigate("/jieunkimMain",
             {state: userId});
           } else if (msg.includes('EXISTING_USER')) {
             alert("SignUp failed. id exist")
-            navigate("/");
+            navigate("/jieunkimLogin");
           } else if (msg.includes('INVALID_PASSWORD')) {
             alert('SignUp failed. Over 8 letter…ain capital letters, numbers, and special letters');
-            navigate("/");
+            navigate("/jieunkimLogin");
           } else {
             alert('SignUp failed.')
-            navigate("/");
+            navigate("/jieunkimLogin");
           }
   }
 
