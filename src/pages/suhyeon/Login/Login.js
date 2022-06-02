@@ -18,18 +18,18 @@ function Login() {
   const requestHeaders = new Headers();
   requestHeaders.set("Content-type", "application/json");
 
-  const fetchData = async () => {
-    const response = await fetch("http://52.79.143.176:8000/users/login", {
-      method: "POST",
-      headers: requestHeaders,
-      body: JSON.stringify({
-        email: user.id,
-        password: user.password,
-      }),
-    });
-    const result = await response.json();
-    console.log("result:", result);
-  };
+  // const fetchData = async () => {
+  //   const response = await fetch("http://52.79.143.176:8000/users/login", {
+  //     method: "POST",
+  //     headers: requestHeaders,
+  //     body: JSON.stringify({
+  //       email: user.id,
+  //       password: user.password,
+  //     }),
+  //   });
+  //   const result = await response.json();
+  //   console.log("result:", result);
+  // };
 
   const isValid = user.id.includes("@") && user.password.length > 7;
 
@@ -62,7 +62,7 @@ function Login() {
         <button
           className={isValid ? "activated-login-btn" : "deactivated-login-btn"}
           type="submit"
-          onClick={fetchData}
+          onClick={goToMain}
           disabled={!isValid}
         >
           로그인
