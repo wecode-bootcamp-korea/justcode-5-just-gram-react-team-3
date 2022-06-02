@@ -29,7 +29,7 @@ $theme-color: white;
 
 .main_container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
 }
@@ -43,8 +43,6 @@ a {
 
 .header_style {
   border-bottom: $border-style;
-  position: fixed;
-  top: 0;
   width: 100%;
   background-color: $theme-color;
   padding: 10px 150px;
@@ -94,7 +92,6 @@ a {
 
 .feed_group {
   padding: 5px;
-  border: $border-style;
 }
 
 .aside_section {
@@ -107,6 +104,8 @@ a {
 .feed_container {
   @include flex-column2;
   justify-content: center;
+  border: $border-style;
+  margin-top: 10px;
 }
 
 .feed_header {
@@ -126,8 +125,8 @@ a {
 }
 
 .feed_photo {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 400px;
 }
 
 .feed_button_group {
@@ -361,7 +360,22 @@ a {
   font-size: 13px;
 }
 
-@media screen and (max-width: 900px) {
+.each_feed_content {
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.main_content {
+  margin-top: 10px;
+}
+
+.feed_date {
+  font-size: 15px;
+  margin-top: 10px;
+  color: gray;
+}
+
+@media screen and (max-width: 500px) {
   .aside_section {
     display: none;
   }

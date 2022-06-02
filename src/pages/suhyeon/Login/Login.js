@@ -1,36 +1,30 @@
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.scss";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 function Login() {
-  let [userId, setUserId] = useState("");
-  let [userPw, setUserPw] = useState("");
+  const [user, setUser] = useState({
+    id: "",
+    password: "",
+  });
+  const handleInput = (e) => {
+    const { value, name } = e.target;
+    setUser((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const requestHeaders = new Headers();
+  requestHeaders.set("Content-type", "application/json");
+
+  const isValid = user.id.includes("@") && user.password.length > 7;
 
   const navigate = useNavigate();
-
   const goToMain = () => {
-    navigate("/main");
-  };
-  const handleIdInput = (e) => {
-    setUserId(e.target.value);
-    // validationBtn(e.target.value, userPw);
-    validationBtn();
+    navigate("/suHyeonMain");
   };
 
-  const handlePwInput = (e) => {
-    setUserPw(e.target.value);
-    // validationBtn(userId, e.target.value);
-    validationBtn();
-  };
-
-  const validationBtn = () => {
-    if (userId.includes("@") && userPw.length > 7) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  // console.log(userId, userPw);
   return (
     <section className="login_container">
       <div className="login_logo-box">
@@ -38,34 +32,33 @@ function Login() {
       </div>
       <div className="input-box">
         <input
-          onChange={handleIdInput}
+          onChange={handleInput}
+          name="id"
           className="input-common identify"
           type="text"
           placeholder="전화번호, 사용자 이름 또는 이메일"
         />
         <input
-          onChange={handlePwInput}
+          onChange={handleInput}
+          name="password"
           className="input-common password"
           type="password"
           placeholder="비밀번호"
         />
 
         <button
-          style={{
-            backgroundColor: validationBtn() === true ? "blue" : "#c0dffd",
-          }}
-          className="login-btn"
+          className={isValid ? "activated-login-btn" : "deactivated-login-btn"}
           type="submit"
           onClick={goToMain}
-          disabled={!validationBtn()}
+          disabled={!isValid}
         >
           로그인
         </button>
       </div>
       <div className="extra-box">
-        <a className="find-password" href="/">
+        <Link to="/suhyeonMain" className="find-password">
           비밀번호를 잊으셨나요?
-        </a>
+        </Link>
       </div>
     </section>
   );

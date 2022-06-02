@@ -45,7 +45,18 @@ body {
   background-color: $theme-color;
 }
 
-.login-btn {
+.activated-login-btn {
+  display: block;
+  margin: $login-btn-margin-padding;
+  padding: $login-btn-margin-padding;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  background-color: blue;
+  color: $theme-color;
+}
+
+.deactivated-login-btn {
   display: block;
   margin: $login-btn-margin-padding;
   padding: $login-btn-margin-padding;

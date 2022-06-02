@@ -1,25 +1,26 @@
 import "./Main.scss";
-import Comment from "./Comment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Feed from "./Feed";
+import Story from "./Story";
+import Recommend from "./Recommend";
+import Info from "./Info";
+import { storyData } from "./stroyData";
+import { recommendData } from "./recommendData";
+import { infoData } from "./infoData";
+
 function Main() {
-  let [commentArr, setCommentArr] = useState([]);
-  let [comment, setComment] = useState("");
-  const enterCheck = (e) => {
-    if (e.key === "Enter") {
-      writeComment("lshyun955", e.target.value);
-      e.target.value = "";
-    }
-  };
+  const [feedList, setFeedList] = useState([]);
 
-  const valueCheck = (e) => {
-    setComment(e.target.value);
-  };
-
-  const writeComment = (writer, comment) => {
-    let temp = [...commentArr, { writer, comment }];
-    setCommentArr(temp);
-    setComment("");
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.PUBLIC_URL}/data/suhyeon/commentData.json`
+      );
+      const feeds = await response.json();
+      setFeedList(feeds);
+    };
+    fetchData();
+  }, []);
 
   return (
     <main className="main_container">
@@ -53,78 +54,21 @@ function Main() {
       </nav>
       <div className="contents">
         <section className="feed_group">
-          <article className="feed_container">
-            <section className="feed_header">
-              <section className="feed_writer">
-                <img
-                  className="feed_writer_photo"
-                  alt=""
-                  src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                />
-                <a href="/">lshyun955</a>
-              </section>
-              <button className="feed_btn"></button>
-            </section>
-            <img
-              alt="aa"
-              className="feed_photo"
-              src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-            />
-            <section className="feed_content">
-              <section className="feed_button_group">
-                <section className="like_comment_share">
-                  <button className="feed_btn">
-                    <i className="fa-regular fa-heart like fa-xl"></i>
-                  </button>
-                  <button className="feed_btn">
-                    <i className="fa-regular fa-comment fa-xl"></i>
-                  </button>
-                  <button className="feed_btn">
-                    <i className="fa-regular fa-share-from-square fa-xl"></i>
-                  </button>
-                </section>
-                <section className="bookmark">
-                  <button className="feed_btn">
-                    <i className="fa-regular fa-bookmark fa-xl"></i>
-                  </button>
-                </section>
-              </section>
-              <section className="like_list_box">
-                <div className="like_feed_user">
-                  <img
-                    alt="aa"
-                    className="like_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                  <a href="/">lshyun955</a>님&nbsp;
-                  <span className="bold">외&nbsp;10명</span>이&nbsp; 좋아합니다.
-                </div>
-              </section>
-              <section className="feed_comment">
-                <Comment commentList={commentArr} />
-              </section>
-              <section className="comment_box">
-                <input
-                  onKeyDown={enterCheck}
-                  onChange={valueCheck}
-                  // 질문1
-                  value={comment}
-                  className="write_comment"
-                  type="text"
-                  placeholder="댓글 달기"
-                />
-                <button
-                  // 질문2
-                  onClick={() => {
-                    writeComment("lshyun955", comment);
-                  }}
-                  className="write_comment_btn"
-                >
-                  게시
-                </button>
-              </section>
-            </section>
-          </article>
+          {feedList.map((feed) => {
+            return (
+              <Feed
+                key={feed.feedId}
+                author={feed.author.nickname}
+                content={feed.content}
+                date={feed.date}
+                comments={feed.comments}
+                imageUrl={feed.imageUrl}
+                likePeople={feed.likePeople}
+                profileImageUrl={feed.author.imageUrl}
+                isLiked={feed.isLiked}
+              />
+            );
+          })}
         </section>
         <aside className="aside_section">
           <section className="profile_box">
@@ -146,84 +90,15 @@ function Main() {
               <button className="feed_btn aside_btn">모두 보기</button>
             </section>
             <section className="story_list">
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">3시간 전</span>
-                </div>
-              </div>
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">16분 전</span>
-                </div>
-              </div>
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">25분 전</span>
-                </div>
-              </div>
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">20시간 전</span>
-                </div>
-              </div>
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">23시간 전</span>
-                </div>
-              </div>
-              <div className="aside_top_content">
-                <div className="stroy_box_border">
-                  <img
-                    alt="aa"
-                    className="story_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                </div>
-                <div className="story_profile_info">
-                  <a href="/">JustCode</a>
-                  <span className="time_info">방금 전</span>
-                </div>
-              </div>
+              {storyData.map((v) => (
+                <Story
+                  key={v.id}
+                  imageUrl={v.src}
+                  nickname={v.nickname}
+                  altValue={v.alt}
+                  date={v.date}
+                />
+              ))}
             </section>
           </section>
           <section className="recommend_box">
@@ -232,125 +107,22 @@ function Main() {
               <button className="feed_btn aside_btn">모두 보기</button>
             </section>
             <section className="story_list">
-              <div className="recommend_top_content">
-                <div className="recommend_photo_info">
-                  <img
-                    alt="aa"
-                    className="recommend_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                  <div className="recommend_profile_info">
-                    <a href="/">JustCode</a>
-                    <span className="follow_info">
-                      lshyun955님&nbsp;이 팔로...
-                    </span>
-                  </div>
-                </div>
-                <div className="follow_btn_box">
-                  <button className="follow_btn">팔로우</button>
-                </div>
-              </div>
-              <div className="recommend_top_content">
-                <div className="recommend_photo_info">
-                  <img
-                    alt="aa"
-                    className="recommend_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                  <div className="recommend_profile_info">
-                    <a href="/">JustCode</a>
-                    <span className="follow_info">
-                      lshyun955님&nbsp;이 팔로...
-                    </span>
-                  </div>
-                </div>
-                <div className="follow_btn_box">
-                  <button className="follow_btn">팔로우</button>
-                </div>
-              </div>
-              <div className="recommend_top_content">
-                <div className="recommend_photo_info">
-                  <img
-                    alt="aa"
-                    className="recommend_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                  <div className="recommend_profile_info">
-                    <a href="/">JustCode</a>
-                    <span className="follow_info">
-                      lshyun955님&nbsp;이 팔로...
-                    </span>
-                  </div>
-                </div>
-                <div className="follow_btn_box">
-                  <button className="follow_btn">팔로우</button>
-                </div>
-              </div>
-              <div className="recommend_top_content">
-                <div className="recommend_photo_info">
-                  <img
-                    alt="aa"
-                    className="recommend_profile_photo"
-                    src="https://images.unsplash.com/photo-1652972573839-827e275fbe97?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1665"
-                  />
-                  <div className="recommend_profile_info">
-                    <a href="/">JustCode</a>
-                    <span className="follow_info">
-                      lshyun955님&nbsp;이 팔로...
-                    </span>
-                  </div>
-                </div>
-                <div className="follow_btn_box">
-                  <button className="follow_btn">팔로우</button>
-                </div>
-              </div>
+              {recommendData.map((v) => (
+                <Recommend
+                  key={v.id}
+                  imageUrl={v.src}
+                  altValue={v.alt}
+                  nickname={v.nickname}
+                  info={v.info}
+                />
+              ))}
             </section>
           </section>
           <section className="company_info_box">
             <div className="etc_info">
-              <a className="info_link_box" href="/">
-                Justgram 정보
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                지원
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                홍보 센터
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                API
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                채용 정보
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                개인정보처리방침
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                약관
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                디렉터리
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                프로필
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                해시태그
-              </a>
-              ·
-              <a className="info_link_box" href="/">
-                언어
-              </a>
+              {infoData.map((v) => (
+                <Info key={v.id} infoName={v.infoName} />
+              ))}
             </div>
             <div className="copyright">© 2022 JUSTGRAM</div>
           </section>
