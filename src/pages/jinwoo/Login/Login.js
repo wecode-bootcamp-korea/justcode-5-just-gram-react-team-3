@@ -38,11 +38,18 @@ function Login() {
         password: inputValues.password,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 200) {
+          navigate('/jinwooMain');
+        } else {
+          alert('로그인 실패!');
+        }
+        return response.json();
+      })
       .then((result) => {
-        result.token !== undefined
-          ? navigate('/jinwooMain')
-          : alert(result.message);
+        if (result.token !== undefined) {
+          localStorage.setItem('token', result.token);
+        }
       });
   };
 
