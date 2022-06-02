@@ -1,0 +1,76 @@
+* {
+  background-color: lightgray;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  width: 500px;
+  border: 1px solid gray;
+  padding: 30px;
+  padding: 80px 0;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    background-color: white;
+    font-size: 100px;
+    margin: 0 0 30px 0;
+  }
+
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0 0 0;
+    background-color: white;
+
+    input {
+      width: 400px;
+      height: 50px;
+      margin: 10px auto;
+      border: 2px solid rgb(223, 234, 237);
+      background-color: rgb(247, 247, 247);
+      border-radius: 4px;
+      outline: none;
+      padding: 0 0 0 20px;
+    }
+
+    button {
+      width: 400px;
+      height: 50px;
+      font-size: 20px;
+      color: white;
+      margin: 10px auto;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    .activated {
+      background-color: rgb(115, 180, 226);
+      cursor: pointer;
+    }
+
+    .deactivated {
+      background-color: rgb(172, 212, 234);
+      cursor: auto;
+    }
+
+    .signUp {
+      background-color: rgb(115, 180, 226);
+      cursor: pointer;
+    }
+  }
+
+  #searchPw {
+    color: purple;
+    text-align: center;
+    background-color: white;
+    margin: 100px auto 0;
+    text-decoration: none;
+  }
+}
