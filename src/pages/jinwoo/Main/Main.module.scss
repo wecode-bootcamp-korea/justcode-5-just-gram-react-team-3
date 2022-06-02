@@ -1,0 +1,253 @@
+* {
+  background-color: #f9f9f9;
+}
+
+.main {
+  position: relative;
+
+  img {
+    margin: 0 4px;
+    cursor: pointer;
+  }
+
+  .navigation {
+    display: flex;
+    min-width: 600px;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30px;
+    height: 15px;
+    background-color: white;
+    padding: 30px;
+    margin-top: 60px;
+
+    .navCenter,
+    .navRight {
+      display: flex;
+      background-color: white;
+    }
+
+    .navLeft {
+      display: flex;
+      background-color: white;
+
+      #instaIcon {
+        font-size: 40px;
+        margin: 5px 0 0 0;
+        cursor: pointer;
+        background-color: white;
+      }
+
+      #logo {
+        font-family: 'Lobster', cursive;
+        font-size: 40px;
+        cursor: pointer;
+        background-color: white;
+      }
+
+      #division {
+        background: black;
+        width: 2px;
+        margin: 10px;
+        height: 35px;
+      }
+    }
+
+    .navCenter {
+      position: relative;
+
+      #searchIcon {
+        background-color: transparent;
+        position: relative;
+        bottom: 15px;
+        left: 90px;
+        margin: 3px 0 0 0;
+
+        .icon {
+          position: absolute;
+          top: 18px;
+          right: 60px;
+          background-color: #f9f9f9;
+        }
+      }
+
+      #search {
+        padding: 0 20px;
+        height: 40px;
+        text-align: center;
+        outline: none;
+        width: 200px;
+        background-color: rgb(249, 249, 249);
+        border: 1px solid lightgray;
+      }
+    }
+
+    .navRight {
+      img {
+        cursor: pointer;
+        background-color: white;
+      }
+      div {
+        background-color: white;
+      }
+    }
+  }
+
+  main {
+    background-color: rgb(249, 249, 249);
+    height: 100vh;
+    width: 100vw;
+    min-width: 600px;
+    padding: 30px;
+
+    .mainRight {
+      position: absolute;
+      top: 0;
+      left: 70vw;
+      margin: 150px auto;
+      width: 400px;
+
+      .ad {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin: 10px 30px;
+        background-color: transparent;
+
+        #profileImg {
+          border-radius: 50px;
+          width: 50px;
+          height: 50px;
+        }
+
+        .adContents {
+          background-color: #f9f9f9;
+
+          .nickName,
+          .adDesc {
+            background-color: #f9f9f9;
+          }
+        }
+      }
+
+      #profileImg {
+        border-radius: 30px;
+        width: 30px;
+        height: 30px;
+        margin-top: 4px;
+      }
+
+      .story {
+        border: 1px solid lightgray;
+        margin: 30px;
+        padding: 10px;
+        background-color: white;
+
+        &Top {
+          display: flex;
+          width: 300px;
+          padding: 10px;
+          justify-content: space-between;
+          background-color: white;
+        }
+
+        &Text {
+          background-color: white;
+        }
+
+        &User {
+          display: flex;
+          padding: 5px;
+          background-color: white;
+
+          div {
+            background-color: white;
+          }
+          &Right {
+            .time {
+              background-color: white;
+            }
+          }
+        }
+      }
+    }
+
+    .suggestion {
+      min-width: 320px;
+      border: 1px solid lightgray;
+      background-color: white;
+      margin: 30px;
+      padding: 10px;
+
+      &Top {
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        background-color: white;
+      }
+
+      &User {
+        display: flex;
+        padding: 5px;
+        background-color: white;
+
+        &Right {
+          .others {
+            padding-bottom: 5px;
+            width: 140px;
+            background-color: white;
+          }
+        }
+
+        div {
+          background-color: white;
+        }
+
+        .followBtn {
+          display: flex;
+          position: relative;
+          top: 10px;
+          font-size: 12px;
+          background-color: transparent;
+          border: 0;
+          cursor: pointer;
+          color: rgb(114, 176, 233);
+          margin: 0 0 0 80px;
+        }
+      }
+    }
+
+    .others,
+    .adDesc,
+    .storyText,
+    .suggestionText {
+      color: gray;
+      background-color: white;
+    }
+
+    .nickName {
+      font-weight: 800;
+      cursor: pointer;
+      background-color: white;
+    }
+
+    .infoText {
+      min-width: 320px;
+      color: lightgray;
+      background-color: transparent;
+      margin: 30px;
+      padding: 10px;
+    }
+  }
+
+  .all {
+    cursor: pointer;
+    background-color: white;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .mainRight {
+    display: none;
+  }
+}

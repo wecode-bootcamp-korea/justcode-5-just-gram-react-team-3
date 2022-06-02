@@ -1,52 +1,120 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from 'react-router-dom';
 
-import './Login.scss';
+import styles from './Login.module.scss';
 
 function Login() {
-  const [idValue, setIdValue] = useState('');
-  const [pwValue, setPwValue] = useState('');
+  const [inputValues, setInputValues] = useState({
+    email: '',
+    password: '',
+  });
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setInputValues({
+      ...inputValues,
+      [name]: value,
+    });
+  };
+
   const [isValid, setIsValid] = useState(false);
-
   const updateBtn = () => {
-    if (idValue.includes('@') && pwValue.length >= 5) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
+    const isIdPwInputValid =
+      inputValues.email.includes('@') && inputValues.password.length >= 5;
+    setIsValid(isIdPwInputValid);
+    if (isIdPwInputValid && window.event.keyCode === 13) {
+      loginBtn();
     }
-  }
-
-  const handleIdInput = (e) => {
-    setIdValue(e.target.value);
-  }
-
-  const handlePwInput = (e) => {
-    setPwValue(e.target.value);
-  }
+  };
 
   const navigate = useNavigate();
-
-  const goToMain = () => {
-    navigate("/main");
+  const loginBtn = () => {
+    fetch('http://52.79.143.176:8000/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: inputValues.email,
+        password: inputValues.password,
+      }),
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          navigate('/jinwooMain');
+        } else {
+          alert('로그인 실패!');
+        }
+        return response.json();
+      })
+      .then((result) => {
+        if (result.token !== undefined) {
+          localStorage.setItem('token', result.token);
+        }
+      });
   };
+
+  const signUpBtn = () => {
+    fetch('http://52.79.143.176:8000/users/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: inputValues.email,
+        password: inputValues.password,
+      }),
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          alert('회원가입 완료!');
+        }
+        return response.json();
+      })
+      .then((result) => {
+        if (result.userId === undefined) {
+          alert(result.message);
+        }
+      });
+  };
+
   return (
-      <div className="container">
-        <h1>Justgram</h1>
-        <div className="login-form">
-          <input type="text" id="id-input" onKeyUp={updateBtn} onChange={handleIdInput} placeholder="전화번호, 사용자 이름 또는 이메일"/>
-          <input type="password" id="pw-input" onKeyUp={updateBtn} onChange={handlePwInput} placeholder="비밀번호"/>
-          <button 
-            disabled={isValid ? false : true} 
-            style={{
-              backgroundColor: isValid ? 'rgb(115,180,226)': 'rgb(172,212,234)', 
-              cursor: isValid ? 'pointer' : 'auto'}} 
-            onClick={goToMain}>
-              로그인
-          </button>
-        </div>
-        <a href="/" id="search-pw">비밀번호를 잊으셨나요?</a>
-      </div>
-  )
+    <div className={styles.container}>
+      <h1>Justgram</h1>
+      <form className={styles.loginForm}>
+        <input
+          name="email"
+          type="text"
+          onKeyUp={updateBtn}
+          onChange={handleInput}
+          placeholder="전화번호, 사용자 이름 또는 이메일"
+          autoComplete="username"
+        />
+        <input
+          name="password"
+          type="password"
+          onKeyUp={updateBtn}
+          onChange={handleInput}
+          placeholder="비밀번호"
+          autoComplete="current-password"
+        />
+
+        <button
+          type="button"
+          disabled={isValid ? false : true}
+          className={isValid ? `${styles.activated}` : `${styles.deactivated}`}
+          onClick={loginBtn}
+        >
+          로그인
+        </button>
+        <button type="button" className={styles.signUp} onClick={signUpBtn}>
+          회원가입
+        </button>
+      </form>
+      <Link to="/jinwooLogin" id={styles.searchPw}>
+        비밀번호를 잊으셨나요?
+      </Link>
+    </div>
+  );
 }
 
 export default Login;
