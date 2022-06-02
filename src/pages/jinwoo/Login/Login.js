@@ -64,11 +64,16 @@ function Login() {
         password: inputValues.password,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 201) {
+          alert('회원가입 완료!');
+        }
+        return response.json();
+      })
       .then((result) => {
-        result.userId !== undefined
-          ? alert('회원가입 완료!')
-          : alert(result.message);
+        if (result.userId === undefined) {
+          alert(result.message);
+        }
       });
   };
 
