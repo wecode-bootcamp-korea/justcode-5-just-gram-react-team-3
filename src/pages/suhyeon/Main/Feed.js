@@ -24,10 +24,8 @@ function Feed({
 
   const enterCheck = (e) => {
     const { value } = e.target;
-    if (e.key === "Enter") {
-      if (value !== "") {
-        writeComment();
-      }
+    if (e.key === "Enter" && value !== "") {
+      writeComment();
     }
   };
 
@@ -40,7 +38,7 @@ function Feed({
     let temp = [
       ...commentArr,
       {
-        id: commentArr[commentArr.length - 1].id + 1,
+        id: commentArr.length + 1,
         author: "lshyun955",
         content: comment,
         isLiked: false,

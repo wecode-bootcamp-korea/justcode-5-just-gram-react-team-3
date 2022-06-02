@@ -10,7 +10,6 @@ import { infoData } from "./infoData";
 
 function Main() {
   const [feedList, setFeedList] = useState([]);
-  console.log(feedList);
 
   useEffect(() => {
     const fetchData = async () => {
