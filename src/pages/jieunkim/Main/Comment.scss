@@ -1,0 +1,18 @@
+.manage-comment {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.comment-content {
+	img {
+		display: block;
+		width: 16px;
+		margin: auto;
+
+	}
+
+	span {
+		text-align: center;
+	}
+}
