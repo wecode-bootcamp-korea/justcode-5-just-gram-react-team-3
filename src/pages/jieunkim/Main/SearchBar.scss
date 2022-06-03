@@ -14,6 +14,7 @@ $tooltip-shadow: 0 0 2px 0 lightgrey;
 	left: 3%;
 	border-radius: 5px;
 	right: 10px;
+	
 }
 
 .searchBarRes.visible {
@@ -30,7 +31,6 @@ $tooltip-shadow: 0 0 2px 0 lightgrey;
 }
 
 .searchRes-box {
-	background-color: white;
 	border-radius: 5px;
 	right: 10px;
 	display: none;
@@ -64,9 +64,19 @@ $tooltip-shadow: 0 0 2px 0 lightgrey;
 	@include flex-v-center;
 	margin: 0;
 
+	p {
+			background-color: white;
+		}
+
 	&:hover {
 		background-color: $theme-background-color;
+		
+		div, p {
+			background-color: $theme-background-color;
+		}
 	}
+
+
 }
 
 .searchRes-profile-content {

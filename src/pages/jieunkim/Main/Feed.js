@@ -124,8 +124,8 @@ const Feed = (props) => {
           src={props.imageUrl}
         />
       </div>
-      <div className="feed-icons">
-        <div className="feed-icons-left">
+      <div className="jk-feed-icons">
+        <div className="jk-feed-icons-left">
           <img
             className="icon-like"
             alt="like"
@@ -145,7 +145,7 @@ const Feed = (props) => {
             src="/images/jieunkim/upload.png"
           />
         </div>
-        <div className="feed-icons-right">
+        <div className="jk-feed-icons-right">
           <img
             className="icon-bookmark"
             alt="bookmark"
@@ -178,7 +178,7 @@ const Feed = (props) => {
           <span id="feed-content-text">{props.content}</span>
           <span>&nbsp;</span>
           <span>&nbsp;</span>
-          <span className="show-more">더 보기</span>
+          <span className="show-more"> ... 더 보기</span>
         </div>
       </div>
       <div className="comment">

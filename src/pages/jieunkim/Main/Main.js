@@ -56,12 +56,12 @@ function Main() {
   // };
 
     return (
-      <div className="main-page">
-        <div className="main-body">
-          <div className="main-container">
-            <nav>
-              <div className="nav nav-content">
-                <div className="nav nav-left">
+      <div className="jk-main-page">
+        <div className="jk-main-body">
+          <div className="jk-main-container">
+            <nav className="jk-nav-container">
+              <div className="jk-nav jk-nav-content">
+                <div className="jk-nav jk-nav-left">
                   <img
                     className="icon-insta"
                     alt="insta-icon"
@@ -69,7 +69,7 @@ function Main() {
                   />
                   <span>justgram</span>
                 </div>
-                <div className="nav nav-center">
+                <div className="jk-nav jk-nav-center">
                   <input
                     type="text"
                     className="search"
@@ -82,6 +82,8 @@ function Main() {
                     }}
                     onBlur={() => {
                       setActiveSearchBar(false);
+                      setSearchResVisible(false);
+                      setSearchBarInput("");
                     }}
                     onChange={(event) => {
                       setSearchBarInput(event.target.value);
@@ -91,6 +93,7 @@ function Main() {
                     onKeyUp={(event) => {
                       if (event.key === "Enter") {
                         setSearchResVisible(!isSearchResVisible);
+                        setSearchBarInput("");
                       }
                     }}
                   />
@@ -115,7 +118,7 @@ function Main() {
                       ))}
                   </div>}
                 </div>
-                <div className="nav nav-right">
+                <div className="jk-nav jk-nav-right">
                   <div>
                     <img
                       className="icon-explore"
@@ -147,8 +150,8 @@ function Main() {
                 </div>
               </div>
             </nav>
-            <main className="main-feeds">
-              <div className="feeds">
+            <main className="jk-main-feeds">
+              <div className="jk-feeds">
                 {feeds
                   .filter((feed) => feed.feedId === pageFeedId)
                   .map((feed) => {
@@ -169,7 +172,7 @@ function Main() {
                     );
                   })}
               </div>
-              <div className="main-right">
+              <div className="jk-main-right">
                 <div className="login-user-header">
                   <div className="login-user-profile user-profile">
                     <img
@@ -190,8 +193,8 @@ function Main() {
                     </p>
                   </div>
                 </div>
-                <div className="story main-right-container">
-                  <div className="story-header header-title">
+                <div className="story jk-main-right-container">
+                  <div className="story-header jk-header-title">
                     <p>스토리</p>
                     <p>모두 보기</p>
                   </div>
@@ -294,8 +297,8 @@ function Main() {
                     </div>
                   </div>
                 </div>
-                <div className="recommend main-right-container">
-                  <div className="recommend-header header-title">
+                <div className="recommend jk-main-right-container">
+                  <div className="recommend-header jk-header-title">
                     <p>회원님을 위한 추천</p>
                     <p>모두 보기</p>
                   </div>

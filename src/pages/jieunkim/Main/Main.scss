@@ -34,27 +34,36 @@ html, body, #root {
 	margin: 0;
 }
 
-.main-page {
-	height: 100vh;
+* {
+	background-color: $theme-background-color;
 }
 
-body.main-body {
+.jk-main-page {
+	height: 100vh;
+	width: 100vh;
+}
+
+.jk-main-body {
 	margin: 0;
 	background-color: $theme-background-color;
 	height: 100%;
 }
 
-.main-container {
+.jk-main-container {
 	@include flex-direction-column;
 
-	nav {
-		background-color: white;
-		border-bottom: $theme-border-line;
+.jk-nav-container {
+	background-color: white;	
+	border-bottom: $theme-border-line;
 	}
 }
 
-.nav {
+.jk-nav {
 	@include flex-v-center;
+	background-color: white;
+	div, span {
+		background-color: white;
+	}
 
 	&-content {
 		justify-content: space-between;
@@ -135,12 +144,13 @@ input:focus::placeholder {
 	margin: 0 8px;
 }
 
-.feeds {
+.jk-feeds {
 	@include flex-vh-center;
 	margin: 0 30px;
 }
 
-.feed-icons, .author-more {
+.jk-feed-icons, .author-more {
+	background-color: white;
 	img {
 		width: 16px;
 		margin: 0 3px;
@@ -152,7 +162,7 @@ input:focus::placeholder {
 	margin: 0 8px;
 }
 
-.main-feeds {
+.jk-main-feeds {
 	@include flex-h-center;
 	margin-top: 40px;
 	margin-left: auto;
@@ -166,6 +176,9 @@ input:focus::placeholder {
 	margin-top: 30px;
 	margin: auto;
 	background-color: white;
+	div, span {
+		background-color: white;
+	}
 }
 
 .article-header {
@@ -173,6 +186,9 @@ input:focus::placeholder {
 	justify-content: space-between;
 	background-color: white;
 	padding: 10px 5px;
+	div, p {
+		background-color: white;
+	}
 }
 
 .author-profile, .login-user-profile {
@@ -218,18 +234,18 @@ input:focus::placeholder {
 	flex-shrink: 0;
 }
 
-.feed-icons {
+.jk-feed-icons {
 	@include flex-v-center;
 	justify-content: space-between;
 	margin: 7px;
 }
 
-.feed-icons-left, .feed-icons-right {
+.jk-feed-icons-left, .jk-feed-icons-right {
 	@include flex-v-center;
 }
 
 .likeby {
-	@include flex-v-center;
+	@include flex-v-center;	
 }
 
 .user-id-likedby {
@@ -293,6 +309,7 @@ span#author-id, span#comment-id {
 	border: 0;
 	font-size: $font-size-content;
 	width: 80%;
+	background-color: white;
 }
 
 
@@ -308,14 +325,14 @@ span#author-id, span#comment-id {
 	}
 }
 
-.main-right {
+.jk-main-right {
 	@include flex-direction-column;
 	margin: 0 20px 0 0;
 	max-width: 250px;
 }
 
 @media screen and (max-width: 630px) {
-	.main-right {
+	.jk-main-right {
 		display: none;
 	}
 }
@@ -331,40 +348,57 @@ span#author-id, span#comment-id {
 	margin: 0 10px;
 }
 
-.main-right-container {
+.jk-main-right-container {
 	@include flex-direction-column;
 	justify-content: space-between;
 	background-color: white;
 	border: $theme-border-line;
 	margin: 5px 10px;
 	padding: 0 0 8px 0;
+	div, span, p {
+		background-color: white;
+	}
 }
 
-.header-title {
+.jk-header-title {
 	display: flex;
 	justify-content: space-between;
 	font-size: $font-size-header;
-	padding: 0 14px;
+	padding: 14px 14px;
 
 	p:nth-child(1) {
 		color: grey;
+		white-space: nowrap;
 	}
 
 	p:nth-child(2) {
 		font-weight: bold;
+		white-space: nowrap;
 	}
 }
 
-.story-user-profile,
-.rf-profile {
+.user-profile {
 	max-width: 100%;
-	margin: 0;
+	margin: 0 8px 0 0;
+}
+
+.story-user-profile {
+			background-color:#fff;
+			border: 2px solid rgb(255, 0, 115);    
+			border-radius:50%;
+			-moz-border-radius:50%;
+			-webkit-border-radius:50%;
+			height: 23px;
+			width: 23px;
+			img {
+				margin: 2px 1px 2px 2px;
+			}
 }
 
 .story-content, .recommend-content {
 	@include flex-direction-column;
 	background-color: white;
-	margin: 0 10px 0 0;
+	margin: 0 14px 0 0;
 }
 
 .story-user, .recommend-user-left {
