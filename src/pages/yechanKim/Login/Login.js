@@ -60,13 +60,30 @@ function Login() {
             className="info"
             placeholder="비밀번호"
           />
-          <div>{inputValues.id}</div>
           <button
             id="login-button"
             disabled={!valid}
             className={valid ? "login-button-active" : "login-button-inactive"}
             onClick={() => {
-              navigate("/main");
+              fetch("http://52.79.143.176:8000/users/login", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  // "yechan@naver.com",
+                  // "Yechan123!"
+                  email: inputValues.id,
+                  password: inputValues.pw,
+                }),
+              }).then((res) => {
+                if (res.status === 200) {
+                  res.json();
+                  navigate("/main");
+                } else {
+                  alert("로그인에 실패했습니다.");
+                }
+              });
             }}
           >
             로그인

@@ -9,6 +9,7 @@ body {
     justify-content: space-around;
     background-color: #ffffff;
     padding: 10px 0;
+    margin-bottom: 50px;
   }
   .logo-title {
     display: flex;
@@ -32,47 +33,20 @@ body {
     display: flex;
     margin: 0 auto;
   }
-  .container main {
-    width: 900px;
-    margin-right: 10px;
-    background-color: #ffffff;
-    border: 1px solid lightgray;
+  .container .feed-wrap {
+    display: flex;
+    flex-direction: column;
   }
   .container aside {
     width: 300px;
   }
-  .post {
-    display: flex;
-    flex-direction: column;
-  }
-  .edit-group {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .editor {
-    display: flex;
-    align-items: center;
-  }
+
   .profile-img {
     width: 30px;
     border-radius: 50%;
     margin-right: 10px;
   }
-  .contents-info {
-    padding: 5px;
-    border-bottom: 1px solid lightgray;
-    .display-comment li {
-      display: flex;
-      align-items: center;
-      .text {
-        margin-left: 10px;
-      }
-      .material-symbols-outlined {
-        margin: 0 0 0 auto;
-      }
-    }
-  }
+
   .icon-group {
     display: flex;
     margin: 5px;
@@ -82,32 +56,6 @@ body {
   }
   .icon-group span:last-child {
     margin: 0 0 0 auto;
-  }
-  .like {
-    display: flex;
-    align-items: center;
-  }
-  .main-message {
-    display: flex;
-    align-items: center;
-  }
-  .main-message a {
-    text-decoration: none;
-    margin-right: 10px;
-    color: black;
-  }
-  .info {
-    color: gray;
-  }
-  .leave-comment {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .leave-comment input {
-    width: 95%;
-    border: 0;
   }
   .my-account {
     display: flex;
