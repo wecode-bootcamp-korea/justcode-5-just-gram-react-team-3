@@ -1,0 +1,35 @@
+$theme-background-color: rgba(249, 247, 247, 0.872);
+$theme-border-line: 1px solid rgb(234, 230, 230);
+$theme-color: #0095f6;
+$font-size: 10px;
+$font-size-span: 10px;
+$font-size-logo: 20px;
+$font-size-id: 12px;
+$font-size-underId: 12px;
+$font-size-content: 12px;
+$font-size-header: 12px;
+
+@mixin flex-vh-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin flex-v-center {
+	display: flex;
+	align-items: center;
+}
+
+@mixin flex-h-center {
+	display: flex;
+	justify-content: center;
+}
+
+@mixin flex-direction-column {
+	display: flex;
+	flex-direction: column;
+}
+
+html, body, #root {
+	margin: 0;
+}

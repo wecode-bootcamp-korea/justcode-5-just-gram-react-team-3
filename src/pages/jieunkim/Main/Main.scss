@@ -1,0 +1,435 @@
+$theme-background-color: rgba(249, 247, 247, 0.872);
+$theme-border-line: 1px solid rgb(234, 230, 230);
+$theme-color: #0095f6;
+$font-size: 10px;
+$font-size-span: 10px;
+$font-size-logo: 20px;
+$font-size-id: 12px;
+$font-size-underId: 12px;
+$font-size-content: 12px;
+$font-size-header: 12px;
+
+@mixin flex-vh-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin flex-v-center {
+	display: flex;
+	align-items: center;
+}
+
+@mixin flex-h-center {
+	display: flex;
+	justify-content: center;
+}
+
+@mixin flex-direction-column {
+	display: flex;
+	flex-direction: column;
+}
+
+html, body, #root {
+	margin: 0;
+}
+
+* {
+	background-color: $theme-background-color;
+}
+
+.jk-main-page {
+	height: 100vh;
+	width: 100vh;
+}
+
+.jk-main-body {
+	margin: 0;
+	background-color: $theme-background-color;
+	height: 100%;
+}
+
+.jk-main-container {
+	@include flex-direction-column;
+
+.jk-nav-container {
+	background-color: white;	
+	border-bottom: $theme-border-line;
+	}
+}
+
+.jk-nav {
+	@include flex-v-center;
+	background-color: white;
+	div, span {
+		background-color: white;
+	}
+
+	&-content {
+		justify-content: space-between;
+		margin: 15px 20px;
+	}
+
+	&-left {
+		span {
+			font-family: 'Lobster', cursive;
+			font-size: $font-size-logo;
+			text-align: center;
+		}
+	}
+
+	&-center {
+		position: relative;
+	}
+
+	&-right {
+		img {
+			width: 16px;
+			margin: 0 8px;
+		}
+	}
+}
+
+.icon-insta {
+	width: 20px;
+	border-right: 1px solid black;
+	padding: 0 8px 0 0;
+	margin: 0 10px;
+}
+
+.icon-search {
+	position: absolute;
+	left: 24%;
+	width: 13px;
+
+	&.visible {
+		opacity: 0.5;
+	}
+
+	&.invisible {
+		opacity: 0;
+	}
+}
+
+.icon-more {
+	width: 10px;
+}
+
+.search {
+	@include flex-v-center;
+	text-align: center;
+	padding: 1px 15px;
+	background-color: $theme-background-color;
+	border: $theme-border-line;
+	opacity: 0.5;
+
+	&:focus {
+		text-align: left;
+		opacity: 1;
+		outline-width: 0;
+		background-color: transparent;
+	}
+}
+
+input:focus::placeholder {
+	color: transparent;
+}
+
+.icon-insta {
+	width: 23px;
+}
+
+.author-icon-profile {
+	width: 22px;
+	margin: 0 8px;
+}
+
+.jk-feeds {
+	@include flex-vh-center;
+	margin: 0 30px;
+}
+
+.jk-feed-icons, .author-more {
+	background-color: white;
+	img {
+		width: 16px;
+		margin: 0 3px;
+	}
+}
+
+.user-icon {
+	width: 16px;
+	margin: 0 8px;
+}
+
+.jk-main-feeds {
+	@include flex-h-center;
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.article-container {
+	@include flex-direction-column;
+	align-items: space-between;
+	border: 1px solid rgb(230, 230, 230);
+	margin-top: 30px;
+	margin: auto;
+	background-color: white;
+	div, span {
+		background-color: white;
+	}
+}
+
+.article-header {
+	@include flex-v-center;
+	justify-content: space-between;
+	background-color: white;
+	padding: 10px 5px;
+	div, p {
+		background-color: white;
+	}
+}
+
+.author-profile, .login-user-profile {
+	@include flex-v-center;
+}
+
+.author-profile-icon {
+	left: 2px;
+}
+
+.user-info {
+	@include flex-direction-column;
+	left: 40px;
+	margin: 0 2px;
+
+	p {
+		left: 10px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.user-id {
+		font-size: $font-size-id;
+		font-weight: bold;
+	}
+
+	.user-location, .user-update {
+		color: grey;
+		font-size: $font-size-underId;
+	}
+}
+
+.frame {
+	display: flex;
+}
+
+.feed-photo {
+	width: 400px;
+	height: 400px;
+	margin: 0;
+	max-width: 100%;
+	min-width: 400px;
+	flex-shrink: 0;
+}
+
+.jk-feed-icons {
+	@include flex-v-center;
+	justify-content: space-between;
+	margin: 7px;
+}
+
+.jk-feed-icons-left, .jk-feed-icons-right {
+	@include flex-v-center;
+}
+
+.likeby {
+	@include flex-v-center;	
+}
+
+.user-id-likedby {
+	font-weight: bold;
+}
+
+.text-likedby {
+	font-size: $font-size-id;
+}
+
+.feed-content, .comment {
+	@include flex-direction-column;
+	margin: 0 7px;
+}
+
+.comment-content {
+	display: flex;
+	justify-content: space-between;
+}
+
+.feed-content span,
+.comment-content span {
+	font-size: $font-size-content;
+}
+
+.manage-comment {
+	display: flex;
+}
+
+.like-comment-btn, .remove-comment-btn {
+	color: $theme-color;
+	right: 0;
+	background-color: white;
+	font-size: $font-size-content;
+	border: 0;
+}
+
+span#author-id, span#comment-id {
+	font-weight: bold;
+}
+
+.show-more {
+	font-size: 10px;
+	color: grey;
+}
+
+#time-stamp {
+	font-size: $font-size-underId;
+	color: grey;
+}
+
+.new-comment {
+	display: flex;
+	justify-content: space-between;
+	border-top: $theme-border-line;
+	padding: 7px 7px;
+	margin: 5px 0 0 0;
+}
+
+#new-comment-input {
+	border: 0;
+	font-size: $font-size-content;
+	width: 80%;
+	background-color: white;
+}
+
+
+.post-btn {
+	color: $theme-color;
+	right: 0;
+	background-color: white;
+	font-size: $font-size-content;
+	border: 0;
+
+	&:disabled {
+		opacity: 0.5;
+	}
+}
+
+.jk-main-right {
+	@include flex-direction-column;
+	margin: 0 20px 0 0;
+	max-width: 250px;
+}
+
+@media screen and (max-width: 630px) {
+	.jk-main-right {
+		display: none;
+	}
+}
+
+.login-user-header {
+	@include flex-v-center;
+	padding: 10px 0 6px 5px;
+}
+
+#login-profile-icon {
+	left: 2px;
+	width: 30px;
+	margin: 0 10px;
+}
+
+.jk-main-right-container {
+	@include flex-direction-column;
+	justify-content: space-between;
+	background-color: white;
+	border: $theme-border-line;
+	margin: 5px 10px;
+	padding: 0 0 8px 0;
+	div, span, p {
+		background-color: white;
+	}
+}
+
+.jk-header-title {
+	display: flex;
+	justify-content: space-between;
+	font-size: $font-size-header;
+	padding: 14px 14px;
+
+	p:nth-child(1) {
+		color: grey;
+		white-space: nowrap;
+	}
+
+	p:nth-child(2) {
+		font-weight: bold;
+		white-space: nowrap;
+	}
+}
+
+.user-profile {
+	max-width: 100%;
+	margin: 0 8px 0 0;
+}
+
+.story-user-profile {
+			background-color:#fff;
+			border: 2px solid rgb(255, 0, 115);    
+			border-radius:50%;
+			-moz-border-radius:50%;
+			-webkit-border-radius:50%;
+			height: 23px;
+			width: 23px;
+			img {
+				margin: 2px 1px 2px 2px;
+			}
+}
+
+.story-content, .recommend-content {
+	@include flex-direction-column;
+	background-color: white;
+	margin: 0 14px 0 0;
+}
+
+.story-user, .recommend-user-left {
+	@include flex-v-center;
+	margin: 3px 10px;
+}
+
+.recommend-user {
+	@include flex-v-center;
+	justify-content: space-between;
+}
+
+.recommend-user-right {
+	@include flex-direction-column;
+}
+
+.follow {
+	color: $theme-color;
+	font-size: $font-size-content;
+	font-weight: bold;
+	margin: 0;
+	text-align: center;
+}
+
+.company-info {
+	@include flex-direction-column;
+	padding: 0 0 0 13px;
+}
+
+.company-info p {
+	max-width: 90%;
+	font-size: $font-size-content;
+	color: grey;
+}
