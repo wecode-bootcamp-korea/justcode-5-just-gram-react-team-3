@@ -1,21 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from '../pages/suhyeon/Login/Login';
-import Main from '../pages/suhyeon/Main/Main';
+import YechanLogin from '../pages/yechanKim/Login/Login';
+import YechanMain from '../pages/yechanKim/Main/Main';
 import JinwooLogin from '../pages/jinwoo/Login/Login';
 import JinwooMain from '../pages/jinwoo/Main/Main';
 import SuhyeonLogin from '../pages/suhyeon/Login/Login';
 import SuhyeonMain from '../pages/suhyeon/Main/Main';
 import JieunkimLogin from '../pages/jieunkim/Login/Login';
 import JieunkimMain from '../pages/jieunkim/Main/Main';
-import YechanLogin from '../pages/yechanKim/Login/Login';
-import YechanMain from '../pages/yechanKim/Main/Main';
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/main" element={<Main />} />
         <Route path="/jinwooLogin" element={<JinwooLogin />} />
         <Route path="/jinwooMain" element={<JinwooMain />} />
         <Route path="/suhyeonLogin" element={<SuhyeonLogin />} />

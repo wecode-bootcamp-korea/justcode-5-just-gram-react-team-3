@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import Comment from "../Comment/Comment";
-import "./Feed.scss";
+import React, { useState } from 'react';
+import Comment from '../Comment/Comment';
+import './Feed.scss';
 
 // let id = 0;
 function Feed(props) {
-  const [commentList, setCommentList] = useState([]);
-  const [isLiked, setIsLiked] = useState(false);
   const { feed } = props;
+  const [comment, setComment] = useState('');
+  const [commentList, setCommentList] = useState(feed.contents.commentData);
+  const [isLiked, setIsLiked] = useState(false);
 
   function toggleIsLiked() {
     if (!isLiked) {
@@ -16,18 +17,34 @@ function Feed(props) {
     }
   }
   function saveComment(e) {
-    const { value, tagName } = e.target;
-    const commentInput = document.getElementById("comment");
-    if (e.key === "Enter") {
-      if (value.length >= 1) {
-        setCommentList([...commentList, value]);
-        commentInput.value = "";
-        // id += 1;
+    // const { value, tagName } = e.target;
+    // console.log(tagName);
+    // const commentInput = document.getElementById('comment');
+    if (e.key === 'Enter') {
+      if (comment.length >= 1) {
+        setCommentList([
+          ...commentList,
+          {
+            id: commentList[commentList.length - 1]['id'] + 1,
+            userName: 'yechan',
+            content: comment,
+            isLiked: false,
+          },
+        ]);
+        setComment('');
       }
-    } else if (tagName === "BUTTON") {
-      if (commentInput.value.length >= 1) {
-        setCommentList([...commentList, commentInput.value]);
-        commentInput.value = "";
+    } else if (e.target.tagName === 'BUTTON') {
+      if (comment.length >= 1) {
+        setCommentList([
+          ...commentList,
+          {
+            id: commentList[commentList.length - 1]['id'] + 1,
+            userName: 'yechan',
+            content: comment,
+            isLiked: false,
+          },
+        ]);
+        setComment('');
       }
     }
   }
@@ -51,7 +68,7 @@ function Feed(props) {
           <div className="icon-group">
             <span
               className="material-symbols-outlined"
-              style={{ color: isLiked ? "red" : "black" }}
+              style={{ color: isLiked ? 'red' : 'black' }}
               onClick={toggleIsLiked}
             >
               favorite
@@ -67,18 +84,18 @@ function Feed(props) {
               alt=""
             />
             <span className="'like-message">
-              <b>{feed.contents.likePeople.id}</b>님 외{" "}
+              <b>{feed.contents.likePeople.id}</b>님 외{' '}
               <b>{feed.contents.likePeople.count}명</b>이 좋아합니다.
             </span>
           </div>
           <div className="main-message">
-            <a href="">
+            <a href="#">
               <b>{feed.contents.proFile.id}</b>
             </a>
             <p className="'text">{feed.contents.message}</p>
           </div>
           <div className="display-comment">
-            <ul>
+            <ul className="comments">
               {commentList.map((comment, idx) => {
                 return <Comment key={idx} comment={comment} />;
               })}
@@ -88,10 +105,13 @@ function Feed(props) {
         </div>
         <div className="leave-comment">
           <input
+            onChange={(e) => {
+              setComment(e.target.value);
+            }}
             onKeyPress={(e) => {
               saveComment(e);
             }}
-            id="comment"
+            value={comment}
             type="text"
             placeholder="댓글 달기..."
           />

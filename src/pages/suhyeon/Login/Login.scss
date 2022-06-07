@@ -8,7 +8,7 @@ $border-style: 1px #ddd solid;
 $theme-color: #fafafa;
 $login-btn-margin-padding: 10px 0;
 
-body {
+.Login {
   height: 100vh;
   @include flex-center;
 }
@@ -23,7 +23,7 @@ body {
 }
 
 .login_logo-text {
-  font-family: "Lobster", cursive;
+  font-family: 'Lobster', cursive;
   font-size: 60px;
   padding: 25px;
   margin: 30px 70px;
@@ -75,7 +75,7 @@ body {
 }
 
 .find-password {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   text-decoration-line: none;
   color: rgb(20, 28, 146);
   font-weight: bold;

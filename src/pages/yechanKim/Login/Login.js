@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./Login.scss";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Login.scss';
 
 function Login() {
   const [inputValues, setInputValues] = useState({
-    id: "",
-    pw: "",
+    id: '',
+    pw: '',
   });
   const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ function Login() {
     });
   }
   function validation(id, pw) {
-    const InputValid = id.indexOf("@") !== -1 && pw.length >= 5;
+    const InputValid = id.indexOf('@') !== -1 && pw.length >= 5;
     if (InputValid) {
       return true;
     } else {
@@ -63,12 +63,12 @@ function Login() {
           <button
             id="login-button"
             disabled={!valid}
-            className={valid ? "login-button-active" : "login-button-inactive"}
+            className={valid ? 'login-button-active' : 'login-button-inactive'}
             onClick={() => {
-              fetch("http://52.79.143.176:8000/users/login", {
-                method: "POST",
+              fetch('http://52.79.143.176:8000/users/login', {
+                method: 'POST',
                 headers: {
-                  "Content-Type": "application/json",
+                  'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                   // "yechan@naver.com",
@@ -79,9 +79,9 @@ function Login() {
               }).then((res) => {
                 if (res.status === 200) {
                   res.json();
-                  navigate("/main");
+                  navigate('/yechankimMain');
                 } else {
-                  alert("로그인에 실패했습니다.");
+                  alert('로그인에 실패했습니다.');
                 }
               });
             }}
