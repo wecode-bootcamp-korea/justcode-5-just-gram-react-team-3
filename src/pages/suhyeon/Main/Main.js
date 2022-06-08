@@ -1,12 +1,12 @@
-import "./Main.scss";
-import { useEffect, useState } from "react";
-import Feed from "./Feed";
-import Story from "./Story";
-import Recommend from "./Recommend";
-import Info from "./Info";
-import { storyData } from "./stroyData";
-import { recommendData } from "./recommendData";
-import { infoData } from "./infoData";
+import './Main.scss';
+import { useEffect, useState } from 'react';
+import Feed from './Feed';
+import Story from './Story';
+import Recommend from './Recommend';
+import Info from './Info';
+import { storyData } from './stroyData';
+import { recommendData } from './recommendData';
+import { infoData } from './infoData';
 
 function Main() {
   const [feedList, setFeedList] = useState([]);
@@ -14,7 +14,7 @@ function Main() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `${process.env.PUBLIC_URL}/data/suhyeon/commentData.json`
+        `${process.env.PUBLIC_URL}/data/suhyeon/commentData.json`,
       );
       const feeds = await response.json();
       setFeedList(feeds);

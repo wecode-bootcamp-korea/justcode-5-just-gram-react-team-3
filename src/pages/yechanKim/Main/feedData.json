@@ -1,0 +1,107 @@
+[
+  {
+    "Feed": {
+      "proFile": {
+        "imgUrl": "/images/yechanKim/me.jpg",
+        "id": "yechan",
+        "name": "김예찬"
+      },
+      "imgUrl": "/images/yechanKim/character.png",
+      "likePeople": {
+        "imgUrl": "/images/yechanKim/me.jpg",
+        "id": "yechan",
+        "count": 10
+      },
+      "message": "...",
+      "postTime": "10분 전",
+      "commentData": [
+        {
+          "id": 1,
+          "userName": "Batman",
+          "content": "Good Job!",
+          "isLiked": true
+        },
+        {
+          "id": 2,
+          "userName": "Superman",
+          "content": "You make me smile",
+          "isLiked": true
+        },
+        {
+          "id": 3,
+          "userName": "ironMan",
+          "content": "Me too",
+          "isLiked": true
+        }
+      ]
+    }
+  },
+  {
+    "Feed": {
+      "proFile": {
+        "imgUrl": "/images/yechanKim/me.jpg",
+        "id": "yechan",
+        "name": "김예찬"
+      },
+      "imgUrl": "/images/yechanKim/character.png",
+      "likePeople": {
+        "imgUrl": "/images/yechanKim/me.jpg",
+        "id": "yechan",
+        "count": 10
+      },
+      "message": "...",
+      "postTime": "10분 전"
+    }
+  },
+  {
+    "Feed": {
+      "proFile": {
+        "imgUrl": "/images/yechanKim/me.jpg",
+        "id": "yechan",
+        "name": "김예찬"
+      },
+      "imgUrl": "/images/yechanKim/character.png",
+      "likePeople": {
+        "imgUrl": "/images/yechanKim/me.jpg",
+        "id": "yechan",
+        "count": 10
+      },
+      "message": "...",
+      "postTime": "10분 전"
+    }
+  },
+  {
+    "Feed": {
+      "proFile": {
+        "imgUrl": "/images/yechanKim/me.jpg",
+        "id": "yechan",
+        "name": "김예찬"
+      },
+      "imgUrl": "/images/yechanKim/character.png",
+      "likePeople": {
+        "imgUrl": "/images/yechanKim/me.jpg",
+        "id": "yechan",
+        "count": 10
+      },
+      "message": "...",
+      "postTime": "10분 전"
+    }
+  },
+  {
+    "Feed": {
+      "proFile": {
+        "imgUrl": "/images/yechanKim/me.jpg",
+        "id": "yechan",
+        "name": "김예찬"
+      },
+      "imgUrl": "/images/yechanKim/character.png",
+      "likePeople": {
+        "imgUrl": "/images/yechanKim/me.jpg",
+        "id": "yechan",
+        "count": 10
+      },
+      "message": "...",
+      "postTime": "10분 전"
+    }
+  }
+]

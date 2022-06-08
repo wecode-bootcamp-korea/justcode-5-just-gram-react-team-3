@@ -1,0 +1,40 @@
+.aside {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  * {
+    background-color: #ffffff;
+  }
+
+  .my-account {
+    display: flex;
+    padding: 10px;
+    background-color: rgba(249, 247, 247, 0.872);
+    * {
+      background-color: rgba(249, 247, 247, 0.872);
+    }
+  }
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .aside-box {
+    background-color: #ffffff;
+    border: 1px solid lightgray;
+    padding: 10px;
+    margin-bottom: 20px;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .list {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .company-info {
+    color: lightgray;
+    background-color: rgba(249, 247, 247, 0.872);
+  }
+}

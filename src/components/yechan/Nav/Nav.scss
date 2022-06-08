@@ -1,0 +1,42 @@
+.Nav-bar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  padding: 10px 0;
+  .logo-title {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+  }
+  .logo-title img {
+    margin-right: 10px;
+  }
+  .logo-title h1 {
+    font-family: 'Lobster', cursive;
+    padding-left: 10px;
+    border-left: 1px solid black;
+    margin: 0;
+    background-color: #ffffff;
+  }
+  .search-box {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 1px solid lightgray;
+    .search-input {
+      position: absolute;
+      width: 100%;
+      border: transparent;
+    }
+  }
+  .icon-group {
+    display: flex;
+    align-items: center;
+    .material-symbols-outlined {
+      background-color: #ffffff;
+    }
+    background-color: #ffffff;
+  }
+}
